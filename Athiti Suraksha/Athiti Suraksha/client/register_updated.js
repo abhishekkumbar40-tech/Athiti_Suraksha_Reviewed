@@ -4,7 +4,7 @@
    COMPLETE UPDATED VERSION
    ===================================================== */
 
-const API_URL = "https://athiti-suraksha-reviewed.onrender.com".replace(/\/$/, "");
+const API_URL = "https://athiti-suraksha-reviewed.onrender.com";
 
 /* Convert browser's vague "Failed to fetch" into a useful deployment hint.
    A real fix for CORS/server outages must be made on the backend/Render. */
@@ -1696,10 +1696,10 @@ if (
                                     facingMode:
                                         "user",
 
-                                    width:
+                                    inline-size:
                                         720,
 
-                                    height:
+                                    block-size:
                                         720
 
                                 },
