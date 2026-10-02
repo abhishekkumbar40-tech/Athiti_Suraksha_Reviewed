@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Athiti Suraksha</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: #f8f9fc;
+            color: #18263d;
+        }
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* =========================================
+           MAIN PAGE
+        ========================================= */
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* =========================================
+           LEFT SIDE
+        ========================================= */
+
+        .india-panel {
+            width: 55%;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            padding: 28px 5% 45px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(4, 26, 53, 0.82),
+                    rgba(4, 43, 77, 0.45),
+                    rgba(5, 43, 70, 0.20)
+                ),
+                url("https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1800&q=90")
+                center / cover no-repeat;
+        }
+
+        /* =========================================
+           BRAND
+        ========================================= */
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .brand-logo {
+            width: 61px;
+            height: 61px;
+            object-fit: cover;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid rgba(255,255,255,0.8);
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .brand-name {
+            color: #123c68;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 29px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+
+            text-shadow:
+                0 1px 3px rgba(255,255,255,0.65);
+        }
+
+        .brand-name span {
+            color: #df1f2f;
+        }
+
+        .brand-tagline {
+            color: #183955;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 3px;
+        }
+
+        /* =========================================
+           LEFT CONTENT
+        ========================================= */
+
+        .india-content {
+            position: relative;
+            z-index: 5;
+            max-width: 650px;
+
+            margin-top: auto;
+            margin-bottom: 30px;
+        }
+
+        .india-small {
+            display: inline-block;
+
+            color: white;
+
+            background:
+                rgba(10, 43, 70, 0.60);
+
+            border:
+                1px solid rgba(255,255,255,0.28);
+
+            backdrop-filter: blur(10px);
+
+            padding: 8px 16px;
+
+            border-radius: 30px;
+
+            font-size: 11px;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 18px;
+        }
+
+        .india-content h1 {
+            color: white;
+
+            font-size: clamp(44px, 5vw, 72px);
+
+            line-height: 0.98;
+
+            font-weight: 800;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 18px;
+
+            text-shadow:
+                0 5px 18px rgba(0,0,0,0.28);
+        }
+
+        .india-content h1 span {
+            color: #ff9d2e;
+        }
+
+        .india-description {
+            max-width: 600px;
+
+            color:
+                rgba(255,255,255,0.91);
+
+            font-size: 14px;
+
+            line-height: 1.75;
+
+            margin-bottom: 22px;
+        }
+
+        /* =========================================
+           TRICOLOR
+        ========================================= */
+
+        .tricolor {
+            width: 280px;
+            height: 7px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    #ff9933 0%,
+                    #ff9933 33%,
+                    white 33%,
+                    white 66%,
+                    #138808 66%,
+                    #138808 100%
+                );
+
+            transform: rotate(-4deg);
+
+            box-shadow:
+                0 3px 10px rgba(0,0,0,0.2);
+
+            margin-bottom: 25px;
+        }
+
+        /* =========================================
+           SAFETY CARD
+        ========================================= */
+
+        .safe-card {
+            width: 500px;
+            max-width: 100%;
+
+            padding: 20px 23px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(9, 35, 57, 0.56);
+
+            border:
+                1px solid rgba(255,255,255,0.24);
+
+            backdrop-filter: blur(13px);
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,0.18);
+        }
+
+        .safe-title {
+            color: white;
+
+            font-size: 18px;
+
+            font-weight: 700;
+
+            margin-bottom: 17px;
+        }
+
+        .safe-items {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+        }
+
+        .safe-item {
+            text-align: center;
+            color: white;
+        }
+
+        .safe-icon {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .safe-item span:last-child {
+            font-size: 10px;
+            color:
+                rgba(255,255,255,0.80);
+        }
+
+        /* =========================================
+           RIGHT LOGIN PANEL
+        ========================================= */
+
+        .login-panel {
+            width: 45%;
+            min-height: 100vh;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 45px 6%;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(205, 25, 60, 0.14),
+                    transparent 32%
+                ),
+                #fafbfd;
+        }
+
+        /* =========================================
+           RED DECORATIONS
+        ========================================= */
+
+        .red-shape {
+            position: absolute;
+
+            top: -130px;
+            right: -130px;
+
+            width: 500px;
+            height: 500px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #c9153d,
+                    #ed3150
+                );
+        }
+
+        .red-shape-bottom {
+            position: absolute;
+
+            bottom: -210px;
+            right: -100px;
+
+            width: 430px;
+            height: 330px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #cc163e,
+                    #ed4762
+                );
+        }
+
+        /* =========================================
+           LANGUAGE
+        ========================================= */
+
+        .language-box {
+            position: absolute;
+
+            top: 18px;
+            right: 26px;
+
+            z-index: 10;
+
+            min-width: 165px;
+            height: 42px;
+
+            padding: 0 14px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+            border-radius: 24px;
+
+            background: white;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.08);
+
+            color: #475569;
+
+            font-size: 12px;
+
+            font-weight: 600;
+        }
+
+        .language-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .globe {
+            font-size: 18px;
+        }
+
+        /* =========================================
+           LOGIN CARD
+        ========================================= */
+
+        .login-card {
+            width: 100%;
+            max-width: 600px;
+
+            position: relative;
+            z-index: 10;
+
+            padding: 32px 43px 34px;
+
+            border-radius: 27px;
+
+            background:
+                rgba(255,255,255,0.97);
+
+            box-shadow:
+                0 20px 65px rgba(15, 23, 42, 0.13);
+
+            border:
+                1px solid rgba(255,255,255,0.9);
+        }
+
+        /* =========================================
+           LOGIN BRAND
+        ========================================= */
+
+        .login-brand {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .login-logo {
+            width: 90px;
+            height: 90px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border:
+                6px solid #fff0f3;
+
+            box-shadow:
+                0 5px 18px rgba(199, 24, 59, 0.13);
+
+            margin-bottom: 10px;
+        }
+
+        .login-brand h2 {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            color: #102f55;
+
+            font-size: 30px;
+
+            margin-bottom: 3px;
+        }
+
+        .login-brand h2 span {
+            color: #d91d35;
+        }
+
+        .login-brand p {
+            color: #687587;
+            font-size: 13px;
+        }
+
+        /* =========================================
+           WELCOME
+        ========================================= */
+
+        .welcome {
+            text-align: center;
+            margin: 23px 0 23px;
+        }
+
+        .welcome h1 {
+            color: #172238;
+            font-size: 29px;
+            margin-bottom: 6px;
+        }
+
+        .welcome p {
+            color: #6e7888;
+            font-size: 13px;
+        }
+
+        /* =========================================
+           INPUT
+        ========================================= */
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .input-icon {
+            position: absolute;
+
+            left: 18px;
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            font-size: 19px;
+
+            color: #28374d;
+
+            z-index: 2;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+
+            height: 56px;
+
+            border-radius: 16px;
+
+            border:
+                1px solid #dfe4ea;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f8f9fb,
+                    #f5f6f8
+                );
+
+            padding:
+                0 48px;
+
+            color: #1d2a3d;
+
+            font-size: 13px;
+
+            outline: none;
+
+            transition: 0.25s;
+        }
+
+        .input-wrapper input::placeholder {
+            color: #89919d;
+        }
+
+        .input-wrapper input:focus {
+            border-color: #d72846;
+
+            background: white;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(215, 40, 70, 0.08);
+        }
+
+        /* =========================================
+           PASSWORD TOGGLE
+        ========================================= */
+
+        .password-toggle {
+            position: absolute;
+
+            right: 17px;
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            border: none;
+
+            background: transparent;
+
+            cursor: pointer;
+
+            color: #788291;
+
+            font-size: 18px;
+
+            padding: 5px;
+        }
+
+        /* =========================================
+           OPTIONS
+        ========================================= */
+
+        .options {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin:
+                5px 1px 18px;
+
+            font-size: 12px;
+        }
+
+        .remember {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: #4d5868;
+
+            cursor: pointer;
+        }
+
+        .remember input {
+            width: 18px;
+            height: 18px;
+
+            accent-color: #cf2442;
+
+            cursor: pointer;
+        }
+
+        .forgot {
+            color: #c92040;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* =========================================
+           LOGIN BUTTON
+        ========================================= */
+
+        .login-button {
+            width: 100%;
+            height: 58px;
+
+            border: none;
+
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #c9173d,
+                    #dc1f42,
+                    #cf123b
+                );
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            box-shadow:
+                0 9px 25px
+                rgba(207, 23, 61, 0.22);
+
+            transition: 0.25s;
+        }
+
+        .login-button:hover {
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 13px 30px
+                rgba(207, 23, 61, 0.28);
+        }
+
+        .login-button:active {
+            transform:
+                translateY(0);
+        }
+
+        .login-button:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .arrow-circle {
+            width: 27px;
+            height: 27px;
+
+            border-radius: 50%;
+
+            background: white;
+
+            color: #cf1d40;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 16px;
+        }
+
+        /* =========================================
+           MESSAGE
+        ========================================= */
+
+        .message {
+            display: none;
+
+            margin-top: 14px;
+
+            padding: 11px 13px;
+
+            border-radius: 10px;
+
+            font-size: 12px;
+
+            text-align: center;
+        }
+
+        .message.error {
+            display: block;
+
+            color: #b4233d;
+
+            background: #fff0f3;
+
+            border:
+                1px solid #ffd2da;
+        }
+
+        .message.success {
+            display: block;
+
+            color: #167245;
+
+            background: #edfff5;
+
+            border:
+                1px solid #c7f2da;
+        }
+
+        /* =========================================
+           REGISTER
+        ========================================= */
+
+        .register-text {
+            text-align: center;
+
+            color: #596474;
+
+            font-size: 13px;
+
+            margin-top: 22px;
+        }
+
+        .register-text a {
+            color: #c91d3d;
+
+            font-weight: 800;
+
+            margin-left: 4px;
+        }
+
+        .register-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================================
+           SECURITY
+        ========================================= */
+
+        .security-note {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 7px;
+
+            margin-top: 18px;
+
+            color: #788493;
+
+            font-size: 10px;
+        }
+
+        /* =========================================
+           BOTTOM INDIA DESIGN
+        ========================================= */
+
+        .india-bottom {
+            position: absolute;
+
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            height: 72px;
+
+            z-index: 3;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(203, 22, 59, 0.96),
+                    rgba(221, 34, 67, 0.80)
+                );
+
+            clip-path:
+                polygon(
+                    0 54%,
+                    4% 54%,
+                    6% 42%,
+                    8% 55%,
+                    11% 47%,
+                    14% 58%,
+                    17% 42%,
+                    19% 53%,
+                    22% 35%,
+                    24% 53%,
+                    28% 48%,
+                    31% 58%,
+                    34% 43%,
+                    36% 57%,
+                    39% 48%,
+                    42% 60%,
+                    46% 40%,
+                    49% 55%,
+                    53% 44%,
+                    56% 60%,
+                    59% 43%,
+                    62% 55%,
+                    65% 39%,
+                    68% 56%,
+                    71% 46%,
+                    74% 60%,
+                    78% 40%,
+                    81% 55%,
+                    85% 45%,
+                    88% 57%,
+                    92% 43%,
+                    95% 55%,
+                    100% 45%,
+                    100% 100%,
+                    0 100%
+                );
+        }
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 1050px) {
+
+            .india-panel {
+                width: 50%;
+            }
+
+            .login-panel {
+                width: 50%;
+            }
+
+            .login-card {
+                padding:
+                    28px 30px;
+            }
+
+            .india-content h1 {
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 800px) {
+
+            .page {
+                flex-direction: column;
+            }
+
+            .india-panel {
+                width: 100%;
+                min-height: 430px;
+
+                padding:
+                    22px 6% 45px;
+            }
+
+            .login-panel {
+                width: 100%;
+                min-height: auto;
+
+                padding:
+                    50px 5% 70px;
+            }
+
+            .india-content {
+                margin-top: 80px;
+            }
+
+            .india-content h1 {
+                font-size: 45px;
+            }
+
+            .red-shape,
+            .red-shape-bottom {
+                display: none;
+            }
+
+            .language-box {
+                top: 15px;
+                right: 15px;
+            }
+
+            .india-bottom {
+                display: none;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            .india-panel {
+                min-height: 440px;
+            }
+
+            .brand-name {
+                font-size: 22px;
+            }
+
+            .brand-logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .brand-tagline {
+                font-size: 9px;
+            }
+
+            .india-content h1 {
+                font-size: 39px;
+                letter-spacing: -1px;
+            }
+
+            .india-description {
+                font-size: 12px;
+            }
+
+            .safe-items {
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                row-gap: 15px;
+            }
+
+            .login-panel {
+                padding:
+                    35px 15px 50px;
+            }
+
+            .login-card {
+                padding:
+                    25px 20px;
+
+                border-radius: 22px;
+            }
+
+            .login-brand h2 {
+                font-size: 25px;
+            }
+
+            .welcome h1 {
+                font-size: 25px;
+            }
+
+            .language-box {
+                min-width: 130px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+<div class="page">
+
+    <!-- =========================================
+         LEFT INDIA SECTION
+    ========================================== -->
+
+    <section class="india-panel">
+
+        <!-- BRAND -->
+
+        <div class="brand">
+
+            <img
+                src="logo.jpg"
+                class="brand-logo"
+                alt="Athiti Suraksha Logo"
+                onerror="this.style.display='none';"
+            >
+
+            <div>
+
+                <div class="brand-name">
+                    Athiti
+                    <span>Suraksha</span>
+                </div>
+
+                <div class="brand-tagline">
+                    Safe Travel • Happy Journey • Incredible India
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- LEFT CONTENT -->
+
+        <div class="india-content">
+
+            <div class="india-small">
+                🇮🇳 INCREDIBLE INDIA
+            </div>
+
+
+            <h1>
+                Explore India
+                <br>
+                <span>With Confidence</span>
+            </h1>
+
+
+            <p class="india-description">
+
+                Travel across India with confidence.
+                Athiti Suraksha connects tourists with
+                safety assistance, location-based services,
+                emergency support and essential travel
+                information.
+
+            </p>
+
+
+            <div class="tricolor"></div>
+
+
+            <!-- SAFETY CARD -->
+
+            <div class="safe-card">
+
+                <div class="safe-title">
+                    “Safe Tourists • Stronger India”
+                </div>
+
+
+                <div class="safe-items">
+
+                    <div class="safe-item">
+
+                        <span class="safe-icon">
+                            🛡️
+                        </span>
+
+                        <span>
+                            Be Safe
+                        </span>
+
+                    </div>
+
+
+                    <div class="safe-item">
+
+                        <span class="safe-icon">
+                            👥
+                        </span>
+
+                        <span>
+                            Explore
+                        </span>
+
+                    </div>
+
+
+                    <div class="safe-item">
+
+                        <span class="safe-icon">
+                            📷
+                        </span>
+
+                        <span>
+                            Experience
+                        </span>
+
+                    </div>
+
+
+                    <div class="safe-item">
+
+                        <span class="safe-icon">
+                            ❤️
+                        </span>
+
+                        <span>
+                            Create Memories
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="india-bottom"></div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         RIGHT LOGIN SECTION
+    ========================================== -->
+
+    <section class="login-panel">
+
+        <div class="red-shape"></div>
+
+        <div class="red-shape-bottom"></div>
+
+
+        <!-- LANGUAGE -->
+
+        <div class="language-box">
+
+            <div class="language-left">
+
+                <span class="globe">
+                    🌐
+                </span>
+
+                <span>
+                    English
+                </span>
+
+            </div>
+
+            <span>
+                ⌄
+            </span>
+
+        </div>
+
+
+
+        <!-- =====================================
+             LOGIN CARD
+        ====================================== -->
+
+        <div class="login-card">
+
+
+            <!-- LOGO -->
+
+            <div class="login-brand">
+
+                <img
+                    src="logo.jpg"
+                    class="login-logo"
+                    alt="Athiti Suraksha Logo"
+                    onerror="this.style.display='none';"
+                >
+
+
+                <h2>
+                    Athiti
+                    <span>Suraksha</span>
+                </h2>
+
+
+                <p>
+                    Tourist Safety & Assistance Portal
+                </p>
+
+            </div>
+
+
+
+            <!-- WELCOME -->
+
+            <div class="welcome">
+
+                <h1>
+                    Welcome Back!
+                </h1>
+
+                <p>
+                    Login to continue your safe journey
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================
+                 LOGIN FORM
+            ================================== -->
+
+            <form id="loginForm">
+
+
+                <!-- EMAIL / NAME -->
+
+                <div class="form-group">
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            👤
+                        </span>
+
+                        <input
+                            type="text"
+                            id="identifier"
+                            placeholder="Enter your full name or registered email"
+                            autocomplete="username"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            🔒
+                        </span>
+
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="passwordToggle"
+                            aria-label="Show password">
+
+                            👁️
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- OPTIONS -->
+
+                <div class="options">
+
+                    <label class="remember">
+
+                        <input
+                            type="checkbox"
+                            id="rememberMe"
+                        >
+
+                        <span>
+                            Remember me
+                        </span>
+
+                    </label>
+
+
+                    <a
+                        href="#"
+                        class="forgot"
+                        id="forgotPassword">
+
+                        Forgot Password?
+
+                    </a>
+
+                </div>
+
+
+
+                <!-- LOGIN -->
+
+                <button
+                    type="submit"
+                    class="login-button"
+                    id="loginButton">
+
+                    <span class="arrow-circle">
+                        →
+                    </span>
+
+                    <span id="loginButtonText">
+                        Login
+                    </span>
+
+                </button>
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    id="message"
+                    class="message">
+                </div>
+
+
+            </form>
+
+
+
+            <!-- REGISTER -->
+
+            <div class="register-text">
+
+                Don't have an account?
+
+                <a href="register.html">
+                    Register Here
+                </a>
+
+            </div>
+
+
+            <!-- SECURITY -->
+
+            <div class="security-note">
+
+                🔐
+
+                Secure Tourist Authentication
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+
+<script>
+
+    /* =========================================
+       SERVER URL
+    ========================================== */
+
+    const API_URL =
+        "http://localhost:5000";
+
+
+    /* =========================================
+       ELEMENTS
+    ========================================== */
+
+    const loginForm =
+        document.getElementById("loginForm");
+
+    const identifierInput =
+        document.getElementById("identifier");
+
+    const passwordInput =
+        document.getElementById("password");
+
+    const passwordToggle =
+        document.getElementById("passwordToggle");
+
+    const rememberMe =
+        document.getElementById("rememberMe");
+
+    const loginButton =
+        document.getElementById("loginButton");
+
+    const loginButtonText =
+        document.getElementById("loginButtonText");
+
+    const message =
+        document.getElementById("message");
+
+
+    /* =========================================
+       LOAD REMEMBERED USER
+    ========================================== */
+
+    const rememberedUser =
+        localStorage.getItem(
+            "athitiRememberedUser"
+        );
+
+
+    if (rememberedUser) {
+
+        identifierInput.value =
+            rememberedUser;
+
+        rememberMe.checked =
+            true;
+    }
+
+
+    /* =========================================
+       PASSWORD SHOW / HIDE
+    ========================================== */
+
+    passwordToggle.addEventListener(
+        "click",
+        function () {
+
+            if (
+                passwordInput.type ===
+                "password"
+            ) {
+
+                passwordInput.type =
+                    "text";
+
+                passwordToggle.textContent =
+                    "🙈";
+
+            } else {
+
+                passwordInput.type =
+                    "password";
+
+                passwordToggle.textContent =
+                    "👁️";
+            }
+
+        }
+    );
+
+
+    /* =========================================
+       MESSAGE
+    ========================================== */
+
+    function showMessage(
+        text,
+        type
+    ) {
+
+        message.textContent =
+            text;
+
+        message.className =
+            "message " + type;
+    }
+
+
+    function clearMessage() {
+
+        message.textContent =
+            "";
+
+        message.className =
+            "message";
+    }
+
+
+    /* =========================================
+       LOGIN
+    ========================================== */
+
+    loginForm.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+            clearMessage();
+
+
+            const identifier =
+                identifierInput.value.trim();
+
+            const password =
+                passwordInput.value;
+
+
+            /* ---------------------------------
+               VALIDATION
+            --------------------------------- */
+
+            if (!identifier) {
+
+                showMessage(
+                    "Please enter your registered email.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            if (!password) {
+
+                showMessage(
+                    "Please enter your password.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            /* ---------------------------------
+               LOADING
+            --------------------------------- */
+
+            loginButton.disabled =
+                true;
+
+            loginButtonText.textContent =
+                "Logging in...";
+
+
+            try {
+
+
+                /* ---------------------------------
+                   API REQUEST
+                --------------------------------- */
+
+                const response =
+                    await fetch(
+                        `${API_URL}/api/login`,
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+
+                                email:
+                                    identifier,
+
+                                password:
+                                    password
+
+                            })
+                        }
+                    );
+
+
+                let data = {};
+
+                try {
+
+                    data =
+                        await response.json();
+
+                } catch (error) {
+
+                    data = {};
+                }
+
+
+                /* ---------------------------------
+                   SUCCESS
+                --------------------------------- */
+
+                if (
+                    response.ok &&
+                    data.success
+                ) {
+
+
+                    /* Remember user */
+
+                    if (
+                        rememberMe.checked
+                    ) {
+
+                        localStorage.setItem(
+                            "athitiRememberedUser",
+                            identifier
+                        );
+
+                    } else {
+
+                        localStorage.removeItem(
+                            "athitiRememberedUser"
+                        );
+
+                    }
+
+
+                    /* Store login status */
+
+                    localStorage.setItem(
+                        "athitiLoggedIn",
+                        "true"
+                    );
+
+
+                    /* Store tourist */
+
+                    localStorage.setItem(
+                        "athitiUser",
+                        JSON.stringify(
+                            data.tourist ||
+                            data.user ||
+                            {
+                                email:
+                                    identifier
+                            }
+                        )
+                    );
+
+
+                    /* Success */
+
+                    showMessage(
+                        "Login successful! Redirecting to dashboard...",
+                        "success"
+                    );
+
+
+                    loginButtonText.textContent =
+                        "Success";
+
+
+                    /* ---------------------------------
+                       REDIRECT TO DASHBOARD
+                    --------------------------------- */
+
+                    setTimeout(
+                        function () {
+
+                            window.location.href =
+                                "dashboard.html";
+
+                        },
+                        800
+                    );
+
+
+                    return;
+                }
+
+
+                /* ---------------------------------
+                   FAILED LOGIN
+                --------------------------------- */
+
+                showMessage(
+                    data.message ||
+                    "Invalid email or password. Please try again.",
+                    "error"
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Login Error:",
+                    error
+                );
+
+
+                showMessage(
+                    "Unable to connect to server. Please start the Node.js server.",
+                    "error"
+                );
+
+            }
+
+
+            /* ---------------------------------
+               RESTORE BUTTON
+            --------------------------------- */
+
+            loginButton.disabled =
+                false;
+
+            loginButtonText.textContent =
+                "Login";
+
+        }
+    );
+
+
+    /* =========================================
+       FORGOT PASSWORD
+    ========================================== */
+
+    document
+        .getElementById("forgotPassword")
+        .addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                alert(
+                    "Password recovery will be available through registered email verification."
+                );
+
+            }
+        );
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Emergency SOS</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#f4f4f4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    width:400px;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 0 10px gray;
+}
+
+h1{
+    color:red;
+}
+
+button{
+    background:red;
+    color:white;
+    border:none;
+    padding:20px;
+    width:100%;
+    border-radius:10px;
+    font-size:20px;
+    cursor:pointer;
+}
+
+#status{
+    margin-top:20px;
+    font-size:18px;
+    color:green;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🚨 Emergency SOS</h1>
+
+<button onclick="sendSOS()">
+    SEND SOS ALERT
+</button>
+
+<div id="status"></div>
+
+</div>
+
+<script>
+
+function sendSOS(){
+
+    navigator.geolocation.getCurrentPosition((position)=>{
+
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
+
+        document.getElementById("status").innerHTML = `
+
+        SOS Alert Sent Successfully <br><br>
+
+        Latitude : ${lat} <br>
+        Longitude : ${lon}
+
+        `;
+
+        alert("Emergency Alert Sent!");
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>

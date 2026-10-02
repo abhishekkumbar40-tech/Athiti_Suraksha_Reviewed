@@ -1,0 +1,515 @@
+/* =====================================================
+   ATHITI SURAKSHA - WELCOME PAGE
+   welcome.css
+===================================================== */
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #000;
+}
+
+
+/* =====================================================
+   FULL SCREEN WELCOME BACKGROUND
+===================================================== */
+
+.welcome-screen {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-image:
+        url("./welcome-background.jpg");
+
+    background-size: cover;
+
+    background-position: center center;
+
+    background-repeat: no-repeat;
+
+    overflow: hidden;
+
+    animation:
+        backgroundZoom 8s ease-in-out infinite alternate;
+}
+
+
+/* =====================================================
+   VERY LIGHT OVERLAY
+===================================================== */
+
+.screen-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 20, 50, 0.02),
+            rgba(0, 20, 50, 0.05)
+        );
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   BACKGROUND ANIMATION
+===================================================== */
+
+@keyframes backgroundZoom {
+
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.025);
+    }
+}
+
+
+/* =====================================================
+   LOADING WRAPPER
+===================================================== */
+
+.loading-wrapper {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 61.3%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: min(440px, 30vw);
+
+    text-align: center;
+
+    z-index: 10;
+}
+
+
+/* =====================================================
+   LOADING TEXT
+===================================================== */
+
+.loading-title {
+
+    color: white;
+
+    font-size:
+        clamp(13px, 1.3vw, 20px);
+
+    font-weight: 500;
+
+    margin-bottom: 9px;
+
+    text-shadow:
+        0 2px 5px
+        rgba(0, 0, 0, 0.65);
+
+    animation:
+        loadingText 1.5s ease-in-out infinite;
+}
+
+
+@keyframes loadingText {
+
+    0%,
+    100% {
+        opacity: 0.65;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/* =====================================================
+   PROGRESS BAR OUTER
+===================================================== */
+
+.progress-box {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 17px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255, 255, 255, 0.40);
+
+    border:
+        2px solid
+        rgba(255, 255, 255, 0.80);
+
+    overflow: visible;
+
+    box-shadow:
+
+        0 2px 8px
+        rgba(0, 0, 0, 0.30),
+
+        inset 0 1px 4px
+        rgba(0, 0, 0, 0.15);
+}
+
+
+/* =====================================================
+   PROGRESS BAR
+===================================================== */
+
+.progress {
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff6b00 0%,
+            #ffb000 25%,
+            #ffffff 45%,
+            #20a875 70%,
+            #138808 100%
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(255, 255, 255, 0.95);
+
+    transition:
+        width 0.05s linear;
+}
+
+
+/* =====================================================
+   MOVING LIGHT INSIDE PROGRESS
+===================================================== */
+
+.progress::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    right: -70px;
+
+    width: 70px;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.95),
+            transparent
+        );
+
+    animation:
+        progressGlow 0.8s
+        linear infinite;
+}
+
+
+@keyframes progressGlow {
+
+    0% {
+        transform:
+            translateX(-80px);
+    }
+
+    100% {
+        transform:
+            translateX(80px);
+    }
+}
+
+
+/* =====================================================
+   PERCENTAGE
+===================================================== */
+
+.percentage {
+
+    position: absolute;
+
+    right: -55px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-shadow:
+        0 2px 5px
+        rgba(0, 0, 0, 0.75);
+
+    min-width: 38px;
+
+    text-align: left;
+}
+
+
+/* =====================================================
+   SKIP BUTTON
+===================================================== */
+
+.skip-button {
+
+    position: absolute;
+
+    right: 25px;
+
+    bottom: 22px;
+
+    z-index: 20;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.35);
+
+    padding: 8px 18px;
+
+    border-radius: 20px;
+
+    color: white;
+
+    background:
+        rgba(20, 30, 50, 0.45);
+
+    backdrop-filter: blur(8px);
+
+    -webkit-backdrop-filter: blur(8px);
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    transition:
+        all 0.3s ease;
+}
+
+
+.skip-button:hover {
+
+    background:
+        rgba(255, 255, 255, 0.25);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 5px 15px
+        rgba(0, 0, 0, 0.25);
+}
+
+
+.skip-button:active {
+
+    transform:
+        scale(0.95);
+}
+
+
+/* =====================================================
+   FADE ANIMATION
+===================================================== */
+
+.welcome-screen.fade-out {
+
+    animation:
+        fadeOut 0.6s ease forwards;
+}
+
+
+@keyframes fadeOut {
+
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1100px) {
+
+    .loading-wrapper {
+
+        width: 350px;
+
+        top: 61%;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .welcome-screen {
+
+        background-position:
+            center center;
+    }
+
+
+    .loading-wrapper {
+
+        width: 260px;
+
+        top: 60%;
+    }
+
+
+    .loading-title {
+
+        font-size: 14px;
+    }
+
+
+    .progress-box {
+
+        height: 14px;
+    }
+
+
+    .percentage {
+
+        right: -43px;
+
+        font-size: 12px;
+    }
+
+
+    .skip-button {
+
+        right: 14px;
+
+        bottom: 14px;
+
+        padding:
+            7px 14px;
+
+        font-size: 11px;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 450px) {
+
+    .loading-wrapper {
+
+        width: 210px;
+
+        top: 59%;
+    }
+
+
+    .loading-title {
+
+        font-size: 12px;
+
+        margin-bottom: 7px;
+    }
+
+
+    .progress-box {
+
+        height: 12px;
+    }
+
+
+    .percentage {
+
+        right: -40px;
+
+        font-size: 11px;
+    }
+
+}
+
+
+/* =====================================================
+   LANDSCAPE MOBILE
+===================================================== */
+
+@media (max-height: 500px) {
+
+    .loading-wrapper {
+
+        top: 65%;
+
+        width: 300px;
+    }
+
+
+    .skip-button {
+
+        bottom: 10px;
+    }
+
+}

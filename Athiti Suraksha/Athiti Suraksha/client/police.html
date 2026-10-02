@@ -1,0 +1,3103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Athiti Suraksha | Police Safety</title>
+
+<!-- Leaflet -->
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Inter,"Segoe UI",Arial,sans-serif;
+    background:#eef4ff;
+    color:#172033;
+    min-height:100vh;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    height:76px;
+    background:rgba(255,255,255,.95);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid #e2e8f0;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 32px;
+
+    position:sticky;
+    top:0;
+    z-index:2000;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo{
+    width:48px;
+    height:48px;
+
+    border-radius:15px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:25px;
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #4f46e5
+    );
+
+    color:white;
+
+    box-shadow:
+    0 8px 22px rgba(37,99,235,.25);
+}
+
+.logo-text h1{
+    font-size:20px;
+}
+
+.logo-text p{
+    font-size:11px;
+    color:#64748b;
+    margin-top:2px;
+}
+
+.gps-status{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    background:#ecfdf5;
+    color:#047857;
+
+    padding:9px 14px;
+
+    border-radius:50px;
+
+    font-size:12px;
+    font-weight:700;
+}
+
+.gps-dot{
+    width:9px;
+    height:9px;
+
+    border-radius:50%;
+
+    background:#10b981;
+
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    0%{
+        box-shadow:0 0 0 0 rgba(16,185,129,.5);
+    }
+
+    70%{
+        box-shadow:0 0 0 8px rgba(16,185,129,0);
+    }
+
+    100%{
+        box-shadow:0 0 0 0 rgba(16,185,129,0);
+    }
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:94%;
+    max-width:1450px;
+
+    margin:28px auto;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    background:
+    linear-gradient(
+        135deg,
+        #172554,
+        #1e40af 50%,
+        #312e81
+    );
+
+    border-radius:26px;
+
+    padding:28px;
+
+    color:white;
+
+    position:relative;
+    overflow:hidden;
+
+    box-shadow:
+    0 18px 40px rgba(30,64,175,.22);
+
+    margin-bottom:22px;
+}
+
+.hero:after{
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    border-radius:50%;
+
+    right:-100px;
+    top:-140px;
+
+    background:rgba(255,255,255,.08);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.hero h2{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.hero p{
+    color:#dbeafe;
+    max-width:720px;
+    line-height:1.6;
+    font-size:14px;
+}
+
+
+/* =========================
+   QUICK STATS
+========================= */
+
+.stats{
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:15px;
+
+    margin-bottom:22px;
+}
+
+.stat{
+    background:white;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    box-shadow:
+    0 8px 25px rgba(15,23,42,.06);
+}
+
+.stat-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:10px;
+}
+
+.stat-icon{
+    width:40px;
+    height:40px;
+
+    border-radius:12px;
+
+    background:#eff6ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+}
+
+.stat-label{
+    color:#64748b;
+    font-size:12px;
+}
+
+.stat-value{
+    font-size:20px;
+    font-weight:800;
+}
+
+
+/* =========================
+   CONTROL BAR
+========================= */
+
+.controls{
+    background:white;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:20px;
+
+    padding:15px;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+
+    box-shadow:
+    0 8px 25px rgba(15,23,42,.06);
+
+    margin-bottom:20px;
+}
+
+.search-box{
+    flex:1;
+    min-width:210px;
+
+    position:relative;
+}
+
+.search-box input{
+    width:100%;
+
+    padding:12px 14px 12px 40px;
+
+    border:1px solid #dbe3ee;
+
+    border-radius:12px;
+
+    outline:none;
+
+    background:#f8fafc;
+}
+
+.search-box span{
+    position:absolute;
+
+    left:13px;
+    top:10px;
+
+    font-size:17px;
+}
+
+.control-btn{
+    border:0;
+
+    padding:12px 16px;
+
+    border-radius:11px;
+
+    font-weight:700;
+
+    font-size:12px;
+
+    transition:.2s;
+}
+
+.control-btn:hover{
+    transform:translateY(-2px);
+}
+
+.location-btn{
+    background:#2563eb;
+    color:white;
+}
+
+.refresh-btn{
+    background:#eff6ff;
+    color:#1d4ed8;
+}
+
+.share-btn{
+    background:#f0fdf4;
+    color:#15803d;
+}
+
+.copy-btn{
+    background:#f8fafc;
+    color:#334155;
+    border:1px solid #e2e8f0;
+}
+
+.radius{
+    display:flex;
+    align-items:center;
+    gap:7px;
+
+    font-size:12px;
+    font-weight:700;
+
+    color:#64748b;
+}
+
+.radius select{
+    padding:11px 13px;
+
+    border:1px solid #dbe3ee;
+
+    border-radius:10px;
+
+    background:#f8fafc;
+
+    outline:none;
+}
+
+
+/* =========================
+   MAIN GRID
+========================= */
+
+.main-grid{
+    display:grid;
+
+    grid-template-columns:
+    minmax(0,1.5fr)
+    minmax(340px,.8fr);
+
+    gap:20px;
+}
+
+
+/* =========================
+   MAP CARD
+========================= */
+
+.map-card{
+    background:white;
+
+    border-radius:23px;
+
+    overflow:hidden;
+
+    border:1px solid #e2e8f0;
+
+    box-shadow:
+    0 12px 35px rgba(15,23,42,.08);
+}
+
+.map-toolbar{
+    padding:15px 18px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    border-bottom:1px solid #edf2f7;
+}
+
+.map-toolbar h3{
+    font-size:16px;
+}
+
+.map-toolbar span{
+    font-size:11px;
+    color:#64748b;
+}
+
+.map-actions{
+    display:flex;
+    gap:7px;
+}
+
+.map-action{
+    border:1px solid #e2e8f0;
+
+    background:white;
+
+    border-radius:9px;
+
+    padding:8px 10px;
+
+    font-size:12px;
+}
+
+#map{
+    width:100%;
+    height:610px;
+}
+
+
+/* =========================
+   SIDE
+========================= */
+
+.side{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+
+/* =========================
+   LOCATION CARD
+========================= */
+
+.location-card,
+.stations-card{
+    background:white;
+
+    border-radius:22px;
+
+    border:1px solid #e2e8f0;
+
+    padding:19px;
+
+    box-shadow:
+    0 12px 35px rgba(15,23,42,.07);
+}
+
+.card-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:16px;
+}
+
+.card-title h3{
+    font-size:16px;
+}
+
+.card-title span{
+    font-size:11px;
+    color:#64748b;
+}
+
+.coordinates{
+    background:#f8fafc;
+
+    border-radius:15px;
+
+    padding:12px;
+}
+
+.coord{
+    display:flex;
+    justify-content:space-between;
+
+    gap:10px;
+
+    padding:9px 5px;
+
+    border-bottom:1px solid #e5e7eb;
+}
+
+.coord:last-child{
+    border-bottom:0;
+}
+
+.coord label{
+    color:#64748b;
+    font-size:11px;
+}
+
+.coord strong{
+    font-size:11px;
+
+    text-align:right;
+
+    word-break:break-all;
+}
+
+
+/* =========================
+   ACCURACY
+========================= */
+
+.accuracy-bar{
+    margin-top:14px;
+
+    background:#e2e8f0;
+
+    height:7px;
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+.accuracy-fill{
+    width:0%;
+
+    height:100%;
+
+    background:#10b981;
+
+    transition:.4s;
+}
+
+.accuracy-text{
+    display:flex;
+    justify-content:space-between;
+
+    margin-top:7px;
+
+    font-size:10px;
+
+    color:#64748b;
+}
+
+
+/* =========================
+   STATIONS
+========================= */
+
+.stations-card{
+    min-height:400px;
+}
+
+.station-list{
+    max-height:450px;
+
+    overflow-y:auto;
+
+    padding-right:4px;
+}
+
+.station{
+    border:1px solid #e5e7eb;
+
+    border-radius:16px;
+
+    padding:14px;
+
+    margin-bottom:10px;
+
+    transition:.2s;
+}
+
+.station:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 8px 20px rgba(37,99,235,.08);
+}
+
+.station.nearest{
+    border:2px solid #2563eb;
+
+    background:#eff6ff;
+}
+
+.station-row{
+    display:flex;
+
+    gap:10px;
+}
+
+.station-icon{
+    width:42px;
+    height:42px;
+
+    flex-shrink:0;
+
+    border-radius:12px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #1d4ed8,
+        #4338ca
+    );
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+}
+
+.station-info{
+    flex:1;
+}
+
+.station-info h4{
+    font-size:13px;
+
+    margin-bottom:4px;
+}
+
+.station-info p{
+    color:#64748b;
+
+    font-size:10px;
+
+    line-height:1.5;
+}
+
+.distance{
+    color:#2563eb;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    white-space:nowrap;
+}
+
+.nearest-badge{
+    display:inline-block;
+
+    margin-top:7px;
+
+    padding:4px 7px;
+
+    border-radius:20px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:9px;
+
+    font-weight:800;
+}
+
+.station-actions{
+    display:flex;
+
+    gap:7px;
+
+    margin-top:12px;
+}
+
+.station-btn{
+    flex:1;
+
+    border:0;
+
+    border-radius:9px;
+
+    padding:8px;
+
+    font-size:10px;
+
+    font-weight:800;
+}
+
+.navigate{
+    background:#dbeafe;
+    color:#1d4ed8;
+}
+
+.call{
+    background:#dcfce7;
+    color:#15803d;
+}
+
+.focus{
+    background:#f1f5f9;
+    color:#334155;
+}
+
+
+/* =========================
+   EMERGENCY
+========================= */
+
+.emergency{
+    margin-top:20px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #991b1b,
+        #dc2626
+    );
+
+    color:white;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+    box-shadow:
+    0 15px 35px rgba(220,38,38,.22);
+}
+
+.emergency h3{
+    font-size:18px;
+}
+
+.emergency p{
+    font-size:11px;
+
+    opacity:.85;
+
+    margin-top:4px;
+}
+
+.emergency-btn{
+    background:white;
+
+    color:#dc2626;
+
+    border:0;
+
+    padding:13px 22px;
+
+    border-radius:11px;
+
+    font-weight:900;
+
+    white-space:nowrap;
+}
+
+
+/* =========================
+   LOADING
+========================= */
+
+.loading{
+    text-align:center;
+
+    padding:35px 15px;
+
+    color:#64748b;
+
+    font-size:12px;
+}
+
+.spinner{
+    width:35px;
+    height:35px;
+
+    border:4px solid #dbeafe;
+
+    border-top-color:#2563eb;
+
+    border-radius:50%;
+
+    margin:0 auto 12px;
+
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+.error{
+    background:#fef2f2;
+
+    color:#b91c1c;
+
+    border-radius:12px;
+
+    padding:13px;
+
+    font-size:11px;
+
+    line-height:1.5;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1050px){
+
+    .main-grid{
+        grid-template-columns:1fr;
+    }
+
+    #map{
+        height:500px;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .header{
+        padding:0 15px;
+    }
+
+    .logo-text p{
+        display:none;
+    }
+
+    .gps-status{
+        font-size:10px;
+        padding:7px 9px;
+    }
+
+    .container{
+        width:94%;
+        margin:18px auto;
+    }
+
+    .hero{
+        padding:22px;
+    }
+
+    .hero h2{
+        font-size:25px;
+    }
+
+    .stats{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .controls{
+        align-items:stretch;
+    }
+
+    .search-box{
+        flex-basis:100%;
+    }
+
+    .control-btn{
+        flex:1;
+    }
+
+    .radius{
+        width:100%;
+        justify-content:space-between;
+    }
+
+    .radius select{
+        flex:1;
+    }
+
+    #map{
+        height:420px;
+    }
+
+    .emergency{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .emergency-btn{
+        width:100%;
+    }
+}
+
+@media(max-width:430px){
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stat{
+        padding:13px;
+    }
+
+    .stat-value{
+        font-size:16px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div class="logo-area">
+
+        <div class="logo">
+            🚔
+        </div>
+
+        <div class="logo-text">
+
+            <h1>Athiti Suraksha</h1>
+
+            <p>
+                Tourist Safety & Emergency Assistance
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="gps-status">
+
+        <span class="gps-dot"></span>
+
+        <span id="gpsHeader">
+            GPS Ready
+        </span>
+
+    </div>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h2>
+            🚔 Police Safety Network
+        </h2>
+
+        <p>
+            Locate nearby police stations using
+            real-time GPS. View distances, explore
+            the safety map, navigate to a station,
+            and quickly contact emergency services.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     STATS
+========================= -->
+
+<section class="stats">
+
+    <div class="stat">
+
+        <div class="stat-top">
+
+            <div class="stat-icon">
+                📍
+            </div>
+
+        </div>
+
+        <div class="stat-label">
+            GPS Accuracy
+        </div>
+
+        <div
+            class="stat-value"
+            id="accuracyStat">
+            --
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-top">
+
+            <div class="stat-icon">
+                🚔
+            </div>
+
+        </div>
+
+        <div class="stat-label">
+            Stations Found
+        </div>
+
+        <div
+            class="stat-value"
+            id="stationStat">
+            0
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-top">
+
+            <div class="stat-icon">
+                📏
+            </div>
+
+        </div>
+
+        <div class="stat-label">
+            Nearest Station
+        </div>
+
+        <div
+            class="stat-value"
+            id="nearestStat">
+            --
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-top">
+
+            <div class="stat-icon">
+                🛰️
+            </div>
+
+        </div>
+
+        <div class="stat-label">
+            GPS Status
+        </div>
+
+        <div
+            class="stat-value"
+            id="statusStat">
+            Ready
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CONTROLS
+========================= -->
+
+<section class="controls">
+
+
+    <div class="search-box">
+
+        <span>🔎</span>
+
+        <input
+            type="text"
+            id="search"
+            placeholder="Search police station..."
+            oninput="filterStations()">
+
+    </div>
+
+
+    <button
+        class="control-btn location-btn"
+        onclick="getLocation()">
+
+        📍 Detect Location
+
+    </button>
+
+
+    <button
+        class="control-btn refresh-btn"
+        onclick="findStations()">
+
+        🔄 Refresh
+
+    </button>
+
+
+    <button
+        class="control-btn share-btn"
+        onclick="shareLocation()">
+
+        📤 Share
+
+    </button>
+
+
+    <button
+        class="control-btn copy-btn"
+        onclick="copyCoordinates()">
+
+        📋 Copy GPS
+
+    </button>
+
+
+    <div class="radius">
+
+        Search Radius
+
+        <select
+            id="radius"
+            onchange="findStations()">
+
+            <option value="1000">
+                1 KM
+            </option>
+
+            <option value="3000" selected>
+                3 KM
+            </option>
+
+            <option value="5000">
+                5 KM
+            </option>
+
+            <option value="10000">
+                10 KM
+            </option>
+
+            <option value="25000">
+                25 KM
+            </option>
+
+        </select>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     MAIN GRID
+========================= -->
+
+<section class="main-grid">
+
+
+<!-- MAP -->
+
+<div class="map-card">
+
+    <div class="map-toolbar">
+
+        <div>
+
+            <h3>
+                🗺️ Live Police Safety Map
+            </h3>
+
+            <span id="mapStatus">
+                Waiting for GPS location
+            </span>
+
+        </div>
+
+
+        <div class="map-actions">
+
+            <button
+                class="map-action"
+                onclick="centerUser()">
+
+                🎯 My Location
+
+            </button>
+
+            <button
+                class="map-action"
+                onclick="toggleFullscreen()">
+
+                ⛶ Fullscreen
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div id="map"></div>
+
+</div>
+
+
+
+<!-- SIDE -->
+
+<div class="side">
+
+
+<!-- LOCATION -->
+
+<section class="location-card">
+
+    <div class="card-title">
+
+        <h3>
+            📍 Current GPS Location
+        </h3>
+
+        <span id="locationTime">
+            --
+        </span>
+
+    </div>
+
+
+    <div class="coordinates">
+
+        <div class="coord">
+
+            <label>
+                Latitude
+            </label>
+
+            <strong id="latitude">
+                --
+            </strong>
+
+        </div>
+
+
+        <div class="coord">
+
+            <label>
+                Longitude
+            </label>
+
+            <strong id="longitude">
+                --
+            </strong>
+
+        </div>
+
+
+        <div class="coord">
+
+            <label>
+                Accuracy
+            </label>
+
+            <strong id="accuracy">
+                --
+            </strong>
+
+        </div>
+
+
+        <div class="coord">
+
+            <label>
+                Location Status
+            </label>
+
+            <strong id="locationStatus">
+                Waiting
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="accuracy-bar">
+
+        <div
+            class="accuracy-fill"
+            id="accuracyFill">
+        </div>
+
+    </div>
+
+
+    <div class="accuracy-text">
+
+        <span>
+            GPS Accuracy
+        </span>
+
+        <span id="accuracyText">
+            Waiting
+        </span>
+
+    </div>
+
+</section>
+
+
+
+<!-- STATIONS -->
+
+<section class="stations-card">
+
+    <div class="card-title">
+
+        <h3>
+            🚔 Nearby Police Stations
+        </h3>
+
+        <span id="stationCount">
+            0 found
+        </span>
+
+    </div>
+
+
+    <div
+        class="station-list"
+        id="stationList">
+
+        <div class="loading">
+
+            <div class="spinner"></div>
+
+            Detecting your location...
+
+        </div>
+
+    </div>
+
+</section>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     EMERGENCY
+========================= -->
+
+<section class="emergency">
+
+    <div>
+
+        <h3>
+            🚨 Immediate Police Assistance
+        </h3>
+
+        <p>
+            For emergencies anywhere in India,
+            contact the national emergency service.
+        </p>
+
+    </div>
+
+
+    <button
+        class="emergency-btn"
+        onclick="emergencyCall()">
+
+        📞 CALL 112
+
+    </button>
+
+</section>
+
+</main>
+
+
+
+<!-- LEAFLET -->
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+<script>
+
+/* =========================================
+   GLOBAL VARIABLES
+========================================= */
+
+let map;
+
+let userMarker = null;
+
+let accuracyCircle = null;
+
+let stationMarkers = [];
+
+let stations = [];
+
+let currentLat = null;
+
+let currentLng = null;
+
+let currentAccuracy = null;
+
+
+
+/* =========================================
+   INITIALIZE MAP
+========================================= */
+
+function initializeMap(){
+
+    map = L.map("map",{
+
+        zoomControl:true,
+
+        fullscreenControl:false
+
+    }).setView(
+        [20.5937,78.9629],
+        5
+    );
+
+
+    const normalLayer =
+        L.tileLayer(
+            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            {
+                maxZoom:19,
+
+                attribution:
+                "&copy; OpenStreetMap contributors"
+            }
+        );
+
+
+    normalLayer.addTo(map);
+
+
+    /* Satellite-like layer */
+
+    window.satelliteLayer =
+        L.tileLayer(
+            "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+            {
+                maxZoom:19,
+
+                attribution:
+                "Tiles &copy; Esri"
+            }
+        );
+
+
+    L.control.layers({
+
+        "🗺️ Standard":normalLayer,
+
+        "🛰️ Satellite":
+        window.satelliteLayer
+
+    }).addTo(map);
+
+}
+
+
+
+/* =========================================
+   GET GPS LOCATION
+========================================= */
+
+function getLocation(){
+
+    if(!navigator.geolocation){
+
+        showError(
+            "Your browser does not support GPS geolocation."
+        );
+
+        return;
+    }
+
+
+    setStatus(
+        "Detecting GPS...",
+        "Searching"
+    );
+
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position){
+
+            currentLat =
+                position.coords.latitude;
+
+            currentLng =
+                position.coords.longitude;
+
+            currentAccuracy =
+                position.coords.accuracy;
+
+
+            updateLocationUI();
+
+
+            displayUserLocation();
+
+
+            findStations();
+
+        },
+
+
+        function(error){
+
+            let message =
+                "Unable to access your location.";
+
+
+            if(error.code === 1){
+
+                message =
+                "Location permission denied. Please allow location access in browser settings.";
+
+            }
+
+            else if(error.code === 2){
+
+                message =
+                "GPS location is unavailable.";
+
+            }
+
+            else if(error.code === 3){
+
+                message =
+                "GPS request timed out. Please try again.";
+
+            }
+
+
+            showError(message);
+
+        },
+
+        {
+
+            enableHighAccuracy:true,
+
+            timeout:20000,
+
+            maximumAge:0
+
+        }
+
+    );
+
+}
+
+
+
+/* =========================================
+   UPDATE LOCATION UI
+========================================= */
+
+function updateLocationUI(){
+
+    document.getElementById("latitude")
+        .innerText =
+        currentLat.toFixed(6);
+
+
+    document.getElementById("longitude")
+        .innerText =
+        currentLng.toFixed(6);
+
+
+    document.getElementById("accuracy")
+        .innerText =
+        Math.round(currentAccuracy)
+        + " meters";
+
+
+    document.getElementById("accuracyStat")
+        .innerText =
+        Math.round(currentAccuracy)
+        + " m";
+
+
+    document.getElementById("accuracyText")
+        .innerText =
+        Math.round(currentAccuracy)
+        + " meters";
+
+
+    document.getElementById("locationStatus")
+        .innerText =
+        "✓ GPS Active";
+
+
+    document.getElementById("locationStatus")
+        .style.color =
+        "#059669";
+
+
+    document.getElementById("statusStat")
+        .innerText =
+        "Active";
+
+
+    document.getElementById("gpsHeader")
+        .innerText =
+        "GPS Active";
+
+
+    document.getElementById("mapStatus")
+        .innerText =
+        "Live GPS Location Active";
+
+
+    const percent =
+        Math.max(
+            5,
+            Math.min(
+                100,
+                100 -
+                currentAccuracy
+            )
+        );
+
+
+    document.getElementById("accuracyFill")
+        .style.width =
+        percent + "%";
+
+
+    document.getElementById("locationTime")
+        .innerText =
+        new Date()
+        .toLocaleTimeString();
+
+}
+
+
+
+/* =========================================
+   USER MARKER
+========================================= */
+
+function displayUserLocation(){
+
+    if(userMarker){
+
+        map.removeLayer(userMarker);
+
+    }
+
+
+    if(accuracyCircle){
+
+        map.removeLayer(accuracyCircle);
+
+    }
+
+
+    const icon =
+        L.divIcon({
+
+            className:"",
+
+            html:`
+
+                <div style="
+                    width:32px;
+                    height:32px;
+                    background:#2563eb;
+                    border:4px solid white;
+                    border-radius:50%;
+                    box-shadow:
+                    0 0 0 9px
+                    rgba(37,99,235,.18),
+                    0 5px 15px
+                    rgba(0,0,0,.3);
+                "></div>
+
+            `,
+
+            iconSize:[32,32],
+
+            iconAnchor:[16,16]
+
+        });
+
+
+    userMarker =
+        L.marker(
+            [
+                currentLat,
+                currentLng
+            ],
+            {
+                icon:icon
+            }
+        )
+        .addTo(map);
+
+
+    userMarker.bindPopup(`
+
+        <div style="
+            min-width:190px;
+            font-family:Arial;
+        ">
+
+            <b>📍 Your Current Location</b>
+
+            <br><br>
+
+            Latitude:
+            ${currentLat.toFixed(6)}
+
+            <br>
+
+            Longitude:
+            ${currentLng.toFixed(6)}
+
+            <br>
+
+            Accuracy:
+            ${Math.round(currentAccuracy)} m
+
+        </div>
+
+    `);
+
+
+    accuracyCircle =
+        L.circle(
+            [
+                currentLat,
+                currentLng
+            ],
+            {
+
+                radius:currentAccuracy,
+
+                color:"#2563eb",
+
+                fillColor:"#3b82f6",
+
+                fillOpacity:.08,
+
+                weight:2
+
+            }
+        )
+        .addTo(map);
+
+
+    map.setView(
+        [
+            currentLat,
+            currentLng
+        ],
+        14
+    );
+
+}
+
+
+
+/* =========================================
+   FIND POLICE STATIONS
+========================================= */
+
+async function findStations(){
+
+    if(
+        currentLat === null ||
+        currentLng === null
+    ){
+
+        getLocation();
+
+        return;
+
+    }
+
+
+    const radius =
+        document.getElementById(
+            "radius"
+        ).value;
+
+
+    const list =
+        document.getElementById(
+            "stationList"
+        );
+
+
+    list.innerHTML = `
+
+        <div class="loading">
+
+            <div class="spinner"></div>
+
+            Searching nearby police stations...
+
+        </div>
+
+    `;
+
+
+    clearMarkers();
+
+
+    const query = `
+
+        [out:json][timeout:30];
+
+        (
+
+            node[
+                amenity=police
+            ](
+                around:${radius},
+                ${currentLat},
+                ${currentLng}
+            );
+
+            way[
+                amenity=police
+            ](
+                around:${radius},
+                ${currentLat},
+                ${currentLng}
+            );
+
+            relation[
+                amenity=police
+            ](
+                around:${radius},
+                ${currentLat},
+                ${currentLng}
+            );
+
+        );
+
+        out center tags;
+
+    `;
+
+
+    try{
+
+        const response =
+            await fetch(
+                "https://overpass-api.de/api/interpreter",
+                {
+                    method:"POST",
+
+                    body:query
+                }
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Police database unavailable"
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        processStations(
+            data.elements
+        );
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        list.innerHTML = `
+
+            <div class="error">
+
+                ⚠️ Unable to retrieve nearby
+                police stations.
+
+                <br><br>
+
+                Please check your internet
+                connection and try again.
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+
+/* =========================================
+   PROCESS STATIONS
+========================================= */
+
+function processStations(elements){
+
+    stations = [];
+
+
+    elements.forEach(element => {
+
+        let lat =
+            element.lat;
+
+        let lng =
+            element.lon;
+
+
+        if(
+            lat === undefined &&
+            element.center
+        ){
+
+            lat =
+                element.center.lat;
+
+            lng =
+                element.center.lon;
+
+        }
+
+
+        if(
+            lat === undefined ||
+            lng === undefined
+        ){
+
+            return;
+
+        }
+
+
+        const tags =
+            element.tags || {};
+
+
+        const distance =
+            calculateDistance(
+                currentLat,
+                currentLng,
+                lat,
+                lng
+            );
+
+
+        stations.push({
+
+            lat:lat,
+
+            lng:lng,
+
+            distance:distance,
+
+            name:
+                tags.name ||
+                tags["name:en"] ||
+                "Police Station",
+
+            phone:
+                tags.phone ||
+                tags["contact:phone"] ||
+                "112",
+
+            street:
+                tags["addr:street"] ||
+                "",
+
+            city:
+                tags["addr:city"] ||
+                "",
+
+            opening:
+                tags.opening_hours ||
+                "Contact station for availability"
+
+        });
+
+    });
+
+
+    /* Remove duplicates */
+
+    stations =
+        stations.filter(
+            (station,index,self) =>
+
+            index ===
+            self.findIndex(
+                s =>
+
+                Math.abs(
+                    s.lat -
+                    station.lat
+                ) < .0001 &&
+
+                Math.abs(
+                    s.lng -
+                    station.lng
+                ) < .0001
+
+            )
+
+        );
+
+
+    /* Sort nearest first */
+
+    stations.sort(
+        (a,b) =>
+        a.distance -
+        b.distance
+    );
+
+
+    displayStations(
+        stations
+    );
+
+
+    addMarkers(
+        stations
+    );
+
+
+    updateStats(
+        stations
+    );
+
+}
+
+
+
+/* =========================================
+   DISPLAY STATIONS
+========================================= */
+
+function displayStations(data){
+
+    const list =
+        document.getElementById(
+            "stationList"
+        );
+
+
+    document.getElementById(
+        "stationCount"
+    ).innerText =
+        data.length + " found";
+
+
+    document.getElementById(
+        "stationStat"
+    ).innerText =
+        data.length;
+
+
+    if(data.length === 0){
+
+        list.innerHTML = `
+
+            <div class="error"
+                style="
+                background:#fff7ed;
+                color:#c2410c;
+                ">
+
+                🚔 No police stations were
+                found in the selected radius.
+
+                <br><br>
+
+                Increase the search radius.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    list.innerHTML = "";
+
+
+    data.forEach(
+        (station,index) => {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.className =
+                "station" +
+                (
+                    index === 0
+                    ? " nearest"
+                    : ""
+                );
+
+
+            const distance =
+                station.distance < 1
+
+                ?
+
+                Math.round(
+                    station.distance *
+                    1000
+                ) + " m"
+
+                :
+
+                station.distance
+                .toFixed(2)
+                + " km";
+
+
+            const address =
+                [
+                    station.street,
+                    station.city
+                ]
+                .filter(Boolean)
+                .join(", ");
+
+
+            div.innerHTML = `
+
+                <div class="station-row">
+
+                    <div class="station-icon">
+                        🚔
+                    </div>
+
+
+                    <div class="station-info">
+
+                        <h4>
+                            ${escapeHTML(
+                                station.name
+                            )}
+                        </h4>
+
+                        <p>
+                            ${
+                                address
+                                ?
+                                escapeHTML(
+                                    address
+                                )
+                                :
+                                "Police station near your location"
+                            }
+                        </p>
+
+
+                        ${
+                            index === 0
+
+                            ?
+
+                            `<span class="nearest-badge">
+                                ⭐ NEAREST
+                            </span>`
+
+                            :
+
+                            ""
+                        }
+
+                    </div>
+
+
+                    <div class="distance">
+
+                        ${distance}
+
+                    </div>
+
+                </div>
+
+
+                <div class="station-actions">
+
+                    <button
+                        class="station-btn navigate"
+                        onclick="
+                        navigateTo(
+                            ${station.lat},
+                            ${station.lng}
+                        )">
+
+                        🧭 Navigate
+
+                    </button>
+
+
+                    <button
+                        class="station-btn focus"
+                        onclick="
+                        focusStation(
+                            ${station.lat},
+                            ${station.lng}
+                        )">
+
+                        📍 View
+
+                    </button>
+
+
+                    <button
+                        class="station-btn call"
+                        onclick="
+                        callStation(
+                            '${escapeAttribute(
+                                station.phone
+                            )}'
+                        )">
+
+                        📞 Call
+
+                    </button>
+
+                </div>
+
+            `;
+
+
+            list.appendChild(div);
+
+        }
+    );
+
+}
+
+
+
+/* =========================================
+   MAP MARKERS
+========================================= */
+
+function addMarkers(data){
+
+    data.forEach(
+        (station,index) => {
+
+            const icon =
+                L.divIcon({
+
+                    className:"",
+
+                    html:`
+
+                        <div style="
+                            width:38px;
+                            height:38px;
+
+                            background:
+                            ${
+                                index === 0
+                                ?
+                                "#dc2626"
+                                :
+                                "#1d4ed8"
+                            };
+
+                            border:3px solid white;
+
+                            border-radius:50%;
+
+                            display:flex;
+
+                            align-items:center;
+
+                            justify-content:center;
+
+                            font-size:19px;
+
+                            box-shadow:
+                            0 5px 14px
+                            rgba(0,0,0,.3);
+                        ">
+
+                            🚔
+
+                        </div>
+
+                    `,
+
+                    iconSize:[38,38],
+
+                    iconAnchor:[19,19]
+
+                });
+
+
+            const marker =
+                L.marker(
+                    [
+                        station.lat,
+                        station.lng
+                    ],
+                    {
+                        icon:icon
+                    }
+                )
+                .addTo(map);
+
+
+            marker.bindPopup(`
+
+                <div style="
+                    min-width:210px;
+                    font-family:Arial;
+                ">
+
+                    <h3 style="
+                        font-size:14px;
+                        margin-bottom:8px;
+                    ">
+
+                        🚔
+                        ${escapeHTML(
+                            station.name
+                        )}
+
+                    </h3>
+
+
+                    <div style="
+                        font-size:11px;
+                        line-height:1.7;
+                    ">
+
+                        📏 Distance:
+                        ${station.distance
+                            .toFixed(2)} km
+
+                        <br>
+
+                        📍 Latitude:
+                        ${station.lat.toFixed(6)}
+
+                        <br>
+
+                        📍 Longitude:
+                        ${station.lng.toFixed(6)}
+
+                    </div>
+
+
+                    <button
+                        onclick="
+                        navigateTo(
+                            ${station.lat},
+                            ${station.lng}
+                        )"
+                        style="
+                            width:100%;
+                            margin-top:10px;
+                            padding:9px;
+                            border:0;
+                            border-radius:8px;
+                            background:#2563eb;
+                            color:white;
+                            font-weight:bold;
+                        ">
+
+                        🧭 Start Navigation
+
+                    </button>
+
+                </div>
+
+            `);
+
+
+            stationMarkers.push(marker);
+
+        }
+    );
+
+}
+
+
+
+/* =========================================
+   CLEAR MARKERS
+========================================= */
+
+function clearMarkers(){
+
+    stationMarkers.forEach(
+        marker => {
+
+            map.removeLayer(marker);
+
+        }
+    );
+
+
+    stationMarkers = [];
+
+}
+
+
+
+/* =========================================
+   DISTANCE
+========================================= */
+
+function calculateDistance(
+    lat1,
+    lon1,
+    lat2,
+    lon2
+){
+
+    const R = 6371;
+
+
+    const dLat =
+        (
+            lat2 -
+            lat1
+        )
+        *
+        Math.PI / 180;
+
+
+    const dLon =
+        (
+            lon2 -
+            lon1
+        )
+        *
+        Math.PI / 180;
+
+
+    const a =
+        Math.sin(
+            dLat/2
+        )
+        *
+        Math.sin(
+            dLat/2
+        )
+
+        +
+
+        Math.cos(
+            lat1 *
+            Math.PI / 180
+        )
+
+        *
+
+        Math.cos(
+            lat2 *
+            Math.PI / 180
+        )
+
+        *
+
+        Math.sin(
+            dLon/2
+        )
+        *
+        Math.sin(
+            dLon/2
+        );
+
+
+    const c =
+        2 *
+        Math.atan2(
+            Math.sqrt(a),
+            Math.sqrt(1-a)
+        );
+
+
+    return R*c;
+
+}
+
+
+
+/* =========================================
+   UPDATE STATS
+========================================= */
+
+function updateStats(data){
+
+    if(data.length === 0){
+
+        document.getElementById(
+            "nearestStat"
+        ).innerText =
+        "--";
+
+        return;
+
+    }
+
+
+    const distance =
+        data[0].distance;
+
+
+    document.getElementById(
+        "nearestStat"
+    ).innerText =
+
+        distance < 1
+
+        ?
+
+        Math.round(
+            distance * 1000
+        ) + " m"
+
+        :
+
+        distance.toFixed(1)
+        + " km";
+
+}
+
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+function filterStations(){
+
+    const query =
+        document.getElementById(
+            "search"
+        )
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const filtered =
+        stations.filter(
+            station =>
+
+            station.name
+            .toLowerCase()
+            .includes(query)
+
+            ||
+
+            station.city
+            .toLowerCase()
+            .includes(query)
+
+            ||
+
+            station.street
+            .toLowerCase()
+            .includes(query)
+
+        );
+
+
+    displayStations(
+        filtered
+    );
+
+}
+
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+function navigateTo(
+    lat,
+    lng
+){
+
+    const url =
+        "https://www.google.com/maps/dir/?api=1" +
+
+        "&origin=" +
+        currentLat +
+        "," +
+        currentLng +
+
+        "&destination=" +
+        lat +
+        "," +
+        lng;
+
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+}
+
+
+
+/* =========================================
+   FOCUS STATION
+========================================= */
+
+function focusStation(
+    lat,
+    lng
+){
+
+    map.setView(
+        [lat,lng],
+        17
+    );
+
+
+    const marker =
+        stationMarkers.find(
+            m => {
+
+                const p =
+                    m.getLatLng();
+
+                return (
+                    Math.abs(
+                        p.lat-lat
+                    ) < .00001
+
+                    &&
+
+                    Math.abs(
+                        p.lng-lng
+                    ) < .00001
+                );
+
+            }
+        );
+
+
+    if(marker){
+
+        marker.openPopup();
+
+    }
+
+}
+
+
+
+/* =========================================
+   CENTER USER
+========================================= */
+
+function centerUser(){
+
+    if(
+        currentLat === null
+    ){
+
+        getLocation();
+
+        return;
+
+    }
+
+
+    map.setView(
+        [
+            currentLat,
+            currentLng
+        ],
+        16
+    );
+
+
+    if(userMarker){
+
+        userMarker.openPopup();
+
+    }
+
+}
+
+
+
+/* =========================================
+   SHARE LOCATION
+========================================= */
+
+async function shareLocation(){
+
+    if(
+        currentLat === null
+    ){
+
+        alert(
+            "Please detect your location first."
+        );
+
+        return;
+
+    }
+
+
+    const text =
+        `My current location for Athiti Suraksha:
+
+Latitude: ${currentLat.toFixed(6)}
+
+Longitude: ${currentLng.toFixed(6)}
+
+Google Maps:
+https://www.google.com/maps?q=${currentLat},${currentLng}`;
+
+
+    if(
+        navigator.share
+    ){
+
+        try{
+
+            await navigator.share({
+
+                title:
+                "Athiti Suraksha Location",
+
+                text:text
+
+            });
+
+        }
+
+        catch(error){}
+
+    }
+
+    else{
+
+        await navigator.clipboard.writeText(
+            text
+        );
+
+        alert(
+            "Location details copied."
+        );
+
+    }
+
+}
+
+
+
+/* =========================================
+   COPY GPS
+========================================= */
+
+async function copyCoordinates(){
+
+    if(
+        currentLat === null
+    ){
+
+        alert(
+            "Please detect your location first."
+        );
+
+        return;
+
+    }
+
+
+    const text =
+        `${currentLat.toFixed(6)}, ${currentLng.toFixed(6)}`;
+
+
+    try{
+
+        await navigator.clipboard.writeText(
+            text
+        );
+
+
+        alert(
+            "GPS coordinates copied!"
+        );
+
+    }
+
+    catch(error){
+
+        alert(
+            text
+        );
+
+    }
+
+}
+
+
+
+/* =========================================
+   EMERGENCY
+========================================= */
+
+function emergencyCall(){
+
+    window.location.href =
+        "tel:112";
+
+}
+
+
+
+/* =========================================
+   FULLSCREEN
+========================================= */
+
+function toggleFullscreen(){
+
+    const mapElement =
+        document.getElementById(
+            "map"
+        );
+
+
+    if(
+        !document.fullscreenElement
+    ){
+
+        if(
+            mapElement.requestFullscreen
+        ){
+
+            mapElement.requestFullscreen();
+
+        }
+
+    }
+
+    else{
+
+        document.exitFullscreen();
+
+    }
+
+}
+
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+function setStatus(
+    header,
+    status
+){
+
+    document.getElementById(
+        "gpsHeader"
+    ).innerText =
+        header;
+
+
+    document.getElementById(
+        "statusStat"
+    ).innerText =
+        status;
+
+}
+
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+function showError(
+    message
+){
+
+    setStatus(
+        "GPS Error",
+        "Error"
+    );
+
+
+    document.getElementById(
+        "locationStatus"
+    ).innerText =
+        "Unavailable";
+
+
+    document.getElementById(
+        "mapStatus"
+    ).innerText =
+        "GPS unavailable";
+
+
+    document.getElementById(
+        "stationList"
+    ).innerHTML = `
+
+        <div class="error">
+
+            ⚠️
+            ${escapeHTML(message)}
+
+            <br><br>
+
+            Make sure location permission
+            is enabled and try again.
+
+        </div>
+
+    `;
+
+}
+
+
+
+/* =========================================
+   SECURITY
+========================================= */
+
+function escapeHTML(
+    value
+){
+
+    return String(value)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+function escapeAttribute(
+    value
+){
+
+    return String(value)
+        .replace(
+            /'/g,
+            "\\'"
+        );
+
+}
+
+
+
+/* =========================================
+   START APPLICATION
+========================================= */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        initializeMap();
+
+        getLocation();
+
+    }
+);
+
+</script>
+
+</body>
+</html>

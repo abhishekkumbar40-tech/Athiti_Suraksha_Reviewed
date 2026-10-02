@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Face Login</title>
+
+<script defer
+src="https://cdn.jsdelivr.net/npm/face-api.js"></script>
+
+<style>
+
+body{
+
+    margin:0;
+    padding:0;
+    font-family:Arial;
+    background:#f5f5f5;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    height:100vh;
+}
+
+.container{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    width:400px;
+
+    box-shadow:0px 0px 10px rgba(0,0,0,0.2);
+}
+
+h1{
+
+    color:#ff4d6d;
+}
+
+video{
+
+    width:100%;
+    border-radius:10px;
+    margin-top:20px;
+}
+
+button{
+
+    margin-top:20px;
+
+    padding:12px 20px;
+
+    border:none;
+
+    background:#ff4d6d;
+
+    color:white;
+
+    font-size:18px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+}
+
+button:hover{
+
+    background:#e63956;
+}
+
+#status{
+
+    margin-top:20px;
+
+    font-size:18px;
+
+    color:green;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>😊 Face Login</h1>
+
+<p>AI Tourist Face Authentication</p>
+
+<video id="video" autoplay muted></video>
+
+<button onclick="verifyFace()">
+
+Verify Face
+
+</button>
+
+<div id="status"></div>
+
+</div>
+
+<script>
+
+const video =
+document.getElementById("video");
+
+async function startVideo(){
+
+    navigator.mediaDevices.getUserMedia({
+
+        video:true
+
+    })
+
+    .then((stream)=>{
+
+        video.srcObject = stream;
+
+    })
+
+    .catch(()=>{
+
+        alert("Camera Access Denied");
+
+    });
+
+}
+
+startVideo();
+
+async function verifyFace(){
+
+    document.getElementById("status").innerHTML =
+    "Scanning Face...";
+
+    setTimeout(()=>{
+
+        document.getElementById("status").innerHTML =
+        "✅ Face Verified Successfully";
+
+        alert("Login Successful");
+
+        window.location.href =
+        "dashboard.html";
+
+    },3000);
+
+}
+
+</script>
+
+</body>
+
+</html>

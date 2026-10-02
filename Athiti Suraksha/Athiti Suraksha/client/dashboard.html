@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Athiti Suraksha Dashboard</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+
+<style>
+.more-results-wrap{
+    display:flex;
+    justify-content:center;
+    padding:14px 8px 4px;
+}
+.show-more-btn{
+    border:0;
+    border-radius:12px;
+    padding:11px 18px;
+    cursor:pointer;
+    font-weight:700;
+    color:#fff;
+    background:linear-gradient(135deg,#d94d79,#ef668b);
+    box-shadow:0 6px 18px rgba(217,77,121,.20);
+    transition:.2s ease;
+}
+.show-more-btn:hover{transform:translateY(-1px);filter:brightness(1.04);}
+.show-more-btn:disabled{opacity:.55;cursor:not-allowed;transform:none;}
+
+.profile-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:rgba(30,20,35,.48);
+    backdrop-filter:blur(5px);
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+.profile-modal.show{display:flex;}
+.profile-modal-card{
+    width:min(760px,96vw);
+    max-height:90vh;
+    overflow:auto;
+    background:#fff;
+    border-radius:24px;
+    padding:26px;
+    position:relative;
+    box-shadow:0 24px 80px rgba(0,0,0,.25);
+}
+.profile-close{
+    position:absolute;
+    right:16px;
+    top:12px;
+    width:38px;
+    height:38px;
+    border:0;
+    border-radius:50%;
+    background:#f7e9ef;
+    color:#b73560;
+    font-size:25px;
+    cursor:pointer;
+}
+.profile-modal-head{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding-right:45px;
+    margin-bottom:22px;
+}
+.large-profile-icon{
+    width:68px;
+    height:68px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:32px;
+    background:linear-gradient(135deg,#f4b4c7,#fff0f5);
+}
+.profile-modal-head h2{margin:0 0 4px;}
+.profile-modal-head p{margin:0;color:#777;}
+.profile-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+}
+.profile-field{
+    padding:13px 15px;
+    border:1px solid #f0dce4;
+    border-radius:13px;
+    background:#fffafd;
+}
+.profile-field label{
+    display:block;
+    font-size:12px;
+    color:#8b7780;
+    margin-bottom:5px;
+}
+.profile-field span{
+    font-weight:600;
+    color:#30252a;
+    word-break:break-word;
+}
+.profile-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+.profile-actions button{
+    border:0;
+    border-radius:12px;
+    padding:12px 17px;
+    cursor:pointer;
+    font-weight:700;
+}
+.profile-primary{background:linear-gradient(135deg,#d94d79,#ef668b);color:#fff;}
+.profile-secondary{background:#f8e8ee;color:#a82f58;}
+.profile-form h3{margin-top:0;}
+.profile-form label{
+    display:block;
+    margin-bottom:13px;
+    font-weight:600;
+    color:#40353a;
+}
+.profile-form input,.profile-form select{
+    width:100%;
+    box-sizing:border-box;
+    margin-top:7px;
+    padding:11px 12px;
+    border:1px solid #dfcbd3;
+    border-radius:10px;
+    outline:none;
+}
+.profile-form input:focus,.profile-form select:focus{border-color:#d94d79;}
+.profile-form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:13px;
+}
+.password-wrap{display:flex;gap:7px;}
+.password-wrap input{flex:1;margin-top:0;}
+.password-wrap button{
+    width:46px;
+    border:1px solid #dfcbd3;
+    border-radius:10px;
+    background:#fff;
+    cursor:pointer;
+}
+.password-note{
+    font-size:12px;
+    color:#777;
+}
+@media(max-width:650px){
+    .profile-grid,.profile-form-grid{grid-template-columns:1fr;}
+    .profile-modal-card{padding:20px;}
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="top-header">
+
+    <div class="brand-area">
+
+        <button class="menu-btn" onclick="toggleSidebar()">
+            ☰
+        </button>
+
+        <div class="logo">
+            🚨
+        </div>
+
+        <div>
+            <h1>Athiti Suraksha</h1>
+            <p>Tourist Safety Monitoring System</p>
+        </div>
+
+    </div>
+
+
+    <div class="header-right">
+
+        <div class="location-box" onclick="getUserLocation()">
+
+            <span class="location-icon">📍</span>
+
+            <div>
+                <small>My Location</small>
+                <strong id="locationName">
+                    Detecting location...
+                </strong>
+            </div>
+
+            <span>⌄</span>
+
+        </div>
+
+
+        <div class="notification">
+            🔔
+            <span>3</span>
+        </div>
+
+
+        <div class="profile" id="headerProfile" onclick="openProfileModal()" title="Open My Profile" style="cursor:pointer;">
+
+            <div class="profile-icon">
+                👤
+            </div>
+
+            <div>
+                <small>Welcome</small>
+                <strong id="userName">
+                    Tourist
+                </strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside id="sidebar" class="sidebar">
+
+    <div class="side-item active">
+        🏠
+        <span>Dashboard</span>
+    </div>
+
+    <div class="side-item" onclick="openPage('emergency.html')">
+        🚨
+        <span>SOS Emergency</span>
+    </div>
+
+    <div class="side-item" onclick="trackLocation()">
+        📍
+        <span>Track My Location</span>
+    </div>
+
+    <div class="side-item" onclick="openPage('police.html')">
+        👮
+        <span>Nearby Police Stations</span>
+    </div>
+
+
+    <div class="side-item" onclick="openPage('hospital.html')">
+        🏥
+        <span>Nearby Hospitals</span>
+    </div>
+
+     <div class="side-item" onclick="openPage('season_places.html')">
+        🌤️
+        <span>Seasonal Places</span>
+    </div>
+    <div class="side-item" onclick="openPage('taxi.html')">
+        🚕
+        <span>Taxi Services</span>
+    </div>
+
+    <div class="side-item" onclick="showHotels()">
+        🛏️
+        <span>Nearby Hotels & Lodges</span>
+    </div>
+
+    <div class="side-item" onclick="showHistoricPlaces()">
+        🏛️
+        <span>Nearby Historic Places</span>
+    </div>
+
+    <div class="side-item" onclick="openPage('weather.html')">
+        ☁️
+        <span>Live Weather</span>
+    </div>
+
+    <div class="side-item" onclick="openPage('translator.html')">
+        🌐
+        <span>Voice Translator</span>
+    </div>
+
+    <div class="side-item">
+        📤
+        <span>Share Emergency</span>
+    </div>
+
+    <div class="side-item" onclick="openProfileModal()">
+        👤
+        <span>My Profile</span>
+    </div>
+
+    <div class="side-item logout" onclick="logoutUser()">
+        🚪
+        <span>Logout</span>
+    </div>
+
+</aside>
+
+
+
+<!-- ================= PROFILE MODAL ================= -->
+<div id="profileModal" class="profile-modal" aria-hidden="true">
+    <div class="profile-modal-card">
+        <button class="profile-close" onclick="closeProfileModal()" aria-label="Close">×</button>
+
+        <div class="profile-modal-head">
+            <div class="large-profile-icon" id="profilePhotoPreview">👤</div>
+            <div>
+                <h2 id="profileDisplayName">Tourist</h2>
+                <p>Registered Tourist Profile</p>
+            </div>
+        </div>
+
+        <div id="profileViewSection">
+            <div class="profile-grid">
+                <div class="profile-field"><label>Full Name</label><span id="profileName">Not available</span></div>
+                <div class="profile-field"><label>Tourist Type</label><span id="profileTouristType">Not available</span></div>
+                <div class="profile-field"><label>Aadhaar Number</label><span id="profileAadhaar">Hidden</span></div>
+                <div class="profile-field"><label>Passport Number</label><span id="profilePassport">Hidden</span></div>
+                <div class="profile-field"><label>Country</label><span id="profileCountry">Not available</span></div>
+                <div class="profile-field"><label>Gender</label><span id="profileGender">Not available</span></div>
+                <div class="profile-field"><label>Mobile Number</label><span id="profileMobile">Not available</span></div>
+                <div class="profile-field"><label>Email</label><span id="profileEmail">Not available</span></div>
+            </div>
+
+            <div class="profile-actions">
+                <button class="profile-primary" onclick="startEditProfile()">✏️ Edit Profile</button>
+                <button class="profile-secondary" onclick="showChangePassword()">🔐 Change Password</button>
+            </div>
+        </div>
+
+        <form id="editProfileSection" class="profile-form" style="display:none;" onsubmit="saveEditedProfile(event)">
+            <h3>Edit Profile</h3>
+
+            <div class="profile-form-grid">
+                <label>Full Name
+                    <input id="editName" type="text" required>
+                </label>
+                <label>Gender
+                    <select id="editGender">
+                        <option value="">Select Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                </label>
+                <label>Mobile Number
+                    <input id="editMobile" type="tel">
+                </label>
+                <label>Email
+                    <input id="editEmail" type="email">
+                </label>
+                <label>Country
+                    <input id="editCountry" type="text">
+                </label>
+                <label>Tourist Type
+                    <input id="editTouristType" type="text" readonly>
+                </label>
+            </div>
+
+            <div class="profile-actions">
+                <button type="submit" class="profile-primary">💾 Save Changes</button>
+                <button type="button" class="profile-secondary" onclick="cancelEditProfile()">Cancel</button>
+            </div>
+        </form>
+
+        <form id="changePasswordSection" class="profile-form" style="display:none;" onsubmit="changeUserPassword(event)">
+            <h3>Change Password</h3>
+
+            <label>Current Password
+                <div class="password-wrap">
+                    <input id="currentPassword" type="password" required>
+                    <button type="button" onclick="togglePassword('currentPassword', this)">👁️</button>
+                </div>
+            </label>
+
+            <label>New Password
+                <div class="password-wrap">
+                    <input id="newPassword" type="password" minlength="6" required>
+                    <button type="button" onclick="togglePassword('newPassword', this)">👁️</button>
+                </div>
+            </label>
+
+            <label>Confirm New Password
+                <div class="password-wrap">
+                    <input id="confirmPassword" type="password" minlength="6" required>
+                    <button type="button" onclick="togglePassword('confirmPassword', this)">👁️</button>
+                </div>
+            </label>
+
+            <p class="password-note">Your password is never displayed in your profile.</p>
+
+            <div class="profile-actions">
+                <button type="submit" class="profile-primary">🔐 Update Password</button>
+                <button type="button" class="profile-secondary" onclick="cancelPasswordChange()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<main class="main-content">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-overlay">
+
+            <div class="hero-text">
+
+                <p>Welcome to</p>
+
+                <h2>
+                    Athiti Suraksha
+                </h2>
+
+                <h3>
+                    Safe Travel, Better Experience
+                </h3>
+
+                <div class="hero-location">
+
+                    📍
+                    <span id="heroLocation">
+                        Detecting your location...
+                    </span>
+
+                    <button onclick="getUserLocation()">
+                        📍 Use My Live Location
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="india-card">
+
+                <div class="india-flag">
+                    🇮🇳
+                </div>
+
+                <h3>
+                    Incredible India
+                </h3>
+
+                <p>
+                    Explore Safely
+                </p>
+
+                <small>
+                    Travel Confidently
+                </small>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SEARCH -->
+
+    <section class="search-section">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search historic places, hotels, hospitals, police stations..."
+        >
+
+        <button onclick="performSearch()">
+            Search
+        </button>
+
+    </section>
+
+
+    <!-- QUICK OPTIONS -->
+
+    <section class="quick-options">
+
+        <button class="quick sos" onclick="triggerSOS()">
+            🚨
+            <b>SOS<br>Emergency</b>
+        </button>
+
+        <button class="quick location" onclick="trackLocation()">
+            📍
+            <b>Track My<br>Location</b>
+        </button>
+
+        <button class="quick police" onclick="openPage('police.html')">
+            👮
+            <b>Police<br>Stations</b>
+        </button>
+
+        <button class="quick hospital" onclick="openPage('hospital.html')">
+            🏥
+            <b>Hospitals</b>
+        </button>
+         <button class="quick seasonal places" onclick="openPage('season_places.html')">
+            🌤️
+            <b>Seasonal<br>Places</b>
+        </button>
+
+        <button class="quick hotel" onclick="showHotels()">
+            🛏️
+            <b>Hotels &<br>Lodges</b>
+        </button>
+
+        <button class="quick historic" onclick="showHistoricPlaces()">
+            🏛️
+            <b>Historic<br>Places</b>
+        </button>
+         <button class="quick Taxi" onclick="openPage('taxi.html')">
+            🚕
+            <b>Taxi<br>Services</b>
+        </button>
+
+    </section>
+
+
+    <!-- CONTENT GRID -->
+
+    <section class="content-grid">
+
+
+        <!-- HISTORIC PLACES -->
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <h2>
+                    🏛️ Nearby Historic Places
+                    <span>
+                    
+                    </span>
+                </h2>
+
+                <button onclick="showHistoricPlaces()">
+                    🗺️ View on Map
+                </button>
+
+            </div>
+
+
+            <div id="historicPlaces" class="places-list">
+
+                <div class="loading">
+                    📍 Finding historic places near you...
+                </div>
+
+            </div>
+
+            <div class="more-results-wrap">
+                <button id="showMoreHistoricBtn" class="show-more-btn" onclick="showMoreHistoricPlaces()">
+                    ➕ Show More Historical Places
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- HOTELS -->
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <h2>
+                    🛏️ Nearby Hotels & Lodges
+                    <span>
+                    
+                    </span>
+                </h2>
+
+                <button onclick="showHotels()">
+                    🗺️ View on Map
+                </button>
+
+            </div>
+
+
+            <div id="hotels" class="places-list">
+
+                <div class="loading">
+                    📍 Finding hotels near you...
+                </div>
+
+            </div>
+
+            <div class="more-results-wrap">
+                <button id="showMoreHotelsBtn" class="show-more-btn" onclick="showMoreHotels()">
+                    ➕ Show More Hotels & Lodges
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LOCATION STATUS -->
+
+    <div class="location-status">
+
+        📍 Showing places and hotels near:
+
+        <strong id="bottomLocation">
+            Detecting location...
+        </strong>
+
+        <span>
+            |
+        </span>
+
+        <strong class="safe">
+            Always Travel Safe with Athiti Suraksha ❤️
+        </strong>
+
+    </div>
+
+
+</main>
+
+
+<script src="dashboard.js"></script>
+
+    <!-- Background Weather Monitoring -->
+    <script src="weather-monitor.js"></script>
+
+
+<script>
+/* ================= PROFILE + SHOW MORE CONTROLS ================= */
+
+let currentTouristData = null;
+
+function getTouristStorageData() {
+    const possibleKeys = [
+        "touristData",
+        "tourist",
+        "currentUser",
+        "loggedInUser",
+        "user",
+        "registeredTourist",
+        "touristProfile"
+    ];
+
+    for (const key of possibleKeys) {
+        try {
+            const raw = localStorage.getItem(key);
+            if (!raw) continue;
+            const parsed = JSON.parse(raw);
+            if (parsed && typeof parsed === "object") {
+                return { key, data: parsed };
+            }
+        } catch (e) {}
+    }
+
+    return { key: null, data: {} };
+}
+
+function firstValue(obj, keys, fallback="") {
+    for (const key of keys) {
+        if (obj && obj[key] !== undefined && obj[key] !== null && String(obj[key]).trim() !== "") {
+            return String(obj[key]);
+        }
+    }
+    return fallback;
+}
+
+function maskValue(value, visibleStart=2, visibleEnd=2) {
+    if (!value) return "Not available";
+    const s = String(value);
+    if (s.length <= visibleStart + visibleEnd) return "••••••••";
+    return s.slice(0, visibleStart) + "•".repeat(Math.max(4, s.length-visibleStart-visibleEnd)) + s.slice(-visibleEnd);
+}
+
+function loadTouristProfile() {
+    const result = getTouristStorageData();
+    currentTouristData = result.data || {};
+
+    const name = firstValue(currentTouristData,
+        ["fullName","name","touristName","firstName","username"], "Tourist");
+    const type = firstValue(currentTouristData,
+        ["touristType","type","travellerType"], "Not available");
+    const aadhaar = firstValue(currentTouristData,
+        ["aadhaar","aadhaarNumber","aadhar","aadharNumber"], "");
+    const passport = firstValue(currentTouristData,
+        ["passport","passportNumber"], "");
+    const country = firstValue(currentTouristData,
+        ["country","nationality"], "Not available");
+    const gender = firstValue(currentTouristData,
+        ["gender"], "Not available");
+    const mobile = firstValue(currentTouristData,
+        ["mobile","mobileNumber","phone","phoneNumber"], "Not available");
+    const email = firstValue(currentTouristData,
+        ["email","emailAddress"], "Not available");
+
+    document.getElementById("userName").textContent = name;
+    document.getElementById("profileDisplayName").textContent = name;
+    document.getElementById("profileName").textContent = name;
+    document.getElementById("profileTouristType").textContent = type;
+    document.getElementById("profileAadhaar").textContent = aadhaar ? maskValue(aadhaar,2,2) : "Not applicable";
+    document.getElementById("profilePassport").textContent = passport ? maskValue(passport,2,2) : "Not applicable";
+    document.getElementById("profileCountry").textContent = country;
+    document.getElementById("profileGender").textContent = gender;
+    document.getElementById("profileMobile").textContent = mobile;
+    document.getElementById("profileEmail").textContent = email;
+
+    document.getElementById("editName").value = name === "Tourist" ? "" : name;
+    document.getElementById("editGender").value = gender === "Not available" ? "" : gender;
+    document.getElementById("editMobile").value = mobile === "Not available" ? "" : mobile;
+    document.getElementById("editEmail").value = email === "Not available" ? "" : email;
+    document.getElementById("editCountry").value = country === "Not available" ? "" : country;
+    document.getElementById("editTouristType").value = type;
+}
+
+function openProfileModal() {
+    loadTouristProfile();
+    document.getElementById("profileViewSection").style.display = "";
+    document.getElementById("editProfileSection").style.display = "none";
+    document.getElementById("changePasswordSection").style.display = "none";
+    const modal = document.getElementById("profileModal");
+    modal.classList.add("show");
+    modal.setAttribute("aria-hidden","false");
+}
+
+function closeProfileModal() {
+    const modal = document.getElementById("profileModal");
+    modal.classList.remove("show");
+    modal.setAttribute("aria-hidden","true");
+}
+
+function startEditProfile() {
+    loadTouristProfile();
+    document.getElementById("profileViewSection").style.display = "none";
+    document.getElementById("changePasswordSection").style.display = "none";
+    document.getElementById("editProfileSection").style.display = "";
+}
+
+function cancelEditProfile() {
+    document.getElementById("editProfileSection").style.display = "none";
+    document.getElementById("profileViewSection").style.display = "";
+}
+
+function showChangePassword() {
+    document.getElementById("profileViewSection").style.display = "none";
+    document.getElementById("editProfileSection").style.display = "none";
+    document.getElementById("changePasswordSection").style.display = "";
+    document.getElementById("currentPassword").value = "";
+    document.getElementById("newPassword").value = "";
+    document.getElementById("confirmPassword").value = "";
+}
+
+function cancelPasswordChange() {
+    document.getElementById("changePasswordSection").style.display = "none";
+    document.getElementById("profileViewSection").style.display = "";
+}
+
+function saveEditedProfile(event) {
+    event.preventDefault();
+
+    const result = getTouristStorageData();
+    const data = result.data || {};
+
+    const name = document.getElementById("editName").value.trim();
+    if (!name) {
+        alert("Please enter your full name.");
+        return;
+    }
+
+    data.fullName = name;
+    data.name = name;
+    data.gender = document.getElementById("editGender").value;
+    data.mobile = document.getElementById("editMobile").value.trim();
+    data.mobileNumber = data.mobile;
+    data.email = document.getElementById("editEmail").value.trim();
+    data.country = document.getElementById("editCountry").value.trim();
+
+    const saveKeys = result.key ? [result.key] : ["touristData","currentUser"];
+    saveKeys.forEach(key => {
+        try { localStorage.setItem(key, JSON.stringify(data)); } catch(e) {}
+    });
+
+    currentTouristData = data;
+    loadTouristProfile();
+    cancelEditProfile();
+    alert("Profile updated successfully.");
+}
+
+function getStoredPassword(data) {
+    return firstValue(data, ["password","userPassword","loginPassword"], "");
+}
+
+function changeUserPassword(event) {
+    event.preventDefault();
+
+    const result = getTouristStorageData();
+    const data = result.data || {};
+    const oldPassword = document.getElementById("currentPassword").value;
+    const newPassword = document.getElementById("newPassword").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const storedPassword = getStoredPassword(data);
+
+    if (storedPassword && oldPassword !== storedPassword) {
+        alert("Current password is incorrect.");
+        return;
+    }
+
+    if (newPassword.length < 6) {
+        alert("New password must contain at least 6 characters.");
+        return;
+    }
+
+    if (newPassword !== confirmPassword) {
+        alert("New password and confirm password do not match.");
+        return;
+    }
+
+    data.password = newPassword;
+    data.userPassword = newPassword;
+
+    const saveKeys = result.key ? [result.key] : ["touristData","currentUser"];
+    saveKeys.forEach(key => {
+        try { localStorage.setItem(key, JSON.stringify(data)); } catch(e) {}
+    });
+
+    document.getElementById("currentPassword").value = "";
+    document.getElementById("newPassword").value = "";
+    document.getElementById("confirmPassword").value = "";
+    cancelPasswordChange();
+    alert("Password changed successfully.");
+}
+
+function togglePassword(id, button) {
+    const input = document.getElementById(id);
+    if (!input) return;
+    if (input.type === "password") {
+        input.type = "text";
+        button.textContent = "🙈";
+    } else {
+        input.type = "password";
+        button.textContent = "👁️";
+    }
+}
+
+function logoutUser() {
+    const confirmed = confirm("Are you sure you want to logout?");
+    if (!confirmed) return;
+
+    /* Remove common login/session flags, but keep registration data available
+       for a future login/registration flow. */
+    [
+        "isLoggedIn",
+        "loggedIn",
+        "loginStatus",
+        "authToken",
+        "token",
+        "currentSession"
+    ].forEach(key => {
+        try { localStorage.removeItem(key); } catch(e) {}
+        try { sessionStorage.removeItem(key); } catch(e) {}
+    });
+
+    try { sessionStorage.clear(); } catch(e) {}
+    window.location.replace("login.html");
+}
+
+/* Close profile when clicking the dark background. */
+document.getElementById("profileModal").addEventListener("click", function(e) {
+    if (e.target === this) closeProfileModal();
+});
+
+document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") closeProfileModal();
+});
+
+/* If dashboard.js renders more than the initial five results,
+   this reveals the additional cards. */
+function revealAdditionalItems(containerId, buttonId) {
+    const container = document.getElementById(containerId);
+    const button = document.getElementById(buttonId);
+    if (!container) return;
+
+    const items = Array.from(container.children).filter(el =>
+        !el.classList.contains("loading") && !el.classList.contains("error")
+    );
+
+    if (items.length === 0) {
+        alert("No additional results are available yet. Please wait for location data to load.");
+        return;
+    }
+
+    items.forEach((item, index) => {
+        if (index >= 5) item.style.display = "";
+    });
+
+    button.textContent = "✓ Showing More Results";
+    button.disabled = true;
+}
+
+function showMoreHistoricPlaces() {
+    revealAdditionalItems("historicPlaces", "showMoreHistoricBtn");
+}
+
+function showMoreHotels() {
+    revealAdditionalItems("hotels", "showMoreHotelsBtn");
+}
+
+/* Keep the profile name synchronized when the dashboard opens. */
+window.addEventListener("DOMContentLoaded", loadTouristProfile);
+</script>
+
+
+<!-- DIRECT SOS STATUS -->
+<div id="sosStatusPanel" style="display:none;position:fixed;left:20px;right:20px;bottom:20px;z-index:10000;background:#fff;border:2px solid #e53935;border-radius:18px;padding:16px;box-shadow:0 18px 50px rgba(0,0,0,.22);">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div style="font-size:28px;">🚨</div>
+    <div style="flex:1;">
+      <strong style="color:#c62828;">SOS ACTIVE</strong>
+      <div id="sosStatusText" style="font-size:13px;color:#555;margin-top:4px;">Sending your live location to the Admin...</div>
+    </div>
+    <button onclick="cancelLocalSOS()" style="border:0;border-radius:10px;padding:10px 14px;background:#f1f3f6;color:#333;font-weight:700;cursor:pointer;">Close</button>
+  </div>
+</div>
+
+<script>
+const SOS_API_BASE = "http://localhost:5000";
+let activeSOSId = null, sosWatchId = null, sosStatusTimer = null;
+
+function getSOSUserData(){
+  const keys=["touristData","tourist","currentUser","loggedInUser","user","registeredTourist","touristProfile"];
+  for(const key of keys){
+    try{const raw=localStorage.getItem(key); if(!raw) continue; const d=JSON.parse(raw); if(d&&typeof d==="object") return d;}catch(e){}
+  }
+  return {};
+}
+function setSOSStatus(message){
+  const p=document.getElementById("sosStatusPanel"), t=document.getElementById("sosStatusText");
+  if(p)p.style.display="block"; if(t)t.textContent=message;
+}
+async function sendSOSLocation(lat,lon,accuracy){
+  if(!activeSOSId)return;
+  try{
+    const r=await fetch(`${SOS_API_BASE}/api/sos/${encodeURIComponent(activeSOSId)}/location`,{
+      method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({latitude:lat,longitude:lon,accuracy})
+    });
+    const d=await r.json();
+    if(d.sos&&d.sos.status!=="ACTIVE") handleAdminSOSResponse(d.sos);
+  }catch(e){console.warn("SOS location update failed:",e.message);}
+}
+function startSOSLocationTracking(){
+  if(!navigator.geolocation){setSOSStatus("SOS sent. GPS is not supported by this browser.");return;}
+  if(sosWatchId!==null)navigator.geolocation.clearWatch(sosWatchId);
+  sosWatchId=navigator.geolocation.watchPosition(pos=>{
+    sendSOSLocation(pos.coords.latitude,pos.coords.longitude,pos.coords.accuracy);
+    setSOSStatus("SOS active. Your live GPS location is being shared with the Admin.");
+  },err=>{
+    console.warn("GPS error:",err.message);
+    setSOSStatus("SOS sent. Please allow Location permission so the Admin can see your live location.");
+  },{enableHighAccuracy:true,maximumAge:3000,timeout:10000});
+}
+async function triggerSOS(){
+  if(activeSOSId){setSOSStatus("SOS is already active. Your location is being shared.");return;}
+  const user=getSOSUserData();
+  const send=async pos=>{
+    const payload={
+      touristId:user.id||user.touristId||"",name:user.name||user.fullName||user.username||"Tourist",
+      email:user.email||"",phone:user.phone||user.mobile||user.mobileNumber||user.fullPhone||"",
+      touristType:user.touristType||user.type||"",country:user.country||"",
+      photo:user.facePhoto||user.photo||"",
+      message:"Emergency SOS activated. Please provide immediate assistance.",
+      latitude:pos?.coords?.latitude??null,longitude:pos?.coords?.longitude??null,accuracy:pos?.coords?.accuracy??null
+    };
+    try{
+      const r=await fetch(`${SOS_API_BASE}/api/sos`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+      const d=await r.json();
+      if(!r.ok||!d.success)throw new Error(d.message||"SOS request failed");
+      activeSOSId=d.sos.id;
+      setSOSStatus("SOS ACTIVE. Admin has been alerted. Live location sharing is ON.");
+      startSOSLocationTracking(); startSOSResponsePolling();
+    }catch(e){console.error("SOS error:",e);alert("Unable to send SOS. Make sure server.js is running on port 5000.");}
+  };
+  if(navigator.geolocation) navigator.geolocation.getCurrentPosition(send,()=>send(null),{enableHighAccuracy:true,timeout:10000,maximumAge:3000});
+  else send(null);
+}
+function startSOSResponsePolling(){
+  if(sosStatusTimer)clearInterval(sosStatusTimer);
+  sosStatusTimer=setInterval(async()=>{
+    if(!activeSOSId)return;
+    try{
+      const r=await fetch(`${SOS_API_BASE}/api/sos/${encodeURIComponent(activeSOSId)}`);
+      if(!r.ok)return; const d=await r.json();
+      if(d.sos&&d.sos.status!=="ACTIVE")handleAdminSOSResponse(d.sos);
+    }catch(e){}
+  },3000);
+}
+function handleAdminSOSResponse(sos){
+  if(sosWatchId!==null){navigator.geolocation.clearWatch(sosWatchId);sosWatchId=null;}
+  if(sosStatusTimer){clearInterval(sosStatusTimer);sosStatusTimer=null;}
+  setSOSStatus("✅ "+(sos.responseMessage||"Admin is responding to your SOS."));
+  setTimeout(()=>{const p=document.getElementById("sosStatusPanel");if(p)p.style.display="none";activeSOSId=null;},8000);
+}
+function cancelLocalSOS(){const p=document.getElementById("sosStatusPanel");if(p)p.style.display="none";}
+</script>
+
+</body>
+</html>

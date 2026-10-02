@@ -1,0 +1,260 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+
+    background: linear-gradient(
+        135deg,
+        #e90067,
+        #ff1744,
+        #ff5a3c
+    );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.page-background {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 580px;
+
+    background: white;
+
+    border-radius: 28px;
+
+    padding: 42px 45px 38px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.20);
+
+    text-align: center;
+}
+
+.logo-wrapper {
+    width: 125px;
+    height: 125px;
+
+    margin: 0 auto 28px;
+
+    border-radius: 50%;
+
+    background: #f72585;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 25px rgba(247, 37, 133, 0.30);
+}
+
+.india-flag {
+    width: 92px;
+    height: 62px;
+
+    object-fit: cover;
+
+    display: block;
+
+    border-radius: 3px;
+}
+
+.login-container h1 {
+    color: #d81b60;
+
+    font-size: 40px;
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    color: #555;
+
+    font-size: 20px;
+
+    line-height: 1.5;
+
+    margin-bottom: 42px;
+}
+
+#loginForm {
+    width: 100%;
+
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+
+    color: #333;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+}
+
+.form-group input {
+    width: 100%;
+
+    height: 58px;
+
+    padding: 0 18px;
+
+    border: 1.5px solid #d8d8d8;
+
+    border-radius: 15px;
+
+    background: white;
+
+    color: #333;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #e91e63;
+
+    box-shadow:
+        0 0 0 3px rgba(233, 30, 99, 0.10);
+}
+
+#loginButton {
+    width: 100%;
+
+    height: 58px;
+
+    margin-top: 5px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background: linear-gradient(
+        90deg,
+        #f50057,
+        #e91e63
+    );
+
+    color: white;
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+#loginButton:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 20px rgba(233, 30, 99, 0.25);
+}
+
+.message {
+    min-height: 25px;
+
+    margin-top: 18px;
+
+    text-align: center;
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+.message.success {
+    color: #159447;
+}
+
+.message.error {
+    color: #e53935;
+}
+
+.register-text {
+    margin-top: 28px;
+
+    color: #555;
+
+    font-size: 16px;
+}
+
+.register-text a {
+    color: #d81b60;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.register-text a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 12px;
+    }
+
+    .login-container {
+        padding: 35px 25px 30px;
+
+        border-radius: 25px;
+    }
+
+    .logo-wrapper {
+        width: 105px;
+        height: 105px;
+    }
+
+    .india-flag {
+        width: 78px;
+        height: 52px;
+    }
+
+    .login-container h1 {
+        font-size: 32px;
+    }
+
+    .subtitle {
+        font-size: 17px;
+    }
+
+    .form-group input {
+        height: 55px;
+    }
+
+    #loginButton {
+        height: 55px;
+    }
+}

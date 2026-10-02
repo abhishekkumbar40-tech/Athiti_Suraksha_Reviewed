@@ -1,0 +1,4589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Athiti Suraksha - Admin Dashboard</title>
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Leaflet -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7c3aed;
+            --primary-dark: #5b21b6;
+            --danger: #ef4444;
+            --danger-dark: #b91c1c;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --info: #0ea5e9;
+            --dark: #111827;
+            --dark2: #1f2937;
+            --gray: #6b7280;
+            --light: #f3f4f6;
+            --white: #ffffff;
+            --border: #e5e7eb;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #f5f7fb;
+            color: var(--dark);
+            min-height: 100vh;
+        }
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background:
+                linear-gradient(
+                    180deg,
+                    #111827 0%,
+                    #1e1b4b 100%
+                );
+            color: white;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .logo-area {
+            padding: 25px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 14px;
+            background: linear-gradient(
+                135deg,
+                #ec4899,
+                #7c3aed
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+        }
+
+        .logo-text h2 {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .logo-text span {
+            font-size: 10px;
+            color: #c4b5fd;
+        }
+
+        .nav {
+            padding: 20px 12px;
+        }
+
+        .nav-title {
+            font-size: 10px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 12px;
+        }
+
+        .nav-item {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 13px 14px;
+            margin-bottom: 5px;
+            color: #d1d5db;
+            text-decoration: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: rgba(124,58,237,0.35);
+            color: white;
+        }
+
+        .nav-icon {
+            width: 22px;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        .sos-nav {
+            color: #fca5a5 !important;
+        }
+
+        .sos-nav:hover,
+        .sos-nav.active {
+            background: rgba(239,68,68,0.25) !important;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main {
+            margin-left: 250px;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           TOPBAR
+        ========================= */
+
+        .topbar {
+            height: 72px;
+            background: white;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            position: sticky;
+            top: 0;
+            z-index: 900;
+        }
+
+        .topbar-left h1 {
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .topbar-left p {
+            color: var(--gray);
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .server-status {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 12px;
+            background: #ecfdf5;
+            color: #047857;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(16,185,129,.5);
+            }
+
+            70% {
+                box-shadow: 0 0 0 8px rgba(16,185,129,0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(16,185,129,0);
+            }
+        }
+
+        .admin-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(
+                135deg,
+                #7c3aed,
+                #ec4899
+            );
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+
+        .admin-info strong {
+            display: block;
+            font-size: 13px;
+        }
+
+        .admin-info span {
+            font-size: 10px;
+            color: var(--gray);
+        }
+
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .content {
+            padding: 28px;
+        }
+
+        /* =========================
+           STATISTICS
+        ========================= */
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 18px rgba(15,23,42,0.04);
+        }
+
+        .stat-left p {
+            color: var(--gray);
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .stat-left h2 {
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .stat-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+        }
+
+        .icon-purple {
+            background: #ede9fe;
+            color: #7c3aed;
+        }
+
+        .icon-blue {
+            background: #e0f2fe;
+            color: #0284c7;
+        }
+
+        .icon-red {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .icon-green {
+            background: #d1fae5;
+            color: #059669;
+        }
+
+        /* =========================
+           SOS ALERT
+        ========================= */
+
+        .sos-container {
+            background: white;
+            border-radius: 18px;
+            border: 2px solid #fecaca;
+            margin-bottom: 25px;
+            overflow: hidden;
+            box-shadow:
+                0 8px 35px rgba(239,68,68,0.08);
+        }
+
+        .sos-header {
+            background:
+                linear-gradient(
+                    135deg,
+                    #7f1d1d,
+                    #dc2626
+                );
+            color: white;
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sos-header-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sos-bell {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: rgba(255,255,255,.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            animation: emergencyPulse 1s infinite;
+        }
+
+        @keyframes emergencyPulse {
+            0%,100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.12);
+            }
+        }
+
+        .sos-header h2 {
+            font-size: 17px;
+        }
+
+        .sos-header p {
+            font-size: 11px;
+            opacity: .85;
+            margin-top: 3px;
+        }
+
+        .sos-count {
+            background: white;
+            color: #dc2626;
+            border-radius: 30px;
+            padding: 7px 13px;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .sos-body {
+            padding: 20px;
+        }
+
+        .no-sos {
+            padding: 35px;
+            text-align: center;
+            color: var(--gray);
+        }
+
+        .no-sos-icon {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        /* =========================
+           SOS CARD
+        ========================= */
+
+        .sos-card {
+            border: 1px solid #fecaca;
+            border-radius: 15px;
+            padding: 17px;
+            margin-bottom: 15px;
+            background: #fffafa;
+        }
+
+        .sos-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .sos-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .tourist-basic {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tourist-photo {
+            width: 58px;
+            height: 58px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: #e5e7eb;
+            border: 2px solid #fecaca;
+        }
+
+        .tourist-basic h3 {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .tourist-basic p {
+            font-size: 11px;
+            color: var(--gray);
+        }
+
+        .status-badge {
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        .status-active {
+            color: #991b1b;
+            background: #fee2e2;
+        }
+
+        .status-responding {
+            color: #92400e;
+            background: #fef3c7;
+        }
+
+        .status-resolved {
+            color: #065f46;
+            background: #d1fae5;
+        }
+
+        .sos-info-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .info-box {
+            background: white;
+            border: 1px solid #f1f5f9;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .info-box small {
+            display: block;
+            font-size: 9px;
+            color: #9ca3af;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .info-box strong {
+            font-size: 11px;
+            word-break: break-word;
+        }
+
+        .sos-message {
+            background: #fff;
+            border-left: 4px solid #ef4444;
+            padding: 11px;
+            border-radius: 8px;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+
+        .sos-actions {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 9px;
+            padding: 10px 14px;
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-danger {
+            background: #dc2626;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #b91c1c;
+        }
+
+        .btn-warning {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-primary {
+            background: #7c3aed;
+            color: white;
+        }
+
+        .btn-dark {
+            background: #1f2937;
+            color: white;
+        }
+
+        .btn-light {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        /* =========================
+           MAIN GRID
+        ========================= */
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 22px;
+        }
+
+        .panel {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            overflow: hidden;
+        }
+
+        .panel-header {
+            padding: 17px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .panel-header h2 {
+            font-size: 15px;
+        }
+
+        .panel-header span {
+            color: var(--gray);
+            font-size: 11px;
+        }
+
+        .panel-body {
+            padding: 18px;
+        }
+
+        /* =========================
+           MAP
+        ========================= */
+
+        #adminMap {
+            width: 100%;
+            height: 480px;
+            border-radius: 12px;
+            z-index: 1;
+        }
+
+        .map-placeholder {
+            height: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            background: #f8fafc;
+            border-radius: 12px;
+        }
+
+        /* =========================
+           TOURIST TABLE
+        ========================= */
+
+        .table-panel {
+            margin-top: 22px;
+        }
+
+        .table-tools {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-box {
+            width: 230px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 9px 12px;
+            outline: none;
+            font-family: inherit;
+            font-size: 12px;
+        }
+
+        .search-box:focus {
+            border-color: #8b5cf6;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 750px;
+        }
+
+        th {
+            text-align: left;
+            padding: 12px 15px;
+            background: #f9fafb;
+            color: #6b7280;
+            font-size: 10px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 13px 15px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 11px;
+        }
+
+        tr:hover td {
+            background: #fafafa;
+        }
+
+        .table-user {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .table-photo {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #e5e7eb;
+        }
+
+        .type-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            background: #ede9fe;
+            color: #6d28d9;
+            font-size: 9px;
+            font-weight: 800;
+        }
+
+        /* =========================
+           RECENT SOS MAP
+        ========================= */
+
+        .map-legend {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10px;
+            color: var(--gray);
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dot-red {
+            background: #ef4444;
+        }
+
+        .dot-yellow {
+            background: #f59e0b;
+        }
+
+        .dot-green {
+            background: #10b981;
+        }
+
+        /* =========================
+           TOAST
+        ========================= */
+
+        .toast-container {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            min-width: 280px;
+            max-width: 380px;
+            background: #111827;
+            color: white;
+            padding: 14px 16px;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: toastIn .25s ease;
+            font-size: 12px;
+        }
+
+        .toast.success {
+            border-left: 4px solid #10b981;
+        }
+
+        .toast.error {
+            border-left: 4px solid #ef4444;
+        }
+
+        .toast.warning {
+            border-left: 4px solid #f59e0b;
+        }
+
+        @keyframes toastIn {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* =========================
+           MODAL
+        ========================= */
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15,23,42,.72);
+            z-index: 10000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal {
+            width: 100%;
+            max-width: 850px;
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0,0,0,.3);
+        }
+
+        .modal-header {
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-header h2 {
+            font-size: 17px;
+        }
+
+        .close-modal {
+            width: 35px;
+            height: 35px;
+            border: none;
+            background: #f3f4f6;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 20px;
+        }
+
+        .modal-photo {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            background: #f3f4f6;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .detail-item {
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+
+        .detail-item small {
+            display: block;
+            color: var(--gray);
+            font-size: 9px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .detail-item strong {
+            font-size: 12px;
+            word-break: break-word;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        .mobile-menu {
+            display: none;
+            border: none;
+            background: #f3f4f6;
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            font-size: 20px;
+        }
+
+        @media (max-width: 1100px) {
+
+            .stats-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sos-info-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 800px) {
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: .25s;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .topbar {
+                padding: 0 15px;
+            }
+
+            .topbar-left {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .server-status {
+                display: none;
+            }
+
+            .admin-info {
+                display: none;
+            }
+
+            .content {
+                padding: 15px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 14px;
+            }
+
+            .stat-left h2 {
+                font-size: 22px;
+            }
+
+            .stat-icon {
+                width: 42px;
+                height: 42px;
+                font-size: 18px;
+            }
+
+            .modal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-photo {
+                height: 220px;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sos-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .table-tools {
+                width: 100%;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .sos-header {
+                padding: 14px;
+            }
+
+            .sos-body {
+                padding: 12px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo-area">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    🛡️
+                </div>
+
+                <div class="logo-text">
+                    <h2>Athiti Suraksha</h2>
+                    <span>ADMIN CONTROL CENTER</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <nav class="nav">
+
+            <div class="nav-title">
+                Main
+            </div>
+
+            <button
+                class="nav-item active"
+                onclick="scrollToSection('overview')"
+            >
+                <span class="nav-icon">📊</span>
+                Dashboard
+            </button>
+
+            <button
+                class="nav-item"
+                onclick="scrollToSection('tourists')"
+            >
+                <span class="nav-icon">👥</span>
+                Tourists
+            </button>
+
+            <button
+                class="nav-item sos-nav"
+                onclick="scrollToSection('sosSection')"
+            >
+                <span class="nav-icon">🚨</span>
+                SOS Alerts
+                <span
+                    id="sidebarSOSCount"
+                    style="margin-left:auto;"
+                >0</span>
+            </button>
+
+            <div class="nav-title">
+                Monitoring
+            </div>
+
+            <button
+                class="nav-item"
+                onclick="focusSOSMap()"
+            >
+                <span class="nav-icon">🗺️</span>
+                Live Location
+            </button>
+
+            <button
+                class="nav-item"
+                onclick="loadTourists(true)"
+            >
+                <span class="nav-icon">🔄</span>
+                Refresh Data
+            </button>
+
+            <div class="nav-title">
+                System
+            </div>
+
+            <button
+                class="nav-item"
+                onclick="testSiren()"
+            >
+                <span class="nav-icon">🔊</span>
+                Test Siren
+            </button>
+
+            <button
+                class="nav-item"
+                onclick="requestNotifications()"
+            >
+                <span class="nav-icon">🔔</span>
+                Notifications
+            </button>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    class="mobile-menu"
+                    onclick="toggleSidebar()"
+                >
+                    ☰
+                </button>
+
+                <div>
+                    <h1>Admin Dashboard</h1>
+                    <p>
+                        Tourist Safety Monitoring & Emergency Response
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="server-status">
+                    <span class="status-dot"></span>
+                    SERVER ONLINE
+                </div>
+
+                <div class="admin-profile">
+
+                    <div class="admin-avatar">
+                        A
+                    </div>
+
+                    <div class="admin-info">
+                        <strong>Administrator</strong>
+                        <span>Safety Control Officer</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+
+        <section class="content">
+
+
+            <!-- =================================================
+                 OVERVIEW
+            ================================================== -->
+
+            <div id="overview">
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+
+                        <div class="stat-left">
+                            <p>Total Tourists</p>
+                            <h2 id="totalTourists">0</h2>
+                        </div>
+
+                        <div class="stat-icon icon-purple">
+                            👥
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-left">
+                            <p>Indian Tourists</p>
+                            <h2 id="indianTourists">0</h2>
+                        </div>
+
+                        <div class="stat-icon icon-blue">
+                            🇮🇳 
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-left">
+                            <p>Active SOS</p>
+                            <h2 id="activeSOSCount">0</h2>
+                        </div>
+
+                        <div class="stat-icon icon-red">
+                            🚨
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-left">
+                            <p>Resolved SOS</p>
+                            <h2 id="resolvedSOSCount">0</h2>
+                        </div>
+
+                        <div class="stat-icon icon-green">
+                            ✅
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SOS SECTION
+            ================================================== -->
+
+            <section
+                id="sosSection"
+                class="sos-container"
+            >
+
+                <div class="sos-header">
+
+                    <div class="sos-header-title">
+
+                        <div class="sos-bell">
+                            🚨
+                        </div>
+
+                        <div>
+                            <h2>Emergency SOS Center</h2>
+                            <p>
+                                Live tourist emergency requests
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="sos-count"
+                        id="sosHeaderCount"
+                    >
+                        0 ACTIVE
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="sos-body"
+                    id="sosList"
+                >
+
+                    <div class="no-sos">
+
+                        <div class="no-sos-icon">
+                            🛡️
+                        </div>
+
+                        <strong>
+                            No active emergency
+                        </strong>
+
+                        <p style="margin-top:5px;font-size:11px;">
+                            SOS alerts will appear here automatically.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 MAP + INFORMATION
+            ================================================== -->
+
+            <div class="dashboard-grid">
+
+                <!-- MAP -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>📍 Live Tourist Locations</h2>
+                            <span>
+                                SOS location monitoring
+                            </span>
+                        </div>
+
+                        <button
+                            class="btn btn-light"
+                            onclick="centerAllSOS()"
+                        >
+                            Center Map
+                        </button>
+
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div id="adminMap"></div>
+
+                        <div class="map-legend">
+
+                            <div class="legend-item">
+                                <span
+                                    class="legend-dot dot-red"
+                                ></span>
+                                Active SOS
+                            </div>
+
+                            <div class="legend-item">
+                                <span
+                                    class="legend-dot dot-yellow"
+                                ></span>
+                                Responding
+                            </div>
+
+                            <div class="legend-item">
+                                <span
+                                    class="legend-dot dot-green"
+                                ></span>
+                                Resolved
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RECENT INFORMATION -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>🚨 Emergency Information</h2>
+                            <span>
+                                Latest SOS details
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="panel-body"
+                        id="latestSOSInfo"
+                    >
+
+                        <div class="no-sos">
+
+                            <div class="no-sos-icon">
+                                📡
+                            </div>
+
+                            <strong>
+                                Waiting for SOS
+                            </strong>
+
+                            <p style="margin-top:5px;font-size:11px;">
+                                Live emergency information will appear
+                                here.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 TOURIST TABLE
+            ================================================== -->
+
+            <section
+                id="tourists"
+                class="panel table-panel"
+            >
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>👥 Registered Tourists</h2>
+                        <span>
+                            Complete registered tourist information
+                        </span>
+                    </div>
+
+                    <div class="table-tools">
+
+                        <input
+                            type="text"
+                            id="touristSearch"
+                            class="search-box"
+                            placeholder="Search tourist..."
+                            oninput="filterTourists()"
+                        >
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="loadTourists(true)"
+                        >
+                            🔄 Refresh
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Tourist</th>
+
+                                <th>Type</th>
+
+                                <th>Phone</th>
+
+                                <th>Country</th>
+
+                                <th>Gender</th>
+
+                                <th>Registered</th>
+
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="touristTableBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="7"
+                                    style="
+                                        text-align:center;
+                                        padding:40px;
+                                        color:#6b7280;
+                                    "
+                                >
+                                    Loading tourists...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         TOURIST DETAILS MODAL
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="touristModal"
+    >
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <h2>Tourist Details</h2>
+
+                <button
+                    class="close-modal"
+                    onclick="closeTouristModal()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+            <div
+                class="modal-body"
+                id="touristModalBody"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SOS DETAILS MODAL
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="sosModal"
+    >
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <h2>🚨 Emergency SOS Details</h2>
+
+                <button
+                    class="close-modal"
+                    onclick="closeSOSModal()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+            <div
+                class="modal-body"
+                id="sosModalBody"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOAST -->
+
+    <div
+        class="toast-container"
+        id="toastContainer"
+    ></div>
+
+
+    <!-- LEAFLET -->
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+
+
+    <!-- =====================================================
+         COMPLETE JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /* =====================================================
+           CONFIGURATION
+        ====================================================== */
+
+        const API_URL = "http://localhost:5000";
+
+        let tourists = [];
+        let sosRequests = [];
+
+        let map = null;
+
+        let sosMarkers = {};
+
+        let currentSOS = null;
+
+        let sirenContext = null;
+        let sirenOscillator = null;
+        let sirenGain = null;
+        let sirenInterval = null;
+
+        let previousActiveSOS = new Set();
+
+        let lastSOSHash = "";
+
+
+        /* =====================================================
+           INITIALIZATION
+        ====================================================== */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            async function () {
+
+                initializeMap();
+
+                await loadTourists();
+
+                await loadSOS();
+
+                requestNotifications();
+
+                setInterval(
+                    loadSOS,
+                    2500
+                );
+
+                setInterval(
+                    loadTourists,
+                    10000
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           MAP
+        ====================================================== */
+
+        function initializeMap() {
+
+            const mapElement =
+                document.getElementById("adminMap");
+
+            if (!mapElement) return;
+
+            map = L.map("adminMap").setView(
+                [15.8497, 74.4977],
+                6
+            );
+
+            L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+                    maxZoom: 19,
+                    attribution:
+                        "&copy; OpenStreetMap contributors"
+                }
+            ).addTo(map);
+
+        }
+
+
+        /* =====================================================
+           LOAD TOURISTS
+        ====================================================== */
+
+        async function loadTourists(showToast = false) {
+
+            try {
+
+                const response =
+                    await fetch(
+                        API_URL + "/api/tourists"
+                    );
+
+                if (!response.ok) {
+                    throw new Error(
+                        "Tourist API error"
+                    );
+                }
+
+                const data =
+                    await response.json();
+
+                if (Array.isArray(data)) {
+
+                    tourists = data;
+
+                } else if (
+                    Array.isArray(data.tourists)
+                ) {
+
+                    tourists = data.tourists;
+
+                } else {
+
+                    tourists = [];
+
+                }
+
+                renderStatistics();
+
+                renderTouristTable();
+
+                if (showToast) {
+
+                    showToastMessage(
+                        "Tourist data refreshed",
+                        "success"
+                    );
+
+                }
+
+            } catch (error) {
+
+                console.error(
+                    "Tourist loading error:",
+                    error
+                );
+
+                document.getElementById(
+                    "touristTableBody"
+                ).innerHTML = `
+                    <tr>
+                        <td
+                            colspan="7"
+                            style="
+                                text-align:center;
+                                padding:40px;
+                                color:#ef4444;
+                            "
+                        >
+                            Unable to load tourist data.
+                            <br>
+                            <small>
+                                Check whether server.js is running
+                                on port 5000.
+                            </small>
+                        </td>
+                    </tr>
+                `;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           STATISTICS
+        ====================================================== */
+
+        function renderStatistics() {
+
+            const total =
+                tourists.length;
+
+            const indian =
+                tourists.filter(
+                    tourist =>
+                        String(
+                            tourist.touristType ||
+                            tourist.type ||
+                            ""
+                        ).toLowerCase()
+                        === "indian"
+                ).length;
+
+            const active =
+                sosRequests.filter(
+                    item =>
+                        item.status === "ACTIVE" ||
+                        item.status === "RESPONDING"
+                ).length;
+
+            const resolved =
+                sosRequests.filter(
+                    item =>
+                        item.status === "RESOLVED"
+                ).length;
+
+            document.getElementById(
+                "totalTourists"
+            ).textContent = total;
+
+            document.getElementById(
+                "indianTourists"
+            ).textContent = indian;
+
+            document.getElementById(
+                "activeSOSCount"
+            ).textContent = active;
+
+            document.getElementById(
+                "resolvedSOSCount"
+            ).textContent = resolved;
+
+        }
+
+
+        /* =====================================================
+           TOURIST TABLE
+        ====================================================== */
+
+        function renderTouristTable() {
+
+            const tbody =
+                document.getElementById(
+                    "touristTableBody"
+                );
+
+            if (!tourists.length) {
+
+                tbody.innerHTML = `
+                    <tr>
+                        <td
+                            colspan="7"
+                            style="
+                                text-align:center;
+                                padding:40px;
+                                color:#6b7280;
+                            "
+                        >
+                            No tourists registered.
+                        </td>
+                    </tr>
+                `;
+
+                return;
+            }
+
+            const search =
+                (
+                    document.getElementById(
+                        "touristSearch"
+                    ).value || ""
+                )
+                .toLowerCase()
+                .trim();
+
+            const filtered =
+                tourists.filter(
+                    tourist => {
+
+                        const text = [
+
+                            tourist.firstName,
+                            tourist.lastName,
+                            tourist.name,
+                            tourist.email,
+                            tourist.mobile,
+                            tourist.phone,
+                            tourist.country,
+                            tourist.touristType
+
+                        ]
+                        .filter(Boolean)
+                        .join(" ")
+                        .toLowerCase();
+
+                        return text.includes(search);
+
+                    }
+                );
+
+            if (!filtered.length) {
+
+                tbody.innerHTML = `
+                    <tr>
+                        <td
+                            colspan="7"
+                            style="
+                                text-align:center;
+                                padding:40px;
+                                color:#6b7280;
+                            "
+                        >
+                            No matching tourist found.
+                        </td>
+                    </tr>
+                `;
+
+                return;
+            }
+
+            tbody.innerHTML =
+                filtered.map(
+                    tourist =>
+                        createTouristRow(
+                            tourist
+                        )
+                ).join("");
+
+        }
+
+
+        function createTouristRow(tourist) {
+
+            const name =
+                getTouristName(tourist);
+
+            const photo =
+                getPhoto(tourist);
+
+            const type =
+                tourist.touristType ||
+                tourist.type ||
+                "Unknown";
+
+            const phone =
+                tourist.mobile ||
+                tourist.phone ||
+                tourist.mobileNumber ||
+                "Not available";
+
+            const country =
+                tourist.country ||
+                tourist.nationality ||
+                (
+                    String(type).toLowerCase()
+                    === "indian"
+                    ? "India"
+                    : "Not available"
+                );
+
+            const gender =
+                tourist.gender ||
+                "Not available";
+
+            const registered =
+                formatDate(
+                    tourist.createdAt ||
+                    tourist.registeredAt ||
+                    tourist.date ||
+                    tourist.registrationDate
+                );
+
+            return `
+                <tr
+                    onclick='openTouristModal(${safeJSON(tourist)})'
+                    style="cursor:pointer;"
+                >
+
+                    <td>
+
+                        <div class="table-user">
+
+                            <img
+                                class="table-photo"
+                                src="${escapeAttribute(photo)}"
+                                onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2234%22 height=%2234%22%3E%3Crect width=%2234%22 height=%2234%22 fill=%22%23e5e7eb%22/%3E%3Ctext x=%2217%22 y=%2222%22 text-anchor=%22middle%22 font-size=%2216%22%3E%F0%9F%91%A4%3C/text%3E%3C/svg%3E'"
+                            >
+
+                            <div>
+
+                                <strong>
+                                    ${escapeHTML(name)}
+                                </strong>
+
+                                <div
+                                    style="
+                                        color:#9ca3af;
+                                        font-size:9px;
+                                        margin-top:2px;
+                                    "
+                                >
+                                    ${escapeHTML(
+                                        tourist.email ||
+                                        "No email"
+                                    )}
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <td>
+                        <span class="type-badge">
+                            ${escapeHTML(type)}
+                        </span>
+                    </td>
+
+                    <td>
+                        ${escapeHTML(phone)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(country)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(gender)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(registered)}
+                    </td>
+
+                    <td>
+
+                        <span
+                            class="status-badge status-resolved"
+                        >
+                            REGISTERED
+                        </span>
+
+                    </td>
+
+                </tr>
+            `;
+
+        }
+
+
+        function filterTourists() {
+
+            renderTouristTable();
+
+        }
+
+
+        /* =====================================================
+           LOAD SOS
+        ====================================================== */
+
+        async function loadSOS() {
+
+            try {
+
+                const response =
+                    await fetch(
+                        API_URL + "/api/sos",
+                        {
+                            cache: "no-store"
+                        }
+                    );
+
+                if (!response.ok) {
+                    throw new Error(
+                        "SOS API error"
+                    );
+                }
+
+                const data =
+                    await response.json();
+
+                if (Array.isArray(data)) {
+
+                    sosRequests = data;
+
+                } else if (
+                    Array.isArray(data.sos)
+                ) {
+
+                    sosRequests = data.sos;
+
+                } else if (
+                    Array.isArray(data.requests)
+                ) {
+
+                    sosRequests = data.requests;
+
+                } else {
+
+                    sosRequests = [];
+
+                }
+
+                processNewSOS();
+
+                renderSOS();
+
+                updateSOSMap();
+
+                renderStatistics();
+
+            } catch (error) {
+
+                console.error(
+                    "SOS loading error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* =====================================================
+           PROCESS NEW SOS
+        ====================================================== */
+
+        function processNewSOS() {
+
+            const active =
+                sosRequests.filter(
+                    item =>
+                        item.status === "ACTIVE"
+                );
+
+            const currentIDs =
+                new Set(
+                    active.map(
+                        item => String(item.id)
+                    )
+                );
+
+            let newEmergency = false;
+
+            currentIDs.forEach(
+                id => {
+
+                    if (
+                        !previousActiveSOS.has(id)
+                    ) {
+
+                        newEmergency = true;
+
+                    }
+
+                }
+            );
+
+            if (newEmergency) {
+
+                startSiren();
+
+                showToastMessage(
+                    "🚨 NEW EMERGENCY SOS RECEIVED!",
+                    "error"
+                );
+
+                notifyAdmin(
+                    "🚨 Emergency SOS",
+                    "A tourist has activated SOS."
+                );
+
+            }
+
+            if (
+                active.length === 0
+            ) {
+
+                stopSiren();
+
+            }
+
+            previousActiveSOS =
+                currentIDs;
+
+        }
+
+
+        /* =====================================================
+           RENDER SOS
+        ====================================================== */
+
+        function renderSOS() {
+
+            const list =
+                document.getElementById(
+                    "sosList"
+                );
+
+            const active =
+                sosRequests.filter(
+                    item =>
+                        item.status === "ACTIVE" ||
+                        item.status === "RESPONDING"
+                );
+
+            document.getElementById(
+                "sosHeaderCount"
+            ).textContent =
+                active.length + " ACTIVE";
+
+            document.getElementById(
+                "sidebarSOSCount"
+            ).textContent =
+                active.length;
+
+            if (!active.length) {
+
+                list.innerHTML = `
+                    <div class="no-sos">
+
+                        <div class="no-sos-icon">
+                            🛡️
+                        </div>
+
+                        <strong>
+                            No active emergency
+                        </strong>
+
+                        <p style="
+                            margin-top:5px;
+                            font-size:11px;
+                        ">
+                            SOS alerts will appear here
+                            automatically.
+                        </p>
+
+                    </div>
+                `;
+
+                renderLatestSOS();
+
+                return;
+
+            }
+
+            list.innerHTML =
+                active
+                    .sort(
+                        (
+                            a,
+                            b
+                        ) =>
+                            new Date(
+                                b.createdAt ||
+                                b.timestamp ||
+                                0
+                            ) -
+                            new Date(
+                                a.createdAt ||
+                                a.timestamp ||
+                                0
+                            )
+                    )
+                    .map(
+                        item =>
+                            createSOSCard(item)
+                    )
+                    .join("");
+
+            renderLatestSOS();
+
+        }
+
+
+        function createSOSCard(sos) {
+
+            const name =
+                sos.name ||
+                getTouristName(sos) ||
+                "Unknown Tourist";
+
+            const phone =
+                sos.phone ||
+                sos.mobile ||
+                "Not available";
+
+            const type =
+                sos.touristType ||
+                "Tourist";
+
+            const photo =
+                getSOSPhoto(sos);
+
+            const status =
+                sos.status || "ACTIVE";
+
+            const latitude =
+                Number(
+                    sos.latitude
+                );
+
+            const longitude =
+                Number(
+                    sos.longitude
+                );
+
+            const time =
+                formatDateTime(
+                    sos.createdAt ||
+                    sos.timestamp
+                );
+
+            let statusClass =
+                "status-active";
+
+            if (
+                status === "RESPONDING"
+            ) {
+
+                statusClass =
+                    "status-responding";
+
+            }
+
+            let buttons = "";
+
+            if (
+                status === "ACTIVE"
+            ) {
+
+                buttons = `
+
+                    <button
+                        class="btn btn-warning"
+                        onclick="respondToSOS('${escapeJS(
+                            sos.id
+                        )}')"
+                    >
+                        🚨 I AM COMING
+                    </button>
+
+                `;
+
+            } else {
+
+                buttons = `
+
+                    <button
+                        class="btn btn-warning"
+                        onclick="respondToSOS('${escapeJS(
+                            sos.id
+                        )}')"
+                    >
+                        🔄 UPDATE RESPONSE
+                    </button>
+
+                `;
+
+            }
+
+            if (phone !== "Not available") {
+
+                buttons += `
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="callTourist('${escapeJS(
+                            phone
+                        )}')"
+                    >
+                        📞 CALL
+                    </button>
+
+                `;
+
+            }
+
+            buttons += `
+
+                <button
+                    class="btn btn-dark"
+                    onclick="focusSOS('${escapeJS(
+                        sos.id
+                    )}')"
+                >
+                    📍 LIVE LOCATION
+                </button>
+
+                <button
+                    class="btn btn-light"
+                    onclick="openSOSModal('${escapeJS(
+                        sos.id
+                    )}')"
+                >
+                    👁️ DETAILS
+                </button>
+
+                <button
+                    class="btn btn-success"
+                    onclick="resolveSOS('${escapeJS(
+                        sos.id
+                    )}')"
+                >
+                    ✅ RESOLVE
+                </button>
+
+            `;
+
+            return `
+
+                <div class="sos-card">
+
+                    <div class="sos-card-top">
+
+                        <div class="tourist-basic">
+
+                            <img
+                                src="${escapeAttribute(
+                                    photo
+                                )}"
+                                class="tourist-photo"
+                                onerror="
+                                    this.onerror=null;
+                                    this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2258%22 height=%2258%22%3E%3Crect width=%2258%22 height=%2258%22 fill=%22%23fee2e2%22/%3E%3Ctext x=%2229%22 y=%2236%22 text-anchor=%22middle%22 font-size=%2225%22%3E%F0%9F%91%A4%3C/text%3E%3C/svg%3E'
+                                "
+                            >
+
+                            <div>
+
+                                <h3>
+                                    ${escapeHTML(name)}
+                                </h3>
+
+                                <p>
+                                    🚨 SOS ID:
+                                    ${escapeHTML(
+                                        String(
+                                            sos.id ||
+                                            ""
+                                        )
+                                    )}
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <span
+                            class="
+                                status-badge
+                                ${statusClass}
+                            "
+                        >
+                            ${escapeHTML(status)}
+                        </span>
+
+                    </div>
+
+
+                    <div class="sos-info-grid">
+
+                        <div class="info-box">
+                            <small>Phone</small>
+                            <strong>
+                                ${escapeHTML(phone)}
+                            </strong>
+                        </div>
+
+                        <div class="info-box">
+                            <small>Tourist Type</small>
+                            <strong>
+                                ${escapeHTML(type)}
+                            </strong>
+                        </div>
+
+                        <div class="info-box">
+                            <small>Latitude</small>
+                            <strong>
+                                ${
+                                    Number.isFinite(
+                                        latitude
+                                    )
+                                    ? latitude.toFixed(6)
+                                    : "Unavailable"
+                                }
+                            </strong>
+                        </div>
+
+                        <div class="info-box">
+                            <small>Longitude</small>
+                            <strong>
+                                ${
+                                    Number.isFinite(
+                                        longitude
+                                    )
+                                    ? longitude.toFixed(6)
+                                    : "Unavailable"
+                                }
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="sos-message">
+
+                        <strong>
+                            Emergency Message:
+                        </strong>
+
+                        <br>
+
+                        ${
+                            escapeHTML(
+                                sos.message ||
+                                "Tourist activated emergency SOS."
+                            )
+                        }
+
+                    </div>
+
+
+                    <div
+                        style="
+                            font-size:10px;
+                            color:#9ca3af;
+                            margin-bottom:12px;
+                        "
+                    >
+                        🕒 ${escapeHTML(time)}
+                    </div>
+
+
+                    <div class="sos-actions">
+
+                        ${buttons}
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+
+
+        /* =====================================================
+           LATEST SOS INFORMATION
+        ====================================================== */
+
+        function renderLatestSOS() {
+
+            const container =
+                document.getElementById(
+                    "latestSOSInfo"
+                );
+
+            if (!sosRequests.length) {
+
+                container.innerHTML = `
+                    <div class="no-sos">
+
+                        <div class="no-sos-icon">
+                            📡
+                        </div>
+
+                        <strong>
+                            Waiting for SOS
+                        </strong>
+
+                        <p style="
+                            margin-top:5px;
+                            font-size:11px;
+                        ">
+                            Live emergency information
+                            will appear here.
+                        </p>
+
+                    </div>
+                `;
+
+                return;
+
+            }
+
+            const latest =
+                [...sosRequests]
+                    .sort(
+                        (
+                            a,
+                            b
+                        ) =>
+                            new Date(
+                                b.createdAt ||
+                                b.timestamp ||
+                                0
+                            ) -
+                            new Date(
+                                a.createdAt ||
+                                a.timestamp ||
+                                0
+                            )
+                    )[0];
+
+            const name =
+                latest.name ||
+                getTouristName(latest) ||
+                "Unknown Tourist";
+
+            container.innerHTML = `
+
+                <div
+                    style="
+                        padding:15px;
+                        background:#fff7ed;
+                        border-radius:12px;
+                        border:1px solid #fed7aa;
+                    "
+                >
+
+                    <div
+                        style="
+                            display:flex;
+                            align-items:center;
+                            gap:10px;
+                            margin-bottom:15px;
+                        "
+                    >
+
+                        <div
+                            style="
+                                width:44px;
+                                height:44px;
+                                background:#fee2e2;
+                                border-radius:12px;
+                                display:flex;
+                                align-items:center;
+                                justify-content:center;
+                                font-size:22px;
+                            "
+                        >
+                            🚨
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                ${escapeHTML(name)}
+                            </strong>
+
+                            <div
+                                style="
+                                    font-size:10px;
+                                    color:#6b7280;
+                                    margin-top:3px;
+                                "
+                            >
+                                ${escapeHTML(
+                                    latest.status ||
+                                    "UNKNOWN"
+                                )}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        style="
+                            display:grid;
+                            gap:8px;
+                        "
+                    >
+
+                        <div>
+                            <strong
+                                style="font-size:10px;"
+                            >
+                                MESSAGE
+                            </strong>
+
+                            <p
+                                style="
+                                    font-size:11px;
+                                    margin-top:3px;
+                                "
+                            >
+                                ${escapeHTML(
+                                    latest.message ||
+                                    "No message"
+                                )}
+                            </p>
+                        </div>
+
+
+                        <div>
+                            <strong
+                                style="font-size:10px;"
+                            >
+                                LOCATION
+                            </strong>
+
+                            <p
+                                style="
+                                    font-size:11px;
+                                    margin-top:3px;
+                                "
+                            >
+                                ${escapeHTML(
+                                    String(
+                                        latest.latitude ??
+                                        "N/A"
+                                    )
+                                )},
+                                ${escapeHTML(
+                                    String(
+                                        latest.longitude ??
+                                        "N/A"
+                                    )
+                                )}
+                            </p>
+                        </div>
+
+
+                        <div>
+                            <strong
+                                style="font-size:10px;"
+                            >
+                                TIME
+                            </strong>
+
+                            <p
+                                style="
+                                    font-size:11px;
+                                    margin-top:3px;
+                                "
+                            >
+                                ${escapeHTML(
+                                    formatDateTime(
+                                        latest.createdAt ||
+                                        latest.timestamp
+                                    )
+                                )}
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+            `;
+
+        }
+
+
+        /* =====================================================
+           SOS MAP
+        ====================================================== */
+
+        function updateSOSMap() {
+
+            if (!map) return;
+
+            const existingIDs =
+                new Set(
+                    Object.keys(
+                        sosMarkers
+                    )
+                );
+
+            sosRequests.forEach(
+                sos => {
+
+                    if (
+                        !Number.isFinite(
+                            Number(
+                                sos.latitude
+                            )
+                        ) ||
+                        !Number.isFinite(
+                            Number(
+                                sos.longitude
+                            )
+                        )
+                    ) {
+
+                        return;
+
+                    }
+
+                    const id =
+                        String(
+                            sos.id
+                        );
+
+                    const lat =
+                        Number(
+                            sos.latitude
+                        );
+
+                    const lng =
+                        Number(
+                            sos.longitude
+                        );
+
+                    const color =
+                        sos.status === "ACTIVE"
+                            ? "#ef4444"
+                            : sos.status === "RESPONDING"
+                                ? "#f59e0b"
+                                : "#10b981";
+
+                    const name =
+                        sos.name ||
+                        getTouristName(sos) ||
+                        "Tourist";
+
+                    if (
+                        sosMarkers[id]
+                    ) {
+
+                        sosMarkers[id]
+                            .setLatLng([
+                                lat,
+                                lng
+                            ]);
+
+                        sosMarkers[id]
+                            .setStyle({
+                                color: color,
+                                fillColor: color
+                            });
+
+                        sosMarkers[id]
+                            .setPopupContent(
+                                createMapPopup(
+                                    sos
+                                )
+                            );
+
+                    } else {
+
+                        const marker =
+                            L.circleMarker(
+                                [
+                                    lat,
+                                    lng
+                                ],
+                                {
+                                    radius:
+                                        sos.status ===
+                                        "ACTIVE"
+                                        ? 12
+                                        : 9,
+
+                                    color: color,
+
+                                    fillColor: color,
+
+                                    fillOpacity: .8,
+
+                                    weight: 3
+                                }
+                            );
+
+                        marker
+                            .addTo(map)
+                            .bindPopup(
+                                createMapPopup(
+                                    sos
+                                )
+                            );
+
+                        sosMarkers[id] =
+                            marker;
+
+                    }
+
+                    existingIDs.delete(
+                        id
+                    );
+
+                }
+            );
+
+            existingIDs.forEach(
+                id => {
+
+                    if (
+                        sosMarkers[id]
+                    ) {
+
+                        map.removeLayer(
+                            sosMarkers[id]
+                        );
+
+                        delete sosMarkers[id];
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        function createMapPopup(sos) {
+
+            const name =
+                sos.name ||
+                getTouristName(sos) ||
+                "Tourist";
+
+            return `
+
+                <div
+                    style="
+                        min-width:200px;
+                        font-family:Inter,sans-serif;
+                    "
+                >
+
+                    <strong
+                        style="
+                            font-size:14px;
+                        "
+                    >
+                        🚨 ${escapeHTML(name)}
+                    </strong>
+
+                    <hr>
+
+                    <div
+                        style="
+                            font-size:11px;
+                            line-height:1.8;
+                        "
+                    >
+
+                        <b>Status:</b>
+                        ${escapeHTML(
+                            sos.status ||
+                            "UNKNOWN"
+                        )}
+
+                        <br>
+
+                        <b>Phone:</b>
+                        ${escapeHTML(
+                            sos.phone ||
+                            sos.mobile ||
+                            "N/A"
+                        )}
+
+                        <br>
+
+                        <b>Latitude:</b>
+                        ${escapeHTML(
+                            String(
+                                sos.latitude ??
+                                "N/A"
+                            )
+                        )}
+
+                        <br>
+
+                        <b>Longitude:</b>
+                        ${escapeHTML(
+                            String(
+                                sos.longitude ??
+                                "N/A"
+                            )
+                        )}
+
+                    </div>
+
+                    <br>
+
+                    <button
+                        onclick="focusSOS('${escapeJS(
+                            sos.id
+                        )}')"
+                        style="
+                            border:none;
+                            background:#7c3aed;
+                            color:white;
+                            padding:7px 10px;
+                            border-radius:7px;
+                            cursor:pointer;
+                            font-size:10px;
+                        "
+                    >
+                        📍 Focus
+                    </button>
+
+                </div>
+
+            `;
+
+        }
+
+
+        function focusSOS(id) {
+
+            const sos =
+                sosRequests.find(
+                    item =>
+                        String(item.id) ===
+                        String(id)
+                );
+
+            if (!sos) return;
+
+            const lat =
+                Number(
+                    sos.latitude
+                );
+
+            const lng =
+                Number(
+                    sos.longitude
+                );
+
+            if (
+                !Number.isFinite(lat) ||
+                !Number.isFinite(lng)
+            ) {
+
+                showToastMessage(
+                    "Tourist GPS location is unavailable.",
+                    "warning"
+                );
+
+                return;
+
+            }
+
+            map.setView(
+                [
+                    lat,
+                    lng
+                ],
+                17,
+                {
+                    animate: true
+                }
+            );
+
+            if (
+                sosMarkers[
+                    String(id)
+                ]
+            ) {
+
+                sosMarkers[
+                    String(id)
+                ].openPopup();
+
+            }
+
+        }
+
+
+        function focusSOSMap() {
+
+            const active =
+                sosRequests.find(
+                    item =>
+                        item.status ===
+                            "ACTIVE" ||
+                        item.status ===
+                            "RESPONDING"
+                );
+
+            if (active) {
+
+                focusSOS(
+                    active.id
+                );
+
+            } else {
+
+                centerAllSOS();
+
+            }
+
+        }
+
+
+        function centerAllSOS() {
+
+            const points =
+                sosRequests
+                    .filter(
+                        item =>
+                            Number.isFinite(
+                                Number(
+                                    item.latitude
+                                )
+                            ) &&
+                            Number.isFinite(
+                                Number(
+                                    item.longitude
+                                )
+                            )
+                    )
+                    .map(
+                        item => [
+                            Number(
+                                item.latitude
+                            ),
+                            Number(
+                                item.longitude
+                            )
+                        ]
+                    );
+
+            if (!points.length) {
+
+                map.setView(
+                    [
+                        15.8497,
+                        74.4977
+                    ],
+                    6
+                );
+
+                return;
+
+            }
+
+            if (points.length === 1) {
+
+                map.setView(
+                    points[0],
+                    15
+                );
+
+                return;
+
+            }
+
+            map.fitBounds(
+                L.latLngBounds(points),
+                {
+                    padding: [
+                        40,
+                        40
+                    ]
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           RESPOND TO SOS
+        ====================================================== */
+
+        async function respondToSOS(id) {
+
+            const sos =
+                sosRequests.find(
+                    item =>
+                        String(item.id) ===
+                        String(id)
+                );
+
+            if (!sos) return;
+
+            try {
+
+                const response =
+                    await fetch(
+                        API_URL +
+                        "/api/sos/" +
+                        encodeURIComponent(id) +
+                        "/respond",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+
+                                adminName:
+                                    "Administrator",
+
+                                adminId:
+                                    "ADMIN",
+
+                                message:
+                                    "Admin is responding to your emergency."
+
+                            })
+                        }
+                    );
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Response request failed"
+                    );
+
+                }
+
+                stopSiren();
+
+                showToastMessage(
+                    "🚨 You are now responding to the tourist.",
+                    "success"
+                );
+
+                await loadSOS();
+
+            } catch (error) {
+
+                console.error(error);
+
+                showToastMessage(
+                    "Unable to send response.",
+                    "error"
+                );
+
+            }
+
+        }
+
+
+        /* =====================================================
+           RESOLVE SOS
+        ====================================================== */
+
+        async function resolveSOS(id) {
+
+            const confirmed =
+                confirm(
+                    "Are you sure you want to resolve this SOS?"
+                );
+
+            if (!confirmed) return;
+
+            try {
+
+                const response =
+                    await fetch(
+                        API_URL +
+                        "/api/sos/" +
+                        encodeURIComponent(id) +
+                        "/resolve",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+
+                                adminName:
+                                    "Administrator",
+
+                                adminId:
+                                    "ADMIN",
+
+                                message:
+                                    "Emergency resolved by admin."
+
+                            })
+                        }
+                    );
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Resolve request failed"
+                    );
+
+                }
+
+                showToastMessage(
+                    "SOS marked as resolved.",
+                    "success"
+                );
+
+                await loadSOS();
+
+            } catch (error) {
+
+                console.error(error);
+
+                showToastMessage(
+                    "Unable to resolve SOS.",
+                    "error"
+                );
+
+            }
+
+        }
+
+
+        /* =====================================================
+           CALL TOURIST
+        ====================================================== */
+
+        function callTourist(phone) {
+
+            if (!phone) {
+
+                showToastMessage(
+                    "Tourist phone number unavailable.",
+                    "warning"
+                );
+
+                return;
+
+            }
+
+            window.location.href =
+                "tel:" + phone;
+
+        }
+
+
+        /* =====================================================
+           SOS DETAILS MODAL
+        ====================================================== */
+
+        async function openSOSModal(id) {
+
+            const sos =
+                sosRequests.find(
+                    item =>
+                        String(item.id) ===
+                        String(id)
+                );
+
+            if (!sos) return;
+
+            currentSOS = sos;
+
+            // Use the registered tourist record first. If the tourist
+            // table has not loaded yet, fetch it once and continue.
+            let tourist =
+                findTouristForSOS(sos);
+
+            if (!tourist && sos.touristId) {
+
+                try {
+
+                    const response =
+                        await fetch(
+                            API_URL +
+                            '/api/tourists/' +
+                            encodeURIComponent(
+                                sos.touristId
+                            ),
+                            { cache: 'no-store' }
+                        );
+
+                    if (response.ok) {
+
+                        const data =
+                            await response.json();
+
+                        tourist =
+                            data.tourist ||
+                            data.data ||
+                            data;
+                    }
+
+                } catch (error) {
+
+                    console.warn(
+                        'Unable to fetch tourist photo:',
+                        error
+                    );
+                }
+            }
+
+            const merged = {
+                ...(tourist || {}),
+                ...sos
+            };
+
+            // Preserve every photo field from the registered record.
+            if (tourist) {
+                Object.keys(tourist).forEach(
+                    key => {
+                        if (
+                            merged[key] === undefined ||
+                            merged[key] === null ||
+                            merged[key] === ''
+                        ) {
+                            merged[key] = tourist[key];
+                        }
+                    }
+                );
+            }
+
+            const name =
+                sos.name ||
+                getTouristName(tourist || sos) ||
+                'Unknown Tourist';
+
+            const photo =
+                getSOSPhoto(
+                    tourist
+                        ? { ...sos, ...tourist }
+                        : sos
+                );
+
+            const photoCandidates =
+                getSOSPhotoCandidates(
+                    tourist
+                        ? { ...sos, ...tourist }
+                        : sos
+                );
+
+            document.getElementById(
+                'sosModalBody'
+            ).innerHTML = `
+
+                <div class="modal-grid">
+
+                    <div>
+
+                        <img
+                            id="sosModalTouristPhoto"
+                            src="${escapeAttribute(photo)}"
+                            class="modal-photo"
+                            alt="Tourist Photo"
+                        >
+
+                        <div style="
+                            margin-top:10px;
+                            text-align:center;
+                            font-size:10px;
+                            color:#6b7280;
+                        ">
+                            Registered Tourist Photo
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <h3
+                            style="
+                                margin-bottom:15px;
+                            "
+                        >
+                            ${escapeHTML(name)}
+                        </h3>
+
+                        <div class="detail-grid">
+
+                            ${detailItem('SOS ID', sos.id)}
+                            ${detailItem('Status', sos.status)}
+                            ${detailItem(
+                                'Phone',
+                                sos.phone || sos.mobile ||
+                                tourist?.mobile || tourist?.phone
+                            )}
+                            ${detailItem(
+                                'Email',
+                                sos.email || tourist?.email
+                            )}
+                            ${detailItem(
+                                'Tourist Type',
+                                sos.touristType ||
+                                tourist?.touristType ||
+                                tourist?.type
+                            )}
+                            ${detailItem(
+                                'Country',
+                                sos.country || tourist?.country
+                            )}
+                            ${detailItem('Latitude', sos.latitude)}
+                            ${detailItem('Longitude', sos.longitude)}
+                            ${detailItem(
+                                'Accuracy',
+                                sos.accuracy
+                                    ? sos.accuracy + ' meters'
+                                    : 'N/A'
+                            )}
+                            ${detailItem(
+                                'Created',
+                                formatDateTime(
+                                    sos.createdAt ||
+                                    sos.timestamp
+                                )
+                            )}
+                            ${detailItem(
+                                'Updated',
+                                formatDateTime(sos.updatedAt)
+                            )}
+                            ${detailItem(
+                                'Admin Response',
+                                sos.adminMessage ||
+                                sos.responseMessage ||
+                                'No response'
+                            )}
+
+                        </div>
+
+                        <div
+                            style="
+                                margin-top:15px;
+                                padding:13px;
+                                background:#fef2f2;
+                                border-radius:10px;
+                            "
+                        >
+
+                            <strong
+                                style="
+                                    font-size:10px;
+                                "
+                            >
+                                EMERGENCY MESSAGE
+                            </strong>
+
+                            <p
+                                style="
+                                    margin-top:6px;
+                                    font-size:12px;
+                                "
+                            >
+                                ${escapeHTML(
+                                    sos.message ||
+                                    'No message'
+                                )}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            `;
+
+            const image =
+                document.getElementById(
+                    'sosModalTouristPhoto'
+                );
+
+            if (image) {
+
+                let candidateIndex = 0;
+
+                image.onerror = function () {
+
+                    candidateIndex++;
+
+                    if (
+                        candidateIndex <
+                        photoCandidates.length
+                    ) {
+
+                        this.src =
+                            photoCandidates[candidateIndex];
+
+                        return;
+                    }
+
+                    this.onerror = null;
+                    this.src = getPhoto({});
+                };
+            }
+
+            document.getElementById(
+                'sosModal'
+            ).classList.add('show');
+
+        }
+
+
+        function closeSOSModal() {
+
+            document.getElementById(
+                "sosModal"
+            ).classList.remove("show");
+
+        }
+
+
+        /* =====================================================
+           TOURIST MODAL
+        ====================================================== */
+
+        function openTouristModal(tourist) {
+
+            const name =
+                getTouristName(
+                    tourist
+                );
+
+            const photo =
+                getPhoto(
+                    tourist
+                );
+
+            const type =
+                tourist.touristType ||
+                tourist.type ||
+                "Unknown";
+
+            document.getElementById(
+                "touristModalBody"
+            ).innerHTML = `
+
+                <div class="modal-grid">
+
+                    <div>
+
+                        <img
+                            src="${escapeAttribute(photo)}"
+                            class="modal-photo"
+                            onerror="
+                                this.style.display='none';
+                            "
+                        >
+
+                    </div>
+
+                    <div>
+
+                        <h3
+                            style="
+                                margin-bottom:15px;
+                            "
+                        >
+                            ${escapeHTML(name)}
+                        </h3>
+
+                        <div class="detail-grid">
+
+                            ${detailItem(
+                                "Tourist Type",
+                                type
+                            )}
+
+                            ${detailItem(
+                                "Gender",
+                                tourist.gender
+                            )}
+
+                            ${detailItem(
+                                "Mobile",
+                                tourist.mobile ||
+                                tourist.phone ||
+                                tourist.mobileNumber
+                            )}
+
+                            ${detailItem(
+                                "Email",
+                                tourist.email
+                            )}
+
+                            ${detailItem(
+                                "Country",
+                                tourist.country
+                            )}
+
+                            ${detailItem(
+                                "Aadhaar",
+                                tourist.aadhaar ||
+                                tourist.aadhaarNumber
+                            )}
+
+                            ${detailItem(
+                                "Passport",
+                                tourist.passport ||
+                                tourist.passportNumber
+                            )}
+
+                            ${detailItem(
+                                "State",
+                                tourist.state
+                            )}
+
+                            ${detailItem(
+                                "District",
+                                tourist.district
+                            )}
+
+                            ${detailItem(
+                                "City",
+                                tourist.city
+                            )}
+
+                            ${detailItem(
+                                "Registered",
+                                formatDateTime(
+                                    tourist.createdAt ||
+                                    tourist.registeredAt
+                                )
+                            )}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+            document.getElementById(
+                "touristModal"
+            ).classList.add("show");
+
+        }
+
+
+        function closeTouristModal() {
+
+            document.getElementById(
+                "touristModal"
+            ).classList.remove("show");
+
+        }
+
+
+        function detailItem(
+            label,
+            value
+        ) {
+
+            return `
+
+                <div class="detail-item">
+
+                    <small>
+                        ${escapeHTML(
+                            label
+                        )}
+                    </small>
+
+                    <strong>
+                        ${escapeHTML(
+                            value ??
+                            "Not available"
+                        )}
+                    </strong>
+
+                </div>
+
+            `;
+
+        }
+
+
+        /* =====================================================
+           SIREN
+        ====================================================== */
+
+        function startSiren() {
+
+            if (
+                sirenContext
+            ) {
+
+                return;
+
+            }
+
+            try {
+
+                sirenContext =
+                    new (
+                        window.AudioContext ||
+                        window.webkitAudioContext
+                    )();
+
+                sirenOscillator =
+                    sirenContext.createOscillator();
+
+                sirenGain =
+                    sirenContext.createGain();
+
+                sirenOscillator.type =
+                    "sawtooth";
+
+                sirenGain.gain.value =
+                    0.04;
+
+                sirenOscillator
+                    .connect(
+                        sirenGain
+                    );
+
+                sirenGain
+                    .connect(
+                        sirenContext.destination
+                    );
+
+                sirenOscillator.start();
+
+                let high = false;
+
+                sirenInterval =
+                    setInterval(
+                        () => {
+
+                            if (
+                                !sirenOscillator ||
+                                !sirenContext
+                            ) {
+                                return;
+                            }
+
+                            high =
+                                !high;
+
+                            sirenOscillator.frequency
+                                .setTargetAtTime(
+                                    high
+                                        ? 1100
+                                        : 650,
+                                    sirenContext.currentTime,
+                                    0.03
+                                );
+
+                        },
+                        450
+                    );
+
+            } catch (error) {
+
+                console.error(
+                    "Siren error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        function stopSiren() {
+
+            if (
+                sirenInterval
+            ) {
+
+                clearInterval(
+                    sirenInterval
+                );
+
+                sirenInterval =
+                    null;
+
+            }
+
+            try {
+
+                if (
+                    sirenOscillator
+                ) {
+
+                    sirenOscillator.stop();
+
+                }
+
+            } catch (e) {}
+
+            try {
+
+                if (
+                    sirenContext
+                ) {
+
+                    sirenContext.close();
+
+                }
+
+            } catch (e) {}
+
+            sirenOscillator =
+                null;
+
+            sirenGain =
+                null;
+
+            sirenContext =
+                null;
+
+        }
+
+
+        function testSiren() {
+
+            startSiren();
+
+            showToastMessage(
+                "🔊 Siren test started.",
+                "warning"
+            );
+
+            setTimeout(
+                () => {
+
+                    stopSiren();
+
+                    showToastMessage(
+                        "Siren test stopped.",
+                        "success"
+                    );
+
+                },
+                5000
+            );
+
+        }
+
+
+        /* =====================================================
+           NOTIFICATIONS
+        ====================================================== */
+
+        async function requestNotifications() {
+
+            if (
+                "Notification" in window &&
+                Notification.permission ===
+                    "default"
+            ) {
+
+                try {
+
+                    await Notification.requestPermission();
+
+                } catch (error) {
+
+                    console.log(
+                        "Notification permission error"
+                    );
+
+                }
+
+            }
+
+        }
+
+
+        function notifyAdmin(
+            title,
+            message
+        ) {
+
+            if (
+                "Notification" in window &&
+                Notification.permission ===
+                    "granted"
+            ) {
+
+                try {
+
+                    new Notification(
+                        title,
+                        {
+                            body: message,
+                            icon:
+                                "data:image/svg+xml," +
+                                "%3Csvg xmlns='http://www.w3.org/2000/svg' " +
+                                "viewBox='0 0 100 100'%3E" +
+                                "%3Ctext y='.9em' font-size='90'%3E🚨%3C/text%3E" +
+                                "%3C/svg%3E"
+                        }
+                    );
+
+                } catch (error) {
+
+                    console.log(
+                        "Notification error:",
+                        error
+                    );
+
+                }
+
+            }
+
+        }
+
+
+        /* =====================================================
+           TOAST
+        ====================================================== */
+
+        function showToastMessage(
+            message,
+            type = "success"
+        ) {
+
+            const container =
+                document.getElementById(
+                    "toastContainer"
+                );
+
+            const toast =
+                document.createElement(
+                    "div"
+                );
+
+            toast.className =
+                "toast " + type;
+
+            toast.innerHTML =
+                message;
+
+            container.appendChild(
+                toast
+            );
+
+            setTimeout(
+                () => {
+
+                    toast.style.opacity =
+                        "0";
+
+                    toast.style.transform =
+                        "translateX(100px)";
+
+                    setTimeout(
+                        () =>
+                            toast.remove(),
+                        300
+                    );
+
+                },
+                3500
+            );
+
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ====================================================== */
+
+        function scrollToSection(
+            id
+        ) {
+
+            const element =
+                document.getElementById(
+                    id
+                );
+
+            if (!element) return;
+
+            element.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+            document
+                .getElementById(
+                    "sidebar"
+                )
+                .classList.remove(
+                    "open"
+                );
+
+        }
+
+
+        function toggleSidebar() {
+
+            document
+                .getElementById(
+                    "sidebar"
+                )
+                .classList.toggle(
+                    "open"
+                );
+
+        }
+
+
+        /* =====================================================
+           HELPERS
+        ====================================================== */
+
+        function getTouristName(
+            tourist
+        ) {
+
+            if (
+                tourist.name
+            ) {
+
+                return tourist.name;
+
+            }
+
+            const first =
+                tourist.firstName ||
+                tourist.firstname ||
+                "";
+
+            const last =
+                tourist.lastName ||
+                tourist.lastname ||
+                "";
+
+            const full =
+                (
+                    first +
+                    " " +
+                    last
+                ).trim();
+
+            return (
+                full ||
+                "Unknown Tourist"
+            );
+
+        }
+
+
+        function getPhoto(
+            object
+        ) {
+
+            object = object || {};
+
+            // Prefer the verified/live face photo first.
+            // Registration projects can use different field names,
+            // so all common photo fields are checked.
+            const candidates = [
+                object.facePhoto,
+                object.faceImage,
+                object.livePhoto,
+                object.capturedPhoto,
+                object.photo,
+                object.photoData,
+                object.profilePhoto,
+                object.profileImage,
+                object.image,
+                object.photoUrl,
+                object.imageUrl
+            ];
+
+            let photo =
+                candidates.find(
+                    value =>
+                        value !== undefined &&
+                        value !== null &&
+                        String(value).trim() !== ''
+                );
+
+            if (!photo) {
+
+                return (
+                    "data:image/svg+xml," +
+                    "%3Csvg xmlns='http://www.w3.org/2000/svg' " +
+                    "width='200' height='200'%3E" +
+                    "%3Crect width='200' height='200' " +
+                    "fill='%23e5e7eb'/%3E" +
+                    "%3Ctext x='100' y='115' " +
+                    "text-anchor='middle' " +
+                    "font-size='70'%3E%F0%9F%91%A4%3C/text%3E" +
+                    "%3C/svg%3E"
+                );
+
+            }
+
+            photo = String(photo).trim();
+
+            if (photo.startsWith('data:')) {
+                return photo;
+            }
+
+            if (
+                photo.startsWith('http://') ||
+                photo.startsWith('https://') ||
+                photo.startsWith('blob:')
+            ) {
+                return photo;
+            }
+
+            // Server-relative path: /uploads/photo.jpg
+            if (photo.startsWith('/')) {
+                return API_URL + photo;
+            }
+
+            // Relative upload/file path: uploads/photo.jpg,
+            // images/photo.jpg, photo.jpg, etc.
+            return API_URL + '/' + photo.replace(/^\/+/, '');
+
+        }
+
+
+        // Find the latest registered tourist record belonging to an SOS.
+        // This is important because an SOS may contain only a copy of the
+        // tourist data, while the actual verified registration photo is
+        // stored in the tourist record.
+        function findTouristForSOS(sos) {
+
+            if (!sos || !Array.isArray(tourists)) {
+                return null;
+            }
+
+            const sosIds = [
+                sos.touristId,
+                sos.userId,
+                sos.tourist_id,
+                sos.user_id
+            ]
+                .filter(
+                    value =>
+                        value !== undefined &&
+                        value !== null &&
+                        String(value).trim() !== ''
+                )
+                .map(value => String(value));
+
+            if (!sosIds.length) {
+                return null;
+            }
+
+            return tourists.find(
+                tourist => {
+
+                    const touristIds = [
+                        tourist.id,
+                        tourist._id,
+                        tourist.touristId,
+                        tourist.userId
+                    ]
+                        .filter(
+                            value =>
+                                value !== undefined &&
+                                value !== null
+                        )
+                        .map(value => String(value));
+
+                    return touristIds.some(
+                        id => sosIds.includes(id)
+                    );
+
+                }
+            ) || null;
+        }
+
+
+        function getSOSPhoto(sos) {
+
+            const tourist =
+                findTouristForSOS(sos);
+
+            // Registered tourist photo has priority because it is the
+            // source record for the person's verified profile.
+            if (tourist) {
+
+                const registeredPhoto =
+                    getPhoto(tourist);
+
+                if (registeredPhoto) {
+                    return registeredPhoto;
+                }
+            }
+
+            return getPhoto(sos);
+        }
+
+
+        function getSOSPhotoCandidates(sos) {
+
+            const tourist =
+                findTouristForSOS(sos);
+
+            const objects =
+                tourist
+                    ? [tourist, sos]
+                    : [sos];
+
+            const result = [];
+
+            objects.forEach(
+                object => {
+
+                    [
+                        object.facePhoto,
+                        object.faceImage,
+                        object.livePhoto,
+                        object.capturedPhoto,
+                        object.photo,
+                        object.photoData,
+                        object.profilePhoto,
+                        object.profileImage,
+                        object.image,
+                        object.photoUrl,
+                        object.imageUrl
+                    ].forEach(
+                        value => {
+                            if (
+                                value !== undefined &&
+                                value !== null &&
+                                String(value).trim() !== ''
+                            ) {
+                                const url =
+                                    getPhoto({
+                                        photo: value
+                                    });
+
+                                if (
+                                    url &&
+                                    !result.includes(url)
+                                ) {
+                                    result.push(url);
+                                }
+                            }
+                        }
+                    );
+                }
+            );
+
+            return result;
+        }
+
+
+        function formatDate(
+            value
+        ) {
+
+            if (!value) {
+
+                return "Not available";
+
+            }
+
+            const date =
+                new Date(value);
+
+            if (
+                Number.isNaN(
+                    date.getTime()
+                )
+            ) {
+
+                return String(
+                    value
+                );
+
+            }
+
+            return date.toLocaleDateString(
+                "en-IN"
+            );
+
+        }
+
+
+        function formatDateTime(
+            value
+        ) {
+
+            if (!value) {
+
+                return "Not available";
+
+            }
+
+            const date =
+                new Date(value);
+
+            if (
+                Number.isNaN(
+                    date.getTime()
+                )
+            ) {
+
+                return String(
+                    value
+                );
+
+            }
+
+            return date.toLocaleString(
+                "en-IN",
+                {
+                    dateStyle:
+                        "medium",
+                    timeStyle:
+                        "short"
+                }
+            );
+
+        }
+
+
+        function escapeHTML(
+            value
+        ) {
+
+            if (
+                value === null ||
+                value === undefined
+            ) {
+
+                return "";
+
+            }
+
+            return String(
+                value
+            )
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+            .replace(
+                /</g,
+                "&lt;"
+            )
+            .replace(
+                />/g,
+                "&gt;"
+            )
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+        }
+
+
+        function escapeAttribute(
+            value
+        ) {
+
+            return escapeHTML(
+                value
+            );
+
+        }
+
+
+        function escapeJS(
+            value
+        ) {
+
+            return String(
+                value ?? ""
+            )
+            .replace(
+                /\\/g,
+                "\\\\"
+            )
+            .replace(
+                /'/g,
+                "\\'"
+            )
+            .replace(
+                /"/g,
+                '\\"'
+            )
+            .replace(
+                /\n/g,
+                "\\n"
+            )
+            .replace(
+                /\r/g,
+                "\\r"
+            );
+
+        }
+
+
+        function safeJSON(
+            object
+        ) {
+
+            return JSON.stringify(
+                object
+            )
+            .replace(
+                /'/g,
+                "&#39;"
+            );
+
+        }
+
+
+        /* =====================================================
+           CLOSE MODALS ON OUTSIDE CLICK
+        ====================================================== */
+
+        document.addEventListener(
+            "click",
+            function(event) {
+
+                const touristModal =
+                    document.getElementById(
+                        "touristModal"
+                    );
+
+                const sosModal =
+                    document.getElementById(
+                        "sosModal"
+                    );
+
+                if (
+                    event.target ===
+                    touristModal
+                ) {
+
+                    closeTouristModal();
+
+                }
+
+                if (
+                    event.target ===
+                    sosModal
+                ) {
+
+                    closeSOSModal();
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           KEYBOARD ESCAPE
+        ====================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key ===
+                    "Escape"
+                ) {
+
+                    closeTouristModal();
+
+                    closeSOSModal();
+
+                }
+
+            }
+        );
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,3904 @@
+[
+  {
+    "name": "Mysuru Palace",
+    "state": "Karnataka",
+    "region": "South India",
+    "lat": 12.3052,
+    "lon": 76.6552,
+    "type": "Heritage",
+    "bestMonths": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Moderate",
+    "bestFor": "Heritage, culture, photography",
+    "highlights": [
+      "Mysuru Palace",
+      "Devaraja Market",
+      "Chamundi Hill"
+    ],
+    "food": [
+      "Mysuru pak",
+      "South Indian breakfast"
+    ],
+    "imageSearch": "Mysuru Palace Karnataka India",
+    "id": "mysuru-palace",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Coorg (Kodagu)",
+    "state": "Karnataka",
+    "region": "South India",
+    "lat": 12.3375,
+    "lon": 75.8069,
+    "type": "Hills & Nature",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate",
+    "bestFor": "Coffee, hills, waterfalls",
+    "highlights": [
+      "Abbey Falls",
+      "Raja's Seat",
+      "Coffee estates"
+    ],
+    "food": [
+      "Pandi curry",
+      "Kodagu coffee"
+    ],
+    "imageSearch": "Coorg Kodagu Karnataka India",
+    "id": "coorg-kodagu",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Chikkamagaluru",
+    "state": "Karnataka",
+    "region": "South India",
+    "lat": 13.3161,
+    "lon": 75.772,
+    "type": "Hills & Nature",
+    "bestMonths": [
+      9,
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate",
+    "bestFor": "Coffee estates, trekking",
+    "highlights": [
+      "Mullayanagiri",
+      "Baba Budangiri",
+      "Coffee plantations"
+    ],
+    "food": [
+      "Malnad cuisine",
+      "Coffee"
+    ],
+    "imageSearch": "Chikkamagaluru Karnataka India",
+    "id": "chikkamagaluru",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Hampi",
+    "state": "Karnataka",
+    "region": "South India",
+    "lat": 15.335,
+    "lon": 76.46,
+    "type": "Heritage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Ancient ruins, history",
+    "highlights": [
+      "Virupaksha Temple",
+      "Vittala Temple",
+      "Tungabhadra River"
+    ],
+    "food": [
+      "Local Karnataka meals"
+    ],
+    "imageSearch": "Hampi Karnataka India",
+    "id": "hampi",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Gokarna",
+    "state": "Karnataka",
+    "region": "South India",
+    "lat": 14.5479,
+    "lon": 74.3188,
+    "type": "Beach",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Beaches, relaxation",
+    "highlights": [
+      "Om Beach",
+      "Kudle Beach",
+      "Mahabaleshwar Temple"
+    ],
+    "food": [
+      "Seafood",
+      "Karnataka coastal cuisine"
+    ],
+    "imageSearch": "Gokarna Karnataka India",
+    "id": "gokarna",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Dandeli",
+    "state": "Karnataka",
+    "region": "South India",
+    "lat": 15.2474,
+    "lon": 74.6247,
+    "type": "Adventure & Nature",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate",
+    "bestFor": "River activities, forests",
+    "highlights": [
+      "Kali River",
+      "Dandeli Wildlife Sanctuary",
+      "Syntheri Rocks"
+    ],
+    "food": [
+      "North Karnataka cuisine"
+    ],
+    "imageSearch": "Dandeli Karnataka India",
+    "id": "dandeli",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Jog Falls",
+    "state": "Karnataka",
+    "region": "South India",
+    "lat": 14.2296,
+    "lon": 74.811,
+    "type": "Waterfall",
+    "bestMonths": [
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget",
+    "bestFor": "Waterfalls, monsoon scenery",
+    "highlights": [
+      "Jog Falls viewpoint",
+      "Sharavathi Valley"
+    ],
+    "food": [
+      "Malnad cuisine"
+    ],
+    "imageSearch": "Jog Falls Karnataka India",
+    "id": "jog-falls",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Udupi",
+    "state": "Karnataka",
+    "region": "South India",
+    "lat": 13.3409,
+    "lon": 74.7421,
+    "type": "Coastal & Culture",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Temples, beaches, food",
+    "highlights": [
+      "Sri Krishna Temple",
+      "Malpe Beach",
+      "St Mary's Island"
+    ],
+    "food": [
+      "Udupi cuisine",
+      "Neer dosa"
+    ],
+    "imageSearch": "Udupi Karnataka India",
+    "id": "udupi",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Mangaluru",
+    "state": "Karnataka",
+    "region": "South India",
+    "lat": 12.9141,
+    "lon": 74.856,
+    "type": "Coastal & Culture",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Coast, temples, food",
+    "highlights": [
+      "Panambur Beach",
+      "Kadri Temple",
+      "Sultan Battery"
+    ],
+    "food": [
+      "Mangalorean cuisine",
+      "Neer dosa"
+    ],
+    "imageSearch": "Mangaluru Karnataka India",
+    "id": "mangaluru",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Bengaluru",
+    "state": "Karnataka",
+    "region": "South India",
+    "lat": 12.9716,
+    "lon": 77.5946,
+    "type": "City & Culture",
+    "bestMonths": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      9,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate",
+    "bestFor": "City breaks, food, technology",
+    "highlights": [
+      "Lalbagh",
+      "Cubbon Park",
+      "Bengaluru Palace"
+    ],
+    "food": [
+      "Bengaluru-style dosa",
+      "South Indian meals"
+    ],
+    "imageSearch": "Bengaluru Karnataka India",
+    "id": "bengaluru",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Munnar",
+    "state": "Kerala",
+    "region": "South India",
+    "lat": 10.0889,
+    "lon": 77.0595,
+    "type": "Hills & Tea",
+    "bestMonths": [
+      9,
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate",
+    "bestFor": "Tea gardens, hills",
+    "highlights": [
+      "Tea Museum",
+      "Eravikulam National Park",
+      "Mattupetty Dam"
+    ],
+    "food": [
+      "Kerala cuisine",
+      "Appam and stew"
+    ],
+    "imageSearch": "Munnar Kerala India",
+    "id": "munnar",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Wayanad",
+    "state": "Kerala",
+    "region": "South India",
+    "lat": 11.6854,
+    "lon": 76.132,
+    "type": "Hills & Nature",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate",
+    "bestFor": "Forests, caves, waterfalls",
+    "highlights": [
+      "Edakkal Caves",
+      "Soochipara Falls",
+      "Banasura Sagar Dam"
+    ],
+    "food": [
+      "Kerala cuisine"
+    ],
+    "imageSearch": "Wayanad Kerala India",
+    "id": "wayanad",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Alappuzha",
+    "state": "Kerala",
+    "region": "South India",
+    "lat": 9.4981,
+    "lon": 76.3388,
+    "type": "Backwaters",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Moderate",
+    "bestFor": "Backwaters, houseboats",
+    "highlights": [
+      "Alappuzha backwaters",
+      "Houseboat cruise"
+    ],
+    "food": [
+      "Kerala seafood",
+      "Appam"
+    ],
+    "imageSearch": "Alappuzha Alleppey Kerala India",
+    "id": "alappuzha",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Varkala",
+    "state": "Kerala",
+    "region": "South India",
+    "lat": 8.7379,
+    "lon": 76.7163,
+    "type": "Beach",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Cliffs, beach, wellness",
+    "highlights": [
+      "Varkala Cliff",
+      "Papanasam Beach",
+      "Janardhana Swamy Temple"
+    ],
+    "food": [
+      "Kerala seafood",
+      "Vegetarian Kerala meals"
+    ],
+    "imageSearch": "Varkala Kerala India",
+    "id": "varkala",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Kochi",
+    "state": "Kerala",
+    "region": "South India",
+    "lat": 9.9312,
+    "lon": 76.2673,
+    "type": "City & Heritage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "Heritage, food, art",
+    "highlights": [
+      "Fort Kochi",
+      "Chinese fishing nets",
+      "Mattancherry"
+    ],
+    "food": [
+      "Kerala seafood",
+      "Appam and stew"
+    ],
+    "imageSearch": "Kochi Fort Kochi Kerala India",
+    "id": "kochi",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Thekkady",
+    "state": "Kerala",
+    "region": "South India",
+    "lat": 9.603,
+    "lon": 77.161,
+    "type": "Wildlife & Nature",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "Wildlife, spice plantations",
+    "highlights": [
+      "Periyar Tiger Reserve",
+      "Periyar Lake",
+      "Spice gardens"
+    ],
+    "food": [
+      "Kerala cuisine"
+    ],
+    "imageSearch": "Thekkady Periyar Kerala India",
+    "id": "thekkady",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Ooty",
+    "state": "Tamil Nadu",
+    "region": "South India",
+    "lat": 11.4064,
+    "lon": 76.6932,
+    "type": "Hill Station",
+    "bestMonths": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      9,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate",
+    "bestFor": "Cool weather, gardens",
+    "highlights": [
+      "Ooty Lake",
+      "Botanical Garden",
+      "Nilgiri Mountain Railway"
+    ],
+    "food": [
+      "Ooty chocolates",
+      "South Indian food"
+    ],
+    "imageSearch": "Ooty Tamil Nadu India",
+    "id": "ooty",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Kodaikanal",
+    "state": "Tamil Nadu",
+    "region": "South India",
+    "lat": 10.2381,
+    "lon": 77.4892,
+    "type": "Hill Station",
+    "bestMonths": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      9,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate",
+    "bestFor": "Lakes, viewpoints, forests",
+    "highlights": [
+      "Kodaikanal Lake",
+      "Coaker's Walk",
+      "Pillar Rocks"
+    ],
+    "food": [
+      "Homemade chocolates",
+      "South Indian food"
+    ],
+    "imageSearch": "Kodaikanal Tamil Nadu India",
+    "id": "kodaikanal",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Madurai",
+    "state": "Tamil Nadu",
+    "region": "South India",
+    "lat": 9.9252,
+    "lon": 78.1198,
+    "type": "Heritage",
+    "bestMonths": [
+      1,
+      2,
+      3,
+      4,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Temples, culture",
+    "highlights": [
+      "Meenakshi Amman Temple",
+      "Thirumalai Nayakkar Palace"
+    ],
+    "food": [
+      "Jigarthanda",
+      "Parotta"
+    ],
+    "imageSearch": "Madurai Tamil Nadu India",
+    "id": "madurai",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Rameswaram",
+    "state": "Tamil Nadu",
+    "region": "South India",
+    "lat": 9.2876,
+    "lon": 79.3129,
+    "type": "Coastal & Heritage",
+    "bestMonths": [
+      1,
+      2,
+      3,
+      4,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Temples, coast",
+    "highlights": [
+      "Ramanathaswamy Temple",
+      "Pamban Bridge",
+      "Dhanushkodi"
+    ],
+    "food": [
+      "Tamil coastal cuisine"
+    ],
+    "imageSearch": "Rameswaram Tamil Nadu India",
+    "id": "rameswaram",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Chennai",
+    "state": "Tamil Nadu",
+    "region": "South India",
+    "lat": 13.0827,
+    "lon": 80.2707,
+    "type": "City & Beach",
+    "bestMonths": [
+      1,
+      2,
+      3,
+      4,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "City, beaches, culture",
+    "highlights": [
+      "Marina Beach",
+      "Kapaleeshwarar Temple",
+      "Fort St George"
+    ],
+    "food": [
+      "Idli dosa",
+      "Chennai street food"
+    ],
+    "imageSearch": "Chennai Tamil Nadu India",
+    "id": "chennai",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Thanjavur",
+    "state": "Tamil Nadu",
+    "region": "South India",
+    "lat": 10.787,
+    "lon": 79.1378,
+    "type": "Heritage",
+    "bestMonths": [
+      1,
+      2,
+      3,
+      4,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Temple architecture, art",
+    "highlights": [
+      "Brihadisvara Temple",
+      "Thanjavur Palace"
+    ],
+    "food": [
+      "Tamil meals"
+    ],
+    "imageSearch": "Thanjavur Brihadisvara Temple Tamil Nadu India",
+    "id": "thanjavur",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Visakhapatnam",
+    "state": "Andhra Pradesh",
+    "region": "South India",
+    "lat": 17.6868,
+    "lon": 83.2185,
+    "type": "Beach & City",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "Beaches, viewpoints",
+    "highlights": [
+      "RK Beach",
+      "Kailasagiri",
+      "INS Kurusura"
+    ],
+    "food": [
+      "Andhra seafood",
+      "Pulihora"
+    ],
+    "imageSearch": "Visakhapatnam Andhra Pradesh India",
+    "id": "visakhapatnam",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Araku Valley",
+    "state": "Andhra Pradesh",
+    "region": "South India",
+    "lat": 18.3273,
+    "lon": 82.8736,
+    "type": "Hills & Nature",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "Valleys, coffee, tribal culture",
+    "highlights": [
+      "Borra Caves",
+      "Araku viewpoints",
+      "Coffee plantations"
+    ],
+    "food": [
+      "Araku coffee",
+      "Andhra cuisine"
+    ],
+    "imageSearch": "Araku Valley Andhra Pradesh India",
+    "id": "araku-valley",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Tirupati",
+    "state": "Andhra Pradesh",
+    "region": "South India",
+    "lat": 13.6288,
+    "lon": 79.4192,
+    "type": "Pilgrimage & Culture",
+    "bestMonths": [
+      1,
+      2,
+      3,
+      4,
+      9,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Temple visit, culture",
+    "highlights": [
+      "Tirumala Temple",
+      "Kapila Theertham"
+    ],
+    "food": [
+      "Andhra meals",
+      "Laddu"
+    ],
+    "imageSearch": "Tirupati Tirumala Andhra Pradesh India",
+    "id": "tirupati",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Hyderabad",
+    "state": "Telangana",
+    "region": "South India",
+    "lat": 17.385,
+    "lon": 78.4867,
+    "type": "City & Heritage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate",
+    "bestFor": "History, food, city",
+    "highlights": [
+      "Charminar",
+      "Golconda Fort",
+      "Hussain Sagar"
+    ],
+    "food": [
+      "Hyderabadi biryani",
+      "Haleem"
+    ],
+    "imageSearch": "Hyderabad Telangana India",
+    "id": "hyderabad",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Warangal",
+    "state": "Telangana",
+    "region": "South India",
+    "lat": 17.9689,
+    "lon": 79.5941,
+    "type": "Heritage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget",
+    "bestFor": "Temples, history",
+    "highlights": [
+      "Warangal Fort",
+      "Thousand Pillar Temple",
+      "Ramappa Temple"
+    ],
+    "food": [
+      "Telangana cuisine"
+    ],
+    "imageSearch": "Warangal Telangana India",
+    "id": "warangal",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Mumbai",
+    "state": "Maharashtra",
+    "region": "West India",
+    "lat": 19.076,
+    "lon": 72.8777,
+    "type": "City & Coast",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate–Premium",
+    "bestFor": "City, food, coast",
+    "highlights": [
+      "Gateway of India",
+      "Marine Drive",
+      "Elephanta Caves"
+    ],
+    "food": [
+      "Vada pav",
+      "Pav bhaji"
+    ],
+    "imageSearch": "Mumbai Maharashtra India",
+    "id": "mumbai",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Lonavala",
+    "state": "Maharashtra",
+    "region": "West India",
+    "lat": 18.7546,
+    "lon": 73.4062,
+    "type": "Hills & Waterfalls",
+    "bestMonths": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Monsoon, hills, forts",
+    "highlights": [
+      "Tiger Point",
+      "Bhushi Dam",
+      "Rajmachi"
+    ],
+    "food": [
+      "Maharashtrian snacks"
+    ],
+    "imageSearch": "Lonavala Maharashtra India",
+    "id": "lonavala",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Mahabaleshwar",
+    "state": "Maharashtra",
+    "region": "West India",
+    "lat": 17.9307,
+    "lon": 73.6477,
+    "type": "Hill Station",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "Hills, viewpoints, strawberries",
+    "highlights": [
+      "Arthur's Seat",
+      "Venna Lake",
+      "Mapro Garden"
+    ],
+    "food": [
+      "Strawberries",
+      "Maharashtrian food"
+    ],
+    "imageSearch": "Mahabaleshwar Maharashtra India",
+    "id": "mahabaleshwar",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Nashik",
+    "state": "Maharashtra",
+    "region": "West India",
+    "lat": 19.9975,
+    "lon": 73.7898,
+    "type": "Culture & Nature",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Moderate",
+    "bestFor": "Temples, vineyards, nature",
+    "highlights": [
+      "Trimbakeshwar",
+      "Sula area",
+      "Godavari ghats"
+    ],
+    "food": [
+      "Maharashtrian cuisine"
+    ],
+    "imageSearch": "Nashik Maharashtra India",
+    "id": "nashik",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Chhatrapati Sambhajinagar",
+    "state": "Maharashtra",
+    "region": "West India",
+    "lat": 19.8762,
+    "lon": 75.3433,
+    "type": "Heritage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "Caves, forts, heritage",
+    "highlights": [
+      "Ajanta Caves",
+      "Ellora Caves",
+      "Bibi Ka Maqbara"
+    ],
+    "food": [
+      "Maharashtrian cuisine"
+    ],
+    "imageSearch": "Aurangabad Chhatrapati Sambhajinagar Maharashtra India",
+    "id": "chhatrapati-sambhajinagar",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Pune",
+    "state": "Maharashtra",
+    "region": "West India",
+    "lat": 18.5204,
+    "lon": 73.8567,
+    "type": "City & Culture",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "Culture, food, nearby hills",
+    "highlights": [
+      "Shaniwar Wada",
+      "Aga Khan Palace",
+      "Sinhagad"
+    ],
+    "food": [
+      "Misal pav",
+      "Maharashtrian thali"
+    ],
+    "imageSearch": "Pune Maharashtra India",
+    "id": "pune",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Goa",
+    "state": "Goa",
+    "region": "West India",
+    "lat": 15.2993,
+    "lon": 74.124,
+    "type": "Beach",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "idealDays": "3–5 days",
+    "budget": "Moderate–Premium",
+    "bestFor": "Beaches, heritage, nightlife",
+    "highlights": [
+      "Baga/Calangute area",
+      "Old Goa",
+      "Palolem"
+    ],
+    "food": [
+      "Goan seafood",
+      "Bebinca"
+    ],
+    "imageSearch": "Goa India beaches",
+    "id": "goa",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Dudhsagar Falls",
+    "state": "Goa",
+    "region": "West India",
+    "lat": 15.3144,
+    "lon": 74.3144,
+    "type": "Waterfall & Nature",
+    "bestMonths": [
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "idealDays": "1 day",
+    "budget": "Moderate",
+    "bestFor": "Waterfall, monsoon nature",
+    "highlights": [
+      "Dudhsagar Falls",
+      "Bhagwan Mahavir Wildlife Sanctuary"
+    ],
+    "food": [
+      "Goan cuisine"
+    ],
+    "imageSearch": "Dudhsagar Falls Goa India",
+    "id": "dudhsagar-falls",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Ahmedabad",
+    "state": "Gujarat",
+    "region": "West India",
+    "lat": 23.0225,
+    "lon": 72.5714,
+    "type": "City & Heritage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Heritage, food, museums",
+    "highlights": [
+      "Sabarmati Ashram",
+      "Adalaj Stepwell",
+      "Old City"
+    ],
+    "food": [
+      "Gujarati thali",
+      "Fafda jalebi"
+    ],
+    "imageSearch": "Ahmedabad Gujarat India",
+    "id": "ahmedabad",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Kutch",
+    "state": "Gujarat",
+    "region": "West India",
+    "lat": 23.7337,
+    "lon": 69.8597,
+    "type": "Desert & Culture",
+    "bestMonths": [
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2–4 days",
+    "budget": "Moderate",
+    "bestFor": "Rann, crafts, culture",
+    "highlights": [
+      "Rann of Kutch",
+      "Bhuj",
+      "Handicraft villages"
+    ],
+    "food": [
+      "Kutchi cuisine",
+      "Gujarati snacks"
+    ],
+    "imageSearch": "Rann of Kutch Gujarat India",
+    "id": "kutch",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Gir National Park",
+    "state": "Gujarat",
+    "region": "West India",
+    "lat": 21.124,
+    "lon": 70.8242,
+    "type": "Wildlife",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate–Premium",
+    "bestFor": "Wildlife, safari",
+    "highlights": [
+      "Gir forest",
+      "Wildlife safari"
+    ],
+    "food": [
+      "Gujarati cuisine"
+    ],
+    "imageSearch": "Gir National Park Gujarat India",
+    "id": "gir-national-park",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Dwarka",
+    "state": "Gujarat",
+    "region": "West India",
+    "lat": 22.2442,
+    "lon": 68.9685,
+    "type": "Pilgrimage & Coast",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Temple, coast",
+    "highlights": [
+      "Dwarkadhish Temple",
+      "Bet Dwarka",
+      "Dwarka Beach"
+    ],
+    "food": [
+      "Gujarati food"
+    ],
+    "imageSearch": "Dwarka Gujarat India",
+    "id": "dwarka",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Jaipur",
+    "state": "Rajasthan",
+    "region": "North India",
+    "lat": 26.9124,
+    "lon": 75.7873,
+    "type": "Heritage & City",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate",
+    "bestFor": "Forts, palaces, shopping",
+    "highlights": [
+      "Amber Fort",
+      "Hawa Mahal",
+      "City Palace"
+    ],
+    "food": [
+      "Dal baati churma",
+      "Ghewar"
+    ],
+    "imageSearch": "Jaipur Rajasthan India",
+    "id": "jaipur",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Udaipur",
+    "state": "Rajasthan",
+    "region": "North India",
+    "lat": 24.5854,
+    "lon": 73.7125,
+    "type": "Lakes & Heritage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate–Premium",
+    "bestFor": "Lakes, palaces, photography",
+    "highlights": [
+      "Lake Pichola",
+      "City Palace",
+      "Sajjangarh"
+    ],
+    "food": [
+      "Rajasthani thali"
+    ],
+    "imageSearch": "Udaipur Rajasthan India",
+    "id": "udaipur",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Jodhpur",
+    "state": "Rajasthan",
+    "region": "North India",
+    "lat": 26.2389,
+    "lon": 73.0243,
+    "type": "Heritage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "Forts, old city",
+    "highlights": [
+      "Mehrangarh Fort",
+      "Blue City",
+      "Jaswant Thada"
+    ],
+    "food": [
+      "Makhaniya lassi",
+      "Rajasthani food"
+    ],
+    "imageSearch": "Jodhpur Rajasthan India",
+    "id": "jodhpur",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Jaisalmer",
+    "state": "Rajasthan",
+    "region": "North India",
+    "lat": 26.9157,
+    "lon": 70.9083,
+    "type": "Desert & Heritage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate",
+    "bestFor": "Desert, forts, culture",
+    "highlights": [
+      "Jaisalmer Fort",
+      "Sam Sand Dunes",
+      "Patwon Ki Haveli"
+    ],
+    "food": [
+      "Ker sangri",
+      "Rajasthani thali"
+    ],
+    "imageSearch": "Jaisalmer Rajasthan India",
+    "id": "jaisalmer",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Mount Abu",
+    "state": "Rajasthan",
+    "region": "North India",
+    "lat": 24.5926,
+    "lon": 72.7156,
+    "type": "Hill Station",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "Hills, lakes, temples",
+    "highlights": [
+      "Nakki Lake",
+      "Dilwara Temples",
+      "Guru Shikhar"
+    ],
+    "food": [
+      "Rajasthani cuisine"
+    ],
+    "imageSearch": "Mount Abu Rajasthan India",
+    "id": "mount-abu",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Pushkar",
+    "state": "Rajasthan",
+    "region": "North India",
+    "lat": 26.4897,
+    "lon": 74.5511,
+    "type": "Culture & Pilgrimage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Culture, temples, markets",
+    "highlights": [
+      "Pushkar Lake",
+      "Brahma Temple",
+      "Old town"
+    ],
+    "food": [
+      "Rajasthani vegetarian food"
+    ],
+    "imageSearch": "Pushkar Rajasthan India",
+    "id": "pushkar",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Shimla",
+    "state": "Himachal Pradesh",
+    "region": "North India",
+    "lat": 31.1048,
+    "lon": 77.1734,
+    "type": "Hill Station",
+    "bestMonths": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      9,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate",
+    "bestFor": "Hills, snow, colonial heritage",
+    "highlights": [
+      "The Ridge",
+      "Mall Road",
+      "Jakhoo Temple"
+    ],
+    "food": [
+      "Himachali cuisine"
+    ],
+    "imageSearch": "Shimla Himachal Pradesh India",
+    "id": "shimla",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Manali",
+    "state": "Himachal Pradesh",
+    "region": "North India",
+    "lat": 32.2396,
+    "lon": 77.1887,
+    "type": "Mountain & Adventure",
+    "bestMonths": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "3–4 days",
+    "budget": "Moderate",
+    "bestFor": "Mountains, snow, adventure",
+    "highlights": [
+      "Solang Valley",
+      "Old Manali",
+      "Rohtang region"
+    ],
+    "food": [
+      "Siddu",
+      "Himachali cuisine"
+    ],
+    "imageSearch": "Manali Himachal Pradesh India",
+    "id": "manali",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Dharamshala",
+    "state": "Himachal Pradesh",
+    "region": "North India",
+    "lat": 32.219,
+    "lon": 76.3234,
+    "type": "Mountain & Culture",
+    "bestMonths": [
+      3,
+      4,
+      5,
+      6,
+      9,
+      10,
+      11
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate",
+    "bestFor": "Mountains, monasteries, walks",
+    "highlights": [
+      "McLeod Ganj",
+      "Bhagsu Falls",
+      "Tsuglagkhang"
+    ],
+    "food": [
+      "Tibetan food",
+      "Himachali food"
+    ],
+    "imageSearch": "Dharamshala McLeod Ganj India",
+    "id": "dharamshala",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Spiti Valley",
+    "state": "Himachal Pradesh",
+    "region": "North India",
+    "lat": 32.2461,
+    "lon": 78.0349,
+    "type": "High Mountain Desert",
+    "bestMonths": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "idealDays": "5–7 days",
+    "budget": "Moderate–Premium",
+    "bestFor": "Road trips, high mountains",
+    "highlights": [
+      "Key Monastery",
+      "Chandratal",
+      "Kaza"
+    ],
+    "food": [
+      "Himachali and Tibetan food"
+    ],
+    "imageSearch": "Spiti Valley Himachal Pradesh India",
+    "id": "spiti-valley",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Dehradun",
+    "state": "Uttarakhand",
+    "region": "North India",
+    "lat": 30.3165,
+    "lon": 78.0322,
+    "type": "City & Nature",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Gateway to hills, caves",
+    "highlights": [
+      "Robber's Cave",
+      "Forest Research Institute"
+    ],
+    "food": [
+      "Garhwali cuisine"
+    ],
+    "imageSearch": "Dehradun Uttarakhand India",
+    "id": "dehradun",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Mussoorie",
+    "state": "Uttarakhand",
+    "region": "North India",
+    "lat": 30.4599,
+    "lon": 78.0664,
+    "type": "Hill Station",
+    "bestMonths": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "Hill walks, viewpoints",
+    "highlights": [
+      "Mall Road",
+      "Kempty Falls",
+      "Gun Hill"
+    ],
+    "food": [
+      "Garhwali snacks"
+    ],
+    "imageSearch": "Mussoorie Uttarakhand India",
+    "id": "mussoorie",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Rishikesh",
+    "state": "Uttarakhand",
+    "region": "North India",
+    "lat": 30.0869,
+    "lon": 78.2676,
+    "type": "Adventure & Spiritual",
+    "bestMonths": [
+      2,
+      3,
+      4,
+      5,
+      9,
+      10,
+      11
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "River activities, yoga, temples",
+    "highlights": [
+      "Ganga ghats",
+      "Laxman Jhula area",
+      "Rafting"
+    ],
+    "food": [
+      "North Indian food",
+      "Local cafes"
+    ],
+    "imageSearch": "Rishikesh Uttarakhand India",
+    "id": "rishikesh",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Auli",
+    "state": "Uttarakhand",
+    "region": "North India",
+    "lat": 30.5286,
+    "lon": 79.5636,
+    "type": "Snow & Mountains",
+    "bestMonths": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate–Premium",
+    "bestFor": "Snow, skiing, mountain views",
+    "highlights": [
+      "Auli slopes",
+      "Gorson Bugyal",
+      "Himalayan views"
+    ],
+    "food": [
+      "Garhwali food"
+    ],
+    "imageSearch": "Auli Uttarakhand India",
+    "id": "auli",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Jim Corbett",
+    "state": "Uttarakhand",
+    "region": "North India",
+    "lat": 29.53,
+    "lon": 78.7747,
+    "type": "Wildlife",
+    "bestMonths": [
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate–Premium",
+    "bestFor": "Wildlife, safari",
+    "highlights": [
+      "Corbett landscape",
+      "Safari zones",
+      "Ramganga"
+    ],
+    "food": [
+      "North Indian food"
+    ],
+    "imageSearch": "Jim Corbett National Park Uttarakhand India",
+    "id": "jim-corbett",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Nainital",
+    "state": "Uttarakhand",
+    "region": "North India",
+    "lat": 29.3919,
+    "lon": 79.4542,
+    "type": "Lake & Hill Station",
+    "bestMonths": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "Lake, hills, family trips",
+    "highlights": [
+      "Naini Lake",
+      "Snow View",
+      "Mall Road"
+    ],
+    "food": [
+      "Kumaoni cuisine"
+    ],
+    "imageSearch": "Nainital Uttarakhand India",
+    "id": "nainital",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Srinagar",
+    "state": "Jammu and Kashmir",
+    "region": "North India",
+    "lat": 34.0837,
+    "lon": 74.7973,
+    "type": "Lakes & Mountains",
+    "bestMonths": [
+      3,
+      4,
+      5,
+      6,
+      9,
+      10
+    ],
+    "idealDays": "3–4 days",
+    "budget": "Moderate–Premium",
+    "bestFor": "Lakes, gardens, mountains",
+    "highlights": [
+      "Dal Lake",
+      "Mughal Gardens",
+      "Old Srinagar"
+    ],
+    "food": [
+      "Kashmiri cuisine",
+      "Kahwa"
+    ],
+    "imageSearch": "Srinagar Dal Lake Kashmir India",
+    "id": "srinagar",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Gulmarg",
+    "state": "Jammu and Kashmir",
+    "region": "North India",
+    "lat": 34.0484,
+    "lon": 74.3805,
+    "type": "Mountain & Snow",
+    "bestMonths": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate–Premium",
+    "bestFor": "Snow, gondola, mountains",
+    "highlights": [
+      "Gulmarg meadows",
+      "Gondola area",
+      "Snow activities"
+    ],
+    "food": [
+      "Kashmiri cuisine"
+    ],
+    "imageSearch": "Gulmarg Kashmir India",
+    "id": "gulmarg",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Pahalgam",
+    "state": "Jammu and Kashmir",
+    "region": "North India",
+    "lat": 34.0161,
+    "lon": 75.3152,
+    "type": "Valley & Nature",
+    "bestMonths": [
+      3,
+      4,
+      5,
+      6,
+      9,
+      10
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate",
+    "bestFor": "Valleys, rivers, walks",
+    "highlights": [
+      "Lidder River",
+      "Betaab Valley",
+      "Aru Valley"
+    ],
+    "food": [
+      "Kashmiri cuisine"
+    ],
+    "imageSearch": "Pahalgam Kashmir India",
+    "id": "pahalgam",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Leh",
+    "state": "Ladakh",
+    "region": "North India",
+    "lat": 34.1526,
+    "lon": 77.5771,
+    "type": "High Mountain Desert",
+    "bestMonths": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "idealDays": "3–5 days",
+    "budget": "Moderate–Premium",
+    "bestFor": "Road trips, monasteries, high altitude",
+    "highlights": [
+      "Leh Palace",
+      "Shanti Stupa",
+      "Thiksey Monastery"
+    ],
+    "food": [
+      "Momos",
+      "Thukpa"
+    ],
+    "imageSearch": "Leh Ladakh India",
+    "id": "leh",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Nubra Valley",
+    "state": "Ladakh",
+    "region": "North India",
+    "lat": 34.65,
+    "lon": 77.5,
+    "type": "High Mountain Valley",
+    "bestMonths": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate–Premium",
+    "bestFor": "Valleys, road trips, landscapes",
+    "highlights": [
+      "Hunder dunes",
+      "Diskit Monastery",
+      "Shyok valley"
+    ],
+    "food": [
+      "Ladakhi cuisine"
+    ],
+    "imageSearch": "Nubra Valley Ladakh India",
+    "id": "nubra-valley",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Amritsar",
+    "state": "Punjab",
+    "region": "North India",
+    "lat": 31.634,
+    "lon": 74.8723,
+    "type": "Heritage & Culture",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Heritage, food, culture",
+    "highlights": [
+      "Golden Temple",
+      "Jallianwala Bagh",
+      "Wagah-Attari area"
+    ],
+    "food": [
+      "Amritsari kulcha",
+      "Lassi"
+    ],
+    "imageSearch": "Amritsar Golden Temple India",
+    "id": "amritsar",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Patiala",
+    "state": "Punjab",
+    "region": "North India",
+    "lat": 30.3398,
+    "lon": 76.3869,
+    "type": "Heritage & Culture",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1 day",
+    "budget": "Budget",
+    "bestFor": "Palaces, Punjabi culture",
+    "highlights": [
+      "Qila Mubarak",
+      "Moti Bagh Palace"
+    ],
+    "food": [
+      "Punjabi cuisine"
+    ],
+    "imageSearch": "Patiala Punjab India",
+    "id": "patiala",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Delhi",
+    "state": "Delhi",
+    "region": "North India",
+    "lat": 28.6139,
+    "lon": 77.209,
+    "type": "City & Heritage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate",
+    "bestFor": "History, museums, food",
+    "highlights": [
+      "Red Fort",
+      "India Gate",
+      "Qutub Minar"
+    ],
+    "food": [
+      "Delhi street food",
+      "Chaat"
+    ],
+    "imageSearch": "Delhi India Red Fort India Gate",
+    "id": "delhi",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Agra",
+    "state": "Uttar Pradesh",
+    "region": "North India",
+    "lat": 27.1767,
+    "lon": 78.0081,
+    "type": "Heritage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Monuments, history",
+    "highlights": [
+      "Taj Mahal",
+      "Agra Fort",
+      "Mehtab Bagh"
+    ],
+    "food": [
+      "Petha",
+      "Mughlai cuisine"
+    ],
+    "imageSearch": "Taj Mahal Agra India",
+    "id": "agra",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Varanasi",
+    "state": "Uttar Pradesh",
+    "region": "North India",
+    "lat": 25.3176,
+    "lon": 82.9739,
+    "type": "Heritage & Culture",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Ghats, temples, culture",
+    "highlights": [
+      "Ganga ghats",
+      "Kashi Vishwanath area",
+      "Sarnath"
+    ],
+    "food": [
+      "Kachori sabzi",
+      "Banarasi lassi"
+    ],
+    "imageSearch": "Varanasi Ganga Ghats India",
+    "id": "varanasi",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Lucknow",
+    "state": "Uttar Pradesh",
+    "region": "North India",
+    "lat": 26.8467,
+    "lon": 80.9462,
+    "type": "Heritage & Food",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Architecture, cuisine",
+    "highlights": [
+      "Bara Imambara",
+      "Rumi Darwaza",
+      "Residency"
+    ],
+    "food": [
+      "Awadhi biryani",
+      "Kebabs"
+    ],
+    "imageSearch": "Lucknow Uttar Pradesh India",
+    "id": "lucknow",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Ayodhya",
+    "state": "Uttar Pradesh",
+    "region": "North India",
+    "lat": 26.7922,
+    "lon": 82.1998,
+    "type": "Pilgrimage & Culture",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Culture, temples, riverfront",
+    "highlights": [
+      "Ram Mandir area",
+      "Saryu riverfront"
+    ],
+    "food": [
+      "North Indian vegetarian food"
+    ],
+    "imageSearch": "Ayodhya Uttar Pradesh India",
+    "id": "ayodhya",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Kolkata",
+    "state": "West Bengal",
+    "region": "East India",
+    "lat": 22.5726,
+    "lon": 88.3639,
+    "type": "City & Heritage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Culture, heritage, food",
+    "highlights": [
+      "Victoria Memorial",
+      "Howrah Bridge",
+      "Indian Museum"
+    ],
+    "food": [
+      "Kolkata biryani",
+      "Mishti doi"
+    ],
+    "imageSearch": "Kolkata West Bengal India",
+    "id": "kolkata",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Darjeeling",
+    "state": "West Bengal",
+    "region": "East India",
+    "lat": 27.041,
+    "lon": 88.2663,
+    "type": "Hill Station",
+    "bestMonths": [
+      3,
+      4,
+      5,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate",
+    "bestFor": "Tea, mountain views, rail heritage",
+    "highlights": [
+      "Tiger Hill",
+      "Darjeeling Himalayan Railway",
+      "Tea estates"
+    ],
+    "food": [
+      "Momos",
+      "Darjeeling tea"
+    ],
+    "imageSearch": "Darjeeling West Bengal India",
+    "id": "darjeeling",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Kalimpong",
+    "state": "West Bengal",
+    "region": "East India",
+    "lat": 27.066,
+    "lon": 88.47,
+    "type": "Hill Station",
+    "bestMonths": [
+      3,
+      4,
+      5,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "Hills, monasteries, gardens",
+    "highlights": [
+      "Deolo Hill",
+      "Durpin Monastery"
+    ],
+    "food": [
+      "Tibetan and Bengali food"
+    ],
+    "imageSearch": "Kalimpong West Bengal India",
+    "id": "kalimpong",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Sundarbans",
+    "state": "West Bengal",
+    "region": "East India",
+    "lat": 21.9497,
+    "lon": 88.9189,
+    "type": "Wildlife & Mangrove",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate",
+    "bestFor": "Mangroves, wildlife, boat trips",
+    "highlights": [
+      "Mangrove waterways",
+      "Wildlife zones"
+    ],
+    "food": [
+      "Bengali cuisine"
+    ],
+    "imageSearch": "Sundarbans West Bengal India",
+    "id": "sundarbans",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Puri",
+    "state": "Odisha",
+    "region": "East India",
+    "lat": 19.8135,
+    "lon": 85.8312,
+    "type": "Beach & Culture",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Temple, beach, culture",
+    "highlights": [
+      "Jagannath Temple",
+      "Puri Beach"
+    ],
+    "food": [
+      "Mahaprasad",
+      "Odisha cuisine"
+    ],
+    "imageSearch": "Puri Odisha India",
+    "id": "puri",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Konark",
+    "state": "Odisha",
+    "region": "East India",
+    "lat": 19.8876,
+    "lon": 86.0945,
+    "type": "Heritage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1 day",
+    "budget": "Budget",
+    "bestFor": "Temple architecture, history",
+    "highlights": [
+      "Konark Sun Temple",
+      "Chandrabhaga Beach"
+    ],
+    "food": [
+      "Odisha cuisine"
+    ],
+    "imageSearch": "Konark Sun Temple Odisha India",
+    "id": "konark",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Chilika Lake",
+    "state": "Odisha",
+    "region": "East India",
+    "lat": 19.7,
+    "lon": 85.3,
+    "type": "Lake & Wildlife",
+    "bestMonths": [
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Birding, lake, boat trips",
+    "highlights": [
+      "Chilika Lagoon",
+      "Migratory birds",
+      "Boat rides"
+    ],
+    "food": [
+      "Odisha seafood"
+    ],
+    "imageSearch": "Chilika Lake Odisha India",
+    "id": "chilika-lake",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Bhubaneswar",
+    "state": "Odisha",
+    "region": "East India",
+    "lat": 20.2961,
+    "lon": 85.8245,
+    "type": "Temple City",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Temples, archaeology",
+    "highlights": [
+      "Lingaraj Temple area",
+      "Udayagiri and Khandagiri"
+    ],
+    "food": [
+      "Odisha cuisine"
+    ],
+    "imageSearch": "Bhubaneswar Odisha India",
+    "id": "bhubaneswar",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Ranchi",
+    "state": "Jharkhand",
+    "region": "East India",
+    "lat": 23.3441,
+    "lon": 85.3096,
+    "type": "Waterfalls & Nature",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Waterfalls, nature",
+    "highlights": [
+      "Dassam Falls",
+      "Hundru Falls",
+      "Jagannath Temple"
+    ],
+    "food": [
+      "Jharkhand cuisine"
+    ],
+    "imageSearch": "Ranchi Jharkhand India",
+    "id": "ranchi",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Netarhat",
+    "state": "Jharkhand",
+    "region": "East India",
+    "lat": 23.474,
+    "lon": 84.268,
+    "type": "Hill Station",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Sunsets, forests, hills",
+    "highlights": [
+      "Sunset Point",
+      "Magnolia Point"
+    ],
+    "food": [
+      "Local tribal cuisine"
+    ],
+    "imageSearch": "Netarhat Jharkhand India",
+    "id": "netarhat",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Deoghar",
+    "state": "Jharkhand",
+    "region": "East India",
+    "lat": 24.492,
+    "lon": 86.699,
+    "type": "Pilgrimage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget",
+    "bestFor": "Temple and culture",
+    "highlights": [
+      "Baidyanath Temple",
+      "Trikuta Hills"
+    ],
+    "food": [
+      "Jharkhand and North Indian food"
+    ],
+    "imageSearch": "Deoghar Jharkhand India",
+    "id": "deoghar",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Bodh Gaya",
+    "state": "Bihar",
+    "region": "East India",
+    "lat": 24.6951,
+    "lon": 84.9913,
+    "type": "Heritage & Spiritual",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Buddhist heritage",
+    "highlights": [
+      "Mahabodhi Temple",
+      "Bodhi Tree"
+    ],
+    "food": [
+      "Bihari cuisine"
+    ],
+    "imageSearch": "Bodh Gaya Bihar India",
+    "id": "bodh-gaya",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Rajgir",
+    "state": "Bihar",
+    "region": "East India",
+    "lat": 25.028,
+    "lon": 85.42,
+    "type": "Heritage & Nature",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1 day",
+    "budget": "Budget",
+    "bestFor": "History, hills",
+    "highlights": [
+      "Rajgir hills",
+      "Nalanda nearby"
+    ],
+    "food": [
+      "Bihari cuisine"
+    ],
+    "imageSearch": "Rajgir Bihar India",
+    "id": "rajgir",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Nalanda",
+    "state": "Bihar",
+    "region": "East India",
+    "lat": 25.1367,
+    "lon": 85.444,
+    "type": "Heritage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1 day",
+    "budget": "Budget",
+    "bestFor": "Archaeology, history",
+    "highlights": [
+      "Nalanda archaeological site",
+      "Nalanda Museum"
+    ],
+    "food": [
+      "Bihari cuisine"
+    ],
+    "imageSearch": "Nalanda Bihar India",
+    "id": "nalanda",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Guwahati",
+    "state": "Assam",
+    "region": "Northeast India",
+    "lat": 26.1445,
+    "lon": 91.7362,
+    "type": "City & Culture",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Culture, temples, river",
+    "highlights": [
+      "Kamakhya Temple",
+      "Brahmaputra riverfront"
+    ],
+    "food": [
+      "Assamese cuisine"
+    ],
+    "imageSearch": "Guwahati Assam India",
+    "id": "guwahati",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Kaziranga National Park",
+    "state": "Assam",
+    "region": "Northeast India",
+    "lat": 26.5775,
+    "lon": 93.1711,
+    "type": "Wildlife",
+    "bestMonths": [
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate–Premium",
+    "bestFor": "Wildlife safari",
+    "highlights": [
+      "Kaziranga safari",
+      "Grasslands",
+      "Wetlands"
+    ],
+    "food": [
+      "Assamese cuisine"
+    ],
+    "imageSearch": "Kaziranga National Park Assam India",
+    "id": "kaziranga-national-park",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Majuli",
+    "state": "Assam",
+    "region": "Northeast India",
+    "lat": 27.0016,
+    "lon": 94.2243,
+    "type": "Island & Culture",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Island culture, satras",
+    "highlights": [
+      "Satras",
+      "Brahmaputra island landscape"
+    ],
+    "food": [
+      "Assamese cuisine"
+    ],
+    "imageSearch": "Majuli Assam India",
+    "id": "majuli",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Shillong",
+    "state": "Meghalaya",
+    "region": "Northeast India",
+    "lat": 25.5788,
+    "lon": 91.8933,
+    "type": "Hill Station",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate",
+    "bestFor": "Hills, waterfalls, culture",
+    "highlights": [
+      "Shillong Peak",
+      "Elephant Falls",
+      "Ward's Lake"
+    ],
+    "food": [
+      "Khasi cuisine"
+    ],
+    "imageSearch": "Shillong Meghalaya India",
+    "id": "shillong",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Cherrapunji",
+    "state": "Meghalaya",
+    "region": "Northeast India",
+    "lat": 25.286,
+    "lon": 91.582,
+    "type": "Waterfalls & Nature",
+    "bestMonths": [
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "Waterfalls, monsoon landscapes",
+    "highlights": [
+      "Nohkalikai Falls",
+      "Mawsmai Caves"
+    ],
+    "food": [
+      "Khasi cuisine"
+    ],
+    "imageSearch": "Cherrapunji Sohra Meghalaya India",
+    "id": "cherrapunji",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Dawki",
+    "state": "Meghalaya",
+    "region": "Northeast India",
+    "lat": 25.183,
+    "lon": 92.017,
+    "type": "River & Nature",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "River, border landscape",
+    "highlights": [
+      "Umngot River",
+      "Dawki bridge area"
+    ],
+    "food": [
+      "Khasi cuisine"
+    ],
+    "imageSearch": "Dawki Umngot River Meghalaya India",
+    "id": "dawki",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Mawlynnong",
+    "state": "Meghalaya",
+    "region": "Northeast India",
+    "lat": 25.2,
+    "lon": 91.933,
+    "type": "Village & Nature",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "1 day",
+    "budget": "Budget–Moderate",
+    "bestFor": "Village tourism, nature",
+    "highlights": [
+      "Village walk",
+      "Living root bridge area"
+    ],
+    "food": [
+      "Khasi food"
+    ],
+    "imageSearch": "Mawlynnong Meghalaya India",
+    "id": "mawlynnong",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Gangtok",
+    "state": "Sikkim",
+    "region": "Northeast India",
+    "lat": 27.3389,
+    "lon": 88.6065,
+    "type": "Mountain & Culture",
+    "bestMonths": [
+      3,
+      4,
+      5,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate",
+    "bestFor": "Mountains, monasteries, views",
+    "highlights": [
+      "MG Marg",
+      "Rumtek Monastery",
+      "Tsomgo Lake area"
+    ],
+    "food": [
+      "Momos",
+      "Thukpa"
+    ],
+    "imageSearch": "Gangtok Sikkim India",
+    "id": "gangtok",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Pelling",
+    "state": "Sikkim",
+    "region": "Northeast India",
+    "lat": 27.305,
+    "lon": 88.238,
+    "type": "Mountain & Heritage",
+    "bestMonths": [
+      3,
+      4,
+      5,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "Kanchenjunga views, monasteries",
+    "highlights": [
+      "Pemayangtse Monastery",
+      "Skywalk"
+    ],
+    "food": [
+      "Sikkimese cuisine"
+    ],
+    "imageSearch": "Pelling Sikkim India",
+    "id": "pelling",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Lachung",
+    "state": "Sikkim",
+    "region": "Northeast India",
+    "lat": 27.6889,
+    "lon": 88.742,
+    "type": "Mountain Valley",
+    "bestMonths": [
+      3,
+      4,
+      5,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate–Premium",
+    "bestFor": "High mountain scenery",
+    "highlights": [
+      "Lachung valley",
+      "Yumthang route"
+    ],
+    "food": [
+      "Sikkimese cuisine"
+    ],
+    "imageSearch": "Lachung Sikkim India",
+    "id": "lachung",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Tawang",
+    "state": "Arunachal Pradesh",
+    "region": "Northeast India",
+    "lat": 27.586,
+    "lon": 91.859,
+    "type": "Mountain & Monastery",
+    "bestMonths": [
+      3,
+      4,
+      5,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "3–5 days",
+    "budget": "Moderate–Premium",
+    "bestFor": "Mountains, monasteries, snow",
+    "highlights": [
+      "Tawang Monastery",
+      "Sela Pass route",
+      "Bum La route"
+    ],
+    "food": [
+      "Monpa cuisine",
+      "Tibetan food"
+    ],
+    "imageSearch": "Tawang Arunachal Pradesh India",
+    "id": "tawang",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Ziro Valley",
+    "state": "Arunachal Pradesh",
+    "region": "Northeast India",
+    "lat": 27.545,
+    "lon": 93.827,
+    "type": "Valley & Culture",
+    "bestMonths": [
+      3,
+      4,
+      5,
+      9,
+      10,
+      11
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate",
+    "bestFor": "Valley, village culture, music",
+    "highlights": [
+      "Apatani villages",
+      "Rice fields"
+    ],
+    "food": [
+      "Apatani cuisine"
+    ],
+    "imageSearch": "Ziro Valley Arunachal Pradesh India",
+    "id": "ziro-valley",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Bomdila",
+    "state": "Arunachal Pradesh",
+    "region": "Northeast India",
+    "lat": 27.264,
+    "lon": 92.411,
+    "type": "Mountain & Culture",
+    "bestMonths": [
+      3,
+      4,
+      5,
+      10,
+      11,
+      12
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Moderate",
+    "bestFor": "Himalayan views, monasteries",
+    "highlights": [
+      "Bomdila Monastery",
+      "Viewpoints"
+    ],
+    "food": [
+      "Monpa cuisine"
+    ],
+    "imageSearch": "Bomdila Arunachal Pradesh India",
+    "id": "bomdila",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Kohima",
+    "state": "Nagaland",
+    "region": "Northeast India",
+    "lat": 25.6751,
+    "lon": 94.1086,
+    "type": "Hill & Culture",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "Culture, hills, festivals",
+    "highlights": [
+      "Kohima War Cemetery",
+      "Naga villages"
+    ],
+    "food": [
+      "Naga cuisine"
+    ],
+    "imageSearch": "Kohima Nagaland India",
+    "id": "kohima",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Dzukou Valley",
+    "state": "Nagaland",
+    "region": "Northeast India",
+    "lat": 25.625,
+    "lon": 94.1,
+    "type": "Trekking & Nature",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "Trekking, valley landscapes",
+    "highlights": [
+      "Dzukou Valley trek"
+    ],
+    "food": [
+      "Naga cuisine"
+    ],
+    "imageSearch": "Dzukou Valley Nagaland India",
+    "id": "dzukou-valley",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Imphal",
+    "state": "Manipur",
+    "region": "Northeast India",
+    "lat": 24.817,
+    "lon": 93.9368,
+    "type": "City & Culture",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "Culture, history",
+    "highlights": [
+      "Kangla Fort",
+      "Ima Keithel"
+    ],
+    "food": [
+      "Manipuri cuisine"
+    ],
+    "imageSearch": "Imphal Manipur India",
+    "id": "imphal",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Loktak Lake",
+    "state": "Manipur",
+    "region": "Northeast India",
+    "lat": 24.549,
+    "lon": 93.777,
+    "type": "Lake & Nature",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Lake landscapes, nature",
+    "highlights": [
+      "Loktak Lake",
+      "Keibul Lamjao"
+    ],
+    "food": [
+      "Manipuri cuisine"
+    ],
+    "imageSearch": "Loktak Lake Manipur India",
+    "id": "loktak-lake",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Aizawl",
+    "state": "Mizoram",
+    "region": "Northeast India",
+    "lat": 23.7271,
+    "lon": 92.7176,
+    "type": "Hill City",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "Hills, city views, culture",
+    "highlights": [
+      "Durtlang Hills",
+      "Mizoram State Museum"
+    ],
+    "food": [
+      "Mizo cuisine"
+    ],
+    "imageSearch": "Aizawl Mizoram India",
+    "id": "aizawl",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Agartala",
+    "state": "Tripura",
+    "region": "Northeast India",
+    "lat": 23.8315,
+    "lon": 91.2868,
+    "type": "Heritage & Culture",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Palaces, culture",
+    "highlights": [
+      "Ujjayanta Palace",
+      "Heritage sites"
+    ],
+    "food": [
+      "Tripuri cuisine"
+    ],
+    "imageSearch": "Agartala Tripura India",
+    "id": "agartala",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Unakoti",
+    "state": "Tripura",
+    "region": "Northeast India",
+    "lat": 24.317,
+    "lon": 92.0,
+    "type": "Heritage & Nature",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1 day",
+    "budget": "Budget",
+    "bestFor": "Rock carvings, archaeology",
+    "highlights": [
+      "Unakoti rock sculptures"
+    ],
+    "food": [
+      "Tripuri cuisine"
+    ],
+    "imageSearch": "Unakoti Tripura India",
+    "id": "unakoti",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Bhopal",
+    "state": "Madhya Pradesh",
+    "region": "Central India",
+    "lat": 23.2599,
+    "lon": 77.4126,
+    "type": "City & Lakes",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Lakes, museums, heritage",
+    "highlights": [
+      "Upper Lake",
+      "Sanchi nearby",
+      "State Museum"
+    ],
+    "food": [
+      "Poha jalebi",
+      "Bhopali cuisine"
+    ],
+    "imageSearch": "Bhopal Madhya Pradesh India",
+    "id": "bhopal",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Khajuraho",
+    "state": "Madhya Pradesh",
+    "region": "Central India",
+    "lat": 24.8318,
+    "lon": 79.9199,
+    "type": "Heritage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "Temple architecture",
+    "highlights": [
+      "Khajuraho temples",
+      "Light and sound area"
+    ],
+    "food": [
+      "Madhya Pradesh cuisine"
+    ],
+    "imageSearch": "Khajuraho Madhya Pradesh India",
+    "id": "khajuraho",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Pachmarhi",
+    "state": "Madhya Pradesh",
+    "region": "Central India",
+    "lat": 22.467,
+    "lon": 78.434,
+    "type": "Hill Station",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "idealDays": "2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Hills, caves, waterfalls",
+    "highlights": [
+      "Bee Falls",
+      "Dhoopgarh",
+      "Jata Shankar"
+    ],
+    "food": [
+      "Central Indian cuisine"
+    ],
+    "imageSearch": "Pachmarhi Madhya Pradesh India",
+    "id": "pachmarhi",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Jabalpur",
+    "state": "Madhya Pradesh",
+    "region": "Central India",
+    "lat": 23.1815,
+    "lon": 79.9864,
+    "type": "Nature & Heritage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Marble rocks, river",
+    "highlights": [
+      "Bhedaghat",
+      "Dhuandhar Falls"
+    ],
+    "food": [
+      "Poha jalebi",
+      "MP cuisine"
+    ],
+    "imageSearch": "Jabalpur Bhedaghat Madhya Pradesh India",
+    "id": "jabalpur",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Chitrakote Falls",
+    "state": "Chhattisgarh",
+    "region": "Central India",
+    "lat": 19.2138,
+    "lon": 81.6997,
+    "type": "Waterfall",
+    "bestMonths": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      1,
+      2
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Waterfalls, nature",
+    "highlights": [
+      "Chitrakote Falls",
+      "Indravati landscape"
+    ],
+    "food": [
+      "Chhattisgarhi cuisine"
+    ],
+    "imageSearch": "Chitrakote Falls Chhattisgarh India",
+    "id": "chitrakote-falls",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Mainpat",
+    "state": "Chhattisgarh",
+    "region": "Central India",
+    "lat": 22.777,
+    "lon": 83.239,
+    "type": "Hill Station",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "idealDays": "2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Plateau landscapes, cool climate",
+    "highlights": [
+      "Mainpat viewpoints",
+      "Tibetan settlement area"
+    ],
+    "food": [
+      "Chhattisgarhi cuisine"
+    ],
+    "imageSearch": "Mainpat Chhattisgarh India",
+    "id": "mainpat",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Chandigarh",
+    "state": "Chandigarh",
+    "region": "North India",
+    "lat": 30.7333,
+    "lon": 76.7794,
+    "type": "City & Architecture",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Moderate",
+    "bestFor": "Architecture, gardens, city break",
+    "highlights": [
+      "Rock Garden",
+      "Sukhna Lake",
+      "Capitol Complex"
+    ],
+    "food": [
+      "Punjabi cuisine"
+    ],
+    "imageSearch": "Chandigarh India Rock Garden",
+    "id": "chandigarh",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Daman",
+    "state": "Dadra and Nagar Haveli and Daman and Diu",
+    "region": "West India",
+    "lat": 20.3974,
+    "lon": 72.8328,
+    "type": "Coastal & Heritage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Coast, forts, heritage",
+    "highlights": [
+      "Daman beaches",
+      "Fort area"
+    ],
+    "food": [
+      "Coastal Indian food"
+    ],
+    "imageSearch": "Daman India",
+    "id": "daman",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Silvassa",
+    "state": "Dadra and Nagar Haveli and Daman and Diu",
+    "region": "West India",
+    "lat": 20.2763,
+    "lon": 73.0083,
+    "type": "Nature & Culture",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Nature, family trips",
+    "highlights": [
+      "Vanganga Lake Garden",
+      "Tribal Museum"
+    ],
+    "food": [
+      "Gujarati and coastal cuisine"
+    ],
+    "imageSearch": "Silvassa India",
+    "id": "silvassa",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Kavaratti",
+    "state": "Lakshadweep",
+    "region": "South India",
+    "lat": 10.5669,
+    "lon": 72.642,
+    "type": "Island & Beach",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "idealDays": "3–5 days",
+    "budget": "Premium",
+    "bestFor": "Island, lagoon, water activities",
+    "highlights": [
+      "Kavaratti lagoon",
+      "Beaches"
+    ],
+    "food": [
+      "Seafood",
+      "Island cuisine"
+    ],
+    "imageSearch": "Kavaratti Lakshadweep India",
+    "id": "kavaratti",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Puducherry",
+    "state": "Puducherry",
+    "region": "South India",
+    "lat": 11.9416,
+    "lon": 79.8083,
+    "type": "Coastal & Heritage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "2 days",
+    "budget": "Moderate",
+    "bestFor": "Heritage streets, coast, cafes",
+    "highlights": [
+      "French Quarter",
+      "Promenade",
+      "Auroville area"
+    ],
+    "food": [
+      "South Indian",
+      "French-inspired cafes"
+    ],
+    "imageSearch": "Puducherry India French Quarter",
+    "id": "puducherry",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Port Blair",
+    "state": "Andaman and Nicobar Islands",
+    "region": "South India",
+    "lat": 11.6234,
+    "lon": 92.7265,
+    "type": "Island & Heritage",
+    "bestMonths": [
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "2–3 days",
+    "budget": "Moderate–Premium",
+    "bestFor": "Islands, marine life, history",
+    "highlights": [
+      "Cellular Jail",
+      "Corbyn's Cove",
+      "Water activities"
+    ],
+    "food": [
+      "Seafood",
+      "Island cuisine"
+    ],
+    "imageSearch": "Port Blair Andaman India",
+    "id": "port-blair",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Swaraj Dweep (Havelock)",
+    "state": "Andaman and Nicobar Islands",
+    "region": "South India",
+    "lat": 12.006,
+    "lon": 92.988,
+    "type": "Island & Beach",
+    "bestMonths": [
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "idealDays": "3–4 days",
+    "budget": "Moderate–Premium",
+    "bestFor": "Beaches, snorkeling, diving",
+    "highlights": [
+      "Radhanagar Beach",
+      "Elephant Beach"
+    ],
+    "food": [
+      "Seafood",
+      "Island cuisine"
+    ],
+    "imageSearch": "Havelock Swaraj Dweep Andaman India",
+    "id": "swaraj-dweep-havelock",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Gurugram",
+    "state": "Haryana",
+    "region": "North India",
+    "lat": 28.4595,
+    "lon": 77.0266,
+    "type": "City & Food",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Moderate–Premium",
+    "bestFor": "City break, food, entertainment",
+    "highlights": [
+      "Cyber Hub",
+      "Leisure Valley",
+      "Kingdom of Dreams area"
+    ],
+    "food": [
+      "North Indian cuisine",
+      "Street food"
+    ],
+    "imageSearch": "Gurugram Haryana India",
+    "id": "gurugram",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Kurukshetra",
+    "state": "Haryana",
+    "region": "North India",
+    "lat": 29.9695,
+    "lon": 76.8783,
+    "type": "Heritage & Culture",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1 day",
+    "budget": "Budget",
+    "bestFor": "History, culture",
+    "highlights": [
+      "Brahma Sarovar",
+      "Krishna Museum"
+    ],
+    "food": [
+      "Haryanvi cuisine"
+    ],
+    "imageSearch": "Kurukshetra Haryana India",
+    "id": "kurukshetra",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Amaravati",
+    "state": "Andhra Pradesh",
+    "region": "South India",
+    "lat": 16.573,
+    "lon": 80.3575,
+    "type": "Heritage & Culture",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1 day",
+    "budget": "Budget",
+    "bestFor": "Buddhist heritage, culture",
+    "highlights": [
+      "Amaravati Stupa area",
+      "Krishna river landscape"
+    ],
+    "food": [
+      "Andhra cuisine"
+    ],
+    "imageSearch": "Amaravati Andhra Pradesh India",
+    "id": "amaravati",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Sanchi",
+    "state": "Madhya Pradesh",
+    "region": "Central India",
+    "lat": 23.4793,
+    "lon": 77.7397,
+    "type": "Heritage",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1 day",
+    "budget": "Budget",
+    "bestFor": "Buddhist heritage",
+    "highlights": [
+      "Sanchi Stupa",
+      "Archaeological museum"
+    ],
+    "food": [
+      "Madhya Pradesh cuisine"
+    ],
+    "imageSearch": "Sanchi Stupa Madhya Pradesh India",
+    "id": "sanchi",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  },
+  {
+    "name": "Indore",
+    "state": "Madhya Pradesh",
+    "region": "Central India",
+    "lat": 22.7196,
+    "lon": 75.8577,
+    "type": "City & Food",
+    "bestMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "idealDays": "1–2 days",
+    "budget": "Budget–Moderate",
+    "bestFor": "Food, city, heritage",
+    "highlights": [
+      "Rajwada",
+      "Sarafa Bazaar",
+      "Lalbagh Palace"
+    ],
+    "food": [
+      "Poha jalebi",
+      "Indori namkeen"
+    ],
+    "imageSearch": "Indore Madhya Pradesh India",
+    "id": "indore",
+    "country": "India",
+    "verifiedImage": "",
+    "photoSource": "Wikimedia Commons search fallback"
+  }
+]

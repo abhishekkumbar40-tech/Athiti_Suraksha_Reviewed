@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tourist Registration | Athiti Suraksha</title>
+
+    <link rel="stylesheet" href="register.css">
+
+    <style>
+        .conditional-field-hidden {
+            display: none !important;
+        }
+
+        .mobile-box {
+            display: flex;
+            gap: 8px;
+            align-items: stretch;
+        }
+
+        .country-code-select {
+            flex: 0 0 155px;
+            min-width: 135px;
+            border: 1px solid #d7dce5;
+            border-radius: 12px;
+            padding: 12px 10px;
+            background: #fff;
+            color: #263238;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .country-code-select:focus {
+            border-color: #168f5b;
+            box-shadow: 0 0 0 3px rgba(22,143,91,.10);
+        }
+
+        #country {
+            width: 100%;
+        }
+
+        /* ================= OTP ================= */
+
+        .otp-area {
+            margin-top: 12px;
+            padding: 14px;
+            border-radius: 14px;
+            background: #f7faf9;
+            border: 1px solid #dce9e2;
+        }
+
+        .otp-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .otp-button {
+            border: none;
+            border-radius: 10px;
+            padding: 11px 16px;
+            background: #168f5b;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        .otp-button:hover {
+            transform: translateY(-1px);
+            background: #107848;
+        }
+
+        .otp-button:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .otp-button.verify {
+            background: #1769aa;
+            white-space: nowrap;
+        }
+
+        .otp-timer {
+            font-size: 13px;
+            color: #667085;
+        }
+
+        .otp-entry {
+            margin-top: 14px;
+        }
+
+        .otp-entry label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        .otp-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        #otpCode {
+            flex: 1;
+            min-width: 0;
+            border: 1px solid #d7dce5;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 18px;
+            letter-spacing: 5px;
+            text-align: center;
+            outline: none;
+        }
+
+        #otpCode:focus {
+            border-color: #1769aa;
+            box-shadow: 0 0 0 3px rgba(23,105,170,.1);
+        }
+
+        #otpMessage {
+            display: block;
+            margin-top: 8px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .phone-verified {
+            margin-top: 10px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            background: #e9f8ef;
+            color: #11743f;
+            font-weight: 700;
+            border: 1px solid #bde6cc;
+        }
+
+        .message {
+            margin: 12px 0;
+            padding: 11px 13px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .message.success {
+            background: #e9f8ef;
+            color: #11743f;
+        }
+
+        .message.error {
+            background: #fff0f0;
+            color: #b42318;
+        }
+
+        @media (max-width: 600px) {
+            .mobile-box {
+                flex-direction: column;
+            }
+
+            .country-code-select {
+                flex: 1 1 auto;
+                width: 100%;
+            }
+
+            .otp-row {
+                flex-direction: column;
+            }
+
+            .otp-button.verify {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="top-header">
+
+    <div class="brand">
+
+        <img src="logo.jpg" alt="Athiti Suraksha">
+
+        <div>
+            <h2>Athiti Suraksha</h2>
+            <p>Safe Tourists | Safe India</p>
+        </div>
+
+    </div>
+
+    <select class="language">
+        <option>🌐 English</option>
+        <option>हिन्दी</option>
+        <option>ಕನ್ನಡ</option>
+    </select>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="registration-page">
+
+    <!-- LEFT SIDE -->
+
+    <section class="left-panel">
+
+        <div class="left-content">
+
+            <div class="script-text">
+                Incredible<br>
+                <span>India ♡</span>
+            </div>
+
+            <h1>
+                Welcome<br>
+                to<br>
+                <span>Incredible</span><br>
+                India
+            </h1>
+
+            <div class="india-line">
+                <span></span>
+                <i></i>
+                <b></b>
+            </div>
+
+            <h3>
+                Explore&nbsp; | &nbsp;Experience&nbsp; | &nbsp;Stay Safe
+            </h3>
+
+            <p>Your Safety is Our Priority</p>
+
+        </div>
+
+        <div class="left-bottom">
+
+            <span></span>
+
+            <p>
+                “Travel Freely<br>
+                Travel Safely”<br>
+                <strong>We are with You</strong>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FORM ================= -->
+
+    <section class="form-area">
+
+        <div class="registration-card">
+
+            <div class="form-logo">
+                <img src="logo.jpg" alt="Logo">
+            </div>
+
+            <h1>
+                Tourist <span>Registration</span>
+            </h1>
+
+            <p class="subtitle">
+                Athiti Suraksha Safety Monitoring System
+            </p>
+
+            <div class="tricolor">
+                <span></span>
+                <i>✥</i>
+                <b></b>
+            </div>
+
+            <p class="description">
+                Register yourself for a safer and smarter travel experience.
+            </p>
+
+
+            <!-- FORM -->
+
+            <form id="registerForm">
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label>
+                        👤 Full Name <em>*</em>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label>
+                        ✉ Email Address <em>*</em>
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email address"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- AGE -->
+
+                <div class="form-group">
+
+                    <label>
+                        ▣ Age <em>*</em>
+                    </label>
+
+                    <input
+                        type="number"
+                        id="age"
+                        name="age"
+                        placeholder="Enter your age"
+                        min="1"
+                        max="120"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- GENDER -->
+
+                <div class="form-group">
+
+                    <label>
+                        ⚥ Gender <em>*</em>
+                    </label>
+
+                    <select
+                        id="gender"
+                        name="gender"
+                        required
+                    >
+
+                        <option value="">
+                            Select Gender
+                        </option>
+
+                        <option value="Male">
+                            Male
+                        </option>
+
+                        <option value="Female">
+                            Female
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- TOURIST TYPE -->
+
+                <div class="form-group">
+
+                    <label>
+                        💼 Tourist Type <em>*</em>
+                    </label>
+
+                    <select
+                        id="touristType"
+                        name="touristType"
+                        required
+                    >
+
+                        <option value="">
+                            Select Tourist Type
+                        </option>
+
+                        <option value="Indian Tourist">
+                            Indian Tourist
+                        </option>
+
+                        <option value="Foreign Tourist">
+                            Foreign Tourist
+                        </option>
+
+                    </select>
+
+                    <small>
+                        Choose whether you are an Indian or Foreign Tourist
+                    </small>
+
+                </div>
+
+
+                <!-- AADHAAR -->
+
+                <div
+                    class="form-group"
+                    id="aadhaarGroup"
+                    style="display:none;"
+                >
+
+                    <label>
+                        🪪 Aadhaar Number <em>*</em>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="aadhaar"
+                        name="aadhaar"
+                        inputmode="numeric"
+                        autocomplete="off"
+                        placeholder="Enter your 12-digit Aadhaar number"
+                        maxlength="12"
+                    >
+
+                    <small>
+                        Enter exactly 12 digits
+                    </small>
+
+                </div>
+
+
+                <!-- PASSPORT -->
+
+                <div
+                    class="form-group"
+                    id="passportGroup"
+                    style="display:none;"
+                >
+
+                    <label>
+                        🛂 Passport Number <em>*</em>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="passport"
+                        name="passport"
+                        autocomplete="off"
+                        placeholder="Enter passport number"
+                        maxlength="15"
+                    >
+
+                    <small>
+                        Letters and numbers only (6–15 characters)
+                    </small>
+
+                </div>
+
+
+                <!-- COUNTRY -->
+
+                <div
+                    class="form-group"
+                    id="countryGroup"
+                    style="display:none;"
+                >
+
+                    <label>
+                        🌐 Country <em>*</em>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="country"
+                        name="country"
+                        list="countryList"
+                        placeholder="🔍 Search and select your country"
+                        autocomplete="off"
+                    >
+
+                    <datalist id="countryList"></datalist>
+
+                    <small>
+                        Search for your country and select the matching name
+                    </small>
+
+                </div>
+
+
+                <!-- MOBILE -->
+
+                <div class="form-group">
+
+                    <label>
+                        📞 Mobile Number <em>*</em>
+                    </label>
+
+                    <div class="mobile-box">
+
+                        <select
+                            id="countryCode"
+                            name="countryCode"
+                            class="country-code-select"
+                            aria-label="Country calling code"
+                            required
+                        ></select>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter mobile number"
+                            inputmode="numeric"
+                            autocomplete="tel"
+                            maxlength="15"
+                            required
+                        >
+
+                    </div>
+
+                    <small id="phoneHint">
+                        India (+91) selected by default
+                    </small>
+
+
+                    <!-- OTP -->
+
+                    <div
+                        class="otp-area"
+                        id="otpArea"
+                    >
+
+                        <div class="otp-actions">
+
+                            <button
+                                type="button"
+                                id="sendOtpButton"
+                                class="otp-button"
+                            >
+                                📲 Send OTP
+                            </button>
+
+                            <span
+                                id="otpTimer"
+                                class="otp-timer"
+                            ></span>
+
+                        </div>
+
+
+                        <div
+                            id="otpEntry"
+                            class="otp-entry"
+                            style="display:none;"
+                        >
+
+                            <label for="otpCode">
+                                🔐 Enter OTP <em>*</em>
+                            </label>
+
+                            <div class="otp-row">
+
+                                <input
+                                    type="text"
+                                    id="otpCode"
+                                    inputmode="numeric"
+                                    autocomplete="one-time-code"
+                                    maxlength="6"
+                                    placeholder="Enter 6-digit OTP"
+                                >
+
+                                <button
+                                    type="button"
+                                    id="verifyOtpButton"
+                                    class="otp-button verify"
+                                >
+                                    Verify OTP
+                                </button>
+
+                            </div>
+
+                            <small id="otpMessage"></small>
+
+                        </div>
+
+
+                        <div
+                            id="phoneVerified"
+                            class="phone-verified"
+                            style="display:none;"
+                        >
+                            ✅ Mobile number verified
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label>
+                        🔒 Password <em>*</em>
+                    </label>
+
+                    <div class="password-box">
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Create a strong password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            id="togglePassword"
+                        >
+                            👁
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FACE VERIFICATION -->
+
+                <div class="face-box">
+
+                    <div class="face-title">
+                        📷 Live Face Verification
+                    </div>
+
+                    <p>
+                        Capture a live photo for identity verification
+                    </p>
+
+                    <button
+                        type="button"
+                        id="faceButton"
+                        class="face-button"
+                    >
+                        📷 Start Face Verification
+                    </button>
+
+                    <video
+                        id="camera"
+                        autoplay
+                        playsinline
+                        style="display:none;"
+                    ></video>
+
+                    <canvas
+                        id="canvas"
+                        style="display:none;"
+                    ></canvas>
+
+                    <img
+                        id="capturedPhoto"
+                        style="display:none;"
+                        alt="Captured photo"
+                    >
+
+                    <input
+                        type="hidden"
+                        id="facePhoto"
+                        name="facePhoto"
+                    >
+
+                </div>
+
+
+                <!-- TERMS -->
+
+                <div class="terms">
+
+                    <input
+                        type="checkbox"
+                        id="terms"
+                        required
+                    >
+
+                    <label for="terms">
+
+                        I agree to the
+
+                        <a href="#">
+                            Terms & Conditions
+                        </a>
+
+                        and
+
+                        <a href="#">
+                            Privacy Policy
+                        </a>
+
+                    </label>
+
+                </div>
+
+
+                <!-- MESSAGE -->
+
+                <div id="message"></div>
+
+
+                <!-- REGISTER -->
+
+                <button
+                    type="submit"
+                    class="register-button"
+                >
+                    👤 Register Tourist
+                    <span>→</span>
+                </button>
+
+
+                <!-- LOGIN -->
+
+                <p class="login-text">
+
+                    Already have an account?
+
+                    <a href="login.html">
+                        Login Here
+                    </a>
+
+                </p>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- RIGHT SIDE -->
+
+    <section class="right-panel">
+
+        <div class="right-heading">
+
+            <h1>
+                Discover<br>
+                Diversity<br>
+                <span>with Safety</span>
+            </h1>
+
+        </div>
+
+
+        <div class="feature-list">
+
+            <div class="feature sos">
+
+                <div class="feature-icon">
+                    🛡️
+                </div>
+
+                <div>
+
+                    <h3>
+                        Emergency SOS
+                    </h3>
+
+                    <p>
+                        Quick help anytime, anywhere
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature police">
+
+                <div class="feature-icon">
+                    📍
+                </div>
+
+                <div>
+
+                    <h3>
+                        Nearby Police Stations
+                    </h3>
+
+                    <p>
+                        Find nearest police stations instantly
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature hospital">
+
+                <div class="feature-icon">
+                    🏥
+                </div>
+
+                <div>
+
+                    <h3>
+                        Nearby Hospitals
+                    </h3>
+
+                    <p>
+                        Get medical help quickly
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature weather">
+
+                <div class="feature-icon">
+                    🌤️
+                </div>
+
+                <div>
+
+                    <h3>
+                        Live Weather Updates
+                    </h3>
+
+                    <p>
+                        Accurate weather information
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature translator">
+
+                <div class="feature-icon">
+                    🌐
+                </div>
+
+                <div>
+
+                    <h3>
+                        Voice Translator
+                    </h3>
+
+                    <p>
+                        Communicate in multiple languages
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="right-bottom">
+
+            <h2>
+                Athithi Devo Bhava
+            </h2>
+
+            <div class="mini-line">
+                <span></span>
+                <i></i>
+                <b></b>
+            </div>
+
+            <h3>
+                Incredible India
+            </h3>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div>
+        🛡️ Safe Tourists
+    </div>
+
+    <div>
+        ♡ Safe Places
+    </div>
+
+    <div>
+        👥 Stronger India
+    </div>
+
+    <div class="powered">
+        Powered by<br>
+        <strong>Athiti Suraksha</strong>
+    </div>
+
+</footer>
+
+
+<script src="register_updated.js"></script>
+
+</body>
+</html>

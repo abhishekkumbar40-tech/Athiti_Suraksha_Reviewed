@@ -1,0 +1,9 @@
+{
+  "name": "Athiti Suraksha \u2014 Smart Seasonal Places",
+  "short_name": "Athiti Places",
+  "start_url": "./season_places.html",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#07111f",
+  "icons": []
+}

@@ -1,0 +1,4049 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    Athiti Suraksha Weather
+</title>
+
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eaf6ff,
+            #f7fbff
+        );
+
+    color:#33171f;
+
+    min-height:100vh;
+
+}
+
+
+/* =====================================================
+   MAIN LAYOUT
+===================================================== */
+
+.app{
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar{
+
+    width:210px;
+
+    position:fixed;
+
+    left:0;
+    top:0;
+    bottom:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #df0869,
+            #df0869
+        );
+
+    color:white;
+
+    z-index:1000;
+
+    overflow:hidden;
+
+}
+
+
+/* LOGO */
+
+.logo{
+
+    height:82px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    padding:
+        12px 13px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.1);
+
+}
+
+
+.logo img{
+
+    width:45px;
+    height:45px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    background:white;
+
+}
+
+
+.logo-text h3{
+
+    font-size:14px;
+
+    white-space:nowrap;
+
+}
+
+
+.logo-text p{
+
+    font-size:8px;
+
+    color:#c6d8f3;
+
+    margin-top:3px;
+
+}
+
+
+/* MENU */
+
+.menu{
+
+    padding:
+        15px 8px;
+
+}
+
+
+.menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+    padding:
+        12px 13px;
+
+    margin:
+        5px 0;
+
+    border-radius:10px;
+
+    color:#d9e8ff;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    transition:.2s;
+
+}
+
+
+.menu a:hover,
+.menu a.active{
+
+    background:
+        linear-gradient(
+            90deg,
+            #e81449,
+            #ff2563
+        );
+
+    color:white;
+
+}
+
+
+.menu-icon{
+
+    width:24px;
+
+    text-align:center;
+
+    font-size:18px;
+
+}
+
+
+/* INDIA DECORATION */
+
+.india-art{
+
+    position:absolute;
+
+    bottom:20px;
+
+    left:0;
+
+    width:100%;
+
+    text-align:center;
+
+    opacity:.85;
+
+}
+
+
+.india-art .taj{
+
+    font-size:65px;
+
+    line-height:60px;
+
+}
+
+
+.india-art h2{
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-style:italic;
+
+    color:white;
+
+    font-size:22px;
+
+}
+
+
+.india-art strong{
+
+    color:#ffd329;
+
+    font-size:25px;
+
+}
+
+
+.india-art p{
+
+    font-family:Georgia,serif;
+
+    font-style:italic;
+
+    font-size:12px;
+
+    margin-top:4px;
+
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.main{
+
+    margin-left:210px;
+
+    width:
+        calc(100% - 210px);
+
+    min-height:100vh;
+
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+
+    min-height:180px;
+
+    padding:
+        42px 35px 25px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    color:white;
+
+    background:
+
+        linear-gradient(
+            rgba(75, 5, 25, 0.28),
+            rgba(75, 5, 21, 0.38)
+        ),
+
+        url(
+            "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1800&q=85"
+        );
+
+    background-size:cover;
+
+    background-position:center;
+
+}
+
+
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+.hero h1{
+
+    font-size:32px;
+
+    text-shadow:
+        0 2px 5px
+        rgba(0,0,0,.45);
+
+}
+
+
+.hero p{
+
+    font-size:17px;
+
+    margin-top:5px;
+
+}
+
+
+.hero-india{
+
+    position:absolute;
+
+    right:30px;
+
+    bottom:10px;
+
+    font-size:42px;
+
+}
+
+
+/* =====================================================
+   TOP RIGHT
+===================================================== */
+
+.top-actions{
+
+    position:absolute;
+
+    top:12px;
+
+    right:18px;
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+
+.language{
+
+    background:
+        rgba(255,255,255,.9);
+
+    color:#172033;
+
+    border-radius:20px;
+
+    padding:
+        9px 15px;
+
+    font-weight:600;
+
+    font-size:12px;
+
+}
+
+
+.admin{
+
+    background:
+        rgba(255,255,255,.9);
+
+    color:#331720;
+
+    border-radius:25px;
+
+    padding:
+        7px 13px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-size:11px;
+
+}
+
+
+.admin-avatar{
+
+    width:30px;
+    height:30px;
+
+    border-radius:50%;
+
+    background:#07366e;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:15px;
+
+}
+
+
+/* =====================================================
+   PAGE CONTENT
+===================================================== */
+
+.content{
+
+    padding:
+        0 18px 20px;
+
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.search-area{
+
+    margin-top:-20px;
+
+    position:relative;
+
+    z-index:20;
+
+}
+
+
+.search-box{
+
+    max-width:650px;
+
+    margin:auto;
+
+    display:flex;
+
+    background:white;
+
+    border:
+        5px solid
+        rgba(255,255,255,.7);
+
+    border-radius:16px;
+
+    box-shadow:
+        0 7px 25px
+        rgba(22,70,120,.18);
+
+    overflow:hidden;
+
+}
+
+
+.search-box input{
+
+    flex:1;
+
+    border:none;
+
+    outline:none;
+
+    padding:
+        14px 16px;
+
+    font-size:13px;
+
+}
+
+
+.search-box button{
+
+    width:145px;
+
+    border:none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #df0869,
+            #df0869
+        );
+
+    color:white;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+
+.location-status{
+
+    text-align:center;
+
+    color:white;
+
+    margin-top:8px;
+
+    font-size:11px;
+
+}
+
+
+/* =====================================================
+   QUICK CITY BUTTONS
+===================================================== */
+
+.quick-cities{
+
+    display:flex;
+
+    gap:9px;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    margin:
+        13px 0;
+
+}
+
+
+.quick-cities button{
+
+    border:none;
+
+    background:white;
+
+    color:#4b252c;
+
+    padding:
+        9px 14px;
+
+    border-radius:9px;
+
+    box-shadow:
+        0 2px 8px
+        rgba(100, 30, 54, 0.09);
+
+    cursor:pointer;
+
+    font-size:11px;
+
+    font-weight:600;
+
+}
+
+
+.quick-cities button:hover{
+
+    background:#e8f2ff;
+
+    color:#df087e;
+
+}
+
+
+/* =====================================================
+   GRID
+===================================================== */
+
+.weather-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        1.7fr .9fr;
+
+    gap:14px;
+
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.card{
+
+    background:
+        rgba(255,255,255,.88);
+
+    border:
+        1px solid
+        rgba(210,225,240,.9);
+
+    border-radius:15px;
+
+    box-shadow:
+        0 4px 18px
+        rgba(35,74,115,.08);
+
+    padding:15px;
+
+}
+
+
+/* =====================================================
+   CURRENT WEATHER
+===================================================== */
+
+.current-card{
+
+    min-height:300px;
+
+    color:white;
+
+    background:
+
+        linear-gradient(
+            120deg,
+            rgba(28,128,224,.83),
+            rgba(80,164,225,.65)
+        ),
+
+        url(
+            "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=80"
+        );
+
+    background-size:cover;
+
+    background-position:center;
+
+}
+
+
+.location-title{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+
+.location-title h2{
+
+    font-size:19px;
+
+}
+
+
+.update-time{
+
+    font-size:10px;
+
+    opacity:.9;
+
+}
+
+
+.current-main{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:22px;
+
+    margin-top:14px;
+
+}
+
+
+.weather-icon{
+
+    font-size:78px;
+
+    width:120px;
+
+    text-align:center;
+
+}
+
+
+.temperature{
+
+    font-size:57px;
+
+    font-weight:700;
+
+    line-height:1;
+
+}
+
+
+.condition{
+
+    font-size:21px;
+
+    font-weight:600;
+
+    margin-top:5px;
+
+}
+
+
+.feels{
+
+    font-size:13px;
+
+    margin-top:3px;
+
+}
+
+
+.description{
+
+    font-size:13px;
+
+    margin-top:15px;
+
+}
+
+
+/* =====================================================
+   WEATHER METRICS
+===================================================== */
+
+.metrics{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:10px;
+
+    margin-top:20px;
+
+}
+
+
+.metric{
+
+    background:
+        rgba(0,35,75,.28);
+
+    padding:
+        9px;
+
+    border-radius:10px;
+
+    text-align:center;
+
+}
+
+
+.metric-icon{
+
+    font-size:20px;
+
+}
+
+
+.metric-value{
+
+    font-weight:700;
+
+    font-size:12px;
+
+    margin-top:3px;
+
+}
+
+
+.metric-name{
+
+    font-size:9px;
+
+    opacity:.85;
+
+}
+
+
+/* =====================================================
+   HIGHLIGHTS
+===================================================== */
+
+.card-title{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:12px;
+
+}
+
+
+.card-title h3{
+
+    font-size:16px;
+
+}
+
+
+.highlight-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:10px;
+
+}
+
+
+.highlight{
+
+    border-radius:12px;
+
+    padding:
+        13px;
+
+    min-height:75px;
+
+}
+
+
+.highlight-icon{
+
+    font-size:20px;
+
+}
+
+
+.highlight strong{
+
+    font-size:15px;
+
+}
+
+
+.highlight small{
+
+    display:block;
+
+    font-size:9px;
+
+    color:#637086;
+
+    margin-top:2px;
+
+}
+
+
+.red{
+    background:#fff0f1;
+}
+
+.blue{
+    background:#edf6ff;
+}
+
+.green{
+    background:#e8faf3;
+}
+
+.yellow{
+    background:#fff8df;
+}
+
+.purple{
+    background:#f0edff;
+}
+
+.pink{
+    background:#fff0f7;
+}
+
+
+/* =====================================================
+   HOURLY
+===================================================== */
+
+.full{
+
+    grid-column:
+        1 / -1;
+
+}
+
+
+.hourly{
+
+    display:flex;
+
+    gap:7px;
+
+    overflow-x:auto;
+
+}
+
+
+.hour{
+
+    min-width:80px;
+
+    background:#f5f8fc;
+
+    border-radius:10px;
+
+    padding:
+        10px 6px;
+
+    text-align:center;
+
+}
+
+
+.hour:first-child{
+
+    background:#fff8df;
+
+}
+
+
+.hour-time{
+
+    font-size:10px;
+
+    color:#657289;
+
+}
+
+
+.hour-icon{
+
+    font-size:24px;
+
+    margin:6px 0;
+
+}
+
+
+.hour-temp{
+
+    font-weight:700;
+
+    font-size:12px;
+
+}
+
+
+/* =====================================================
+   SUN
+===================================================== */
+
+.sun-card{
+
+    position:relative;
+
+    min-height:165px;
+
+}
+
+
+.sun-path{
+
+    width:220px;
+
+    height:100px;
+
+    margin:
+        10px auto;
+
+    border-top:
+        3px dashed
+        #f5bb19;
+
+    border-radius:
+        50% 50% 0 0;
+
+    position:relative;
+
+}
+
+
+.sun-ball{
+
+    position:absolute;
+
+    width:25px;
+    height:25px;
+
+    background:#ffae00;
+
+    border-radius:50%;
+
+    top:-13px;
+
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+}
+
+
+.sun-times{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:11px;
+
+}
+
+
+/* =====================================================
+   7 DAY
+===================================================== */
+
+.days{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(7,1fr);
+
+    gap:7px;
+
+}
+
+
+.day{
+
+    background:#f5f8fc;
+
+    border-radius:10px;
+
+    text-align:center;
+
+    padding:10px 4px;
+
+}
+
+
+.day-name{
+
+    font-weight:700;
+
+    font-size:10px;
+
+}
+
+
+.day-date{
+
+    font-size:8px;
+
+    color:#78859a;
+
+}
+
+
+.day-icon{
+
+    font-size:25px;
+
+    margin:7px 0;
+
+}
+
+
+.day-temp{
+
+    font-weight:700;
+
+    font-size:10px;
+
+}
+
+
+.day-rain{
+
+    color:#df1648;
+
+    font-size:9px;
+
+    margin-top:5px;
+
+}
+
+
+/* =====================================================
+   AQI
+===================================================== */
+
+.aqi-box{
+
+    background:
+        linear-gradient(
+            135deg,
+            #e8fff3,
+            #d8f8e9
+        );
+
+    border-radius:12px;
+
+    padding:15px;
+
+}
+
+
+.aqi-value{
+
+    font-size:28px;
+
+    font-weight:800;
+
+}
+
+
+.aqi-label{
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+
+.aqi-bar{
+
+    height:8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #31b96b,
+            #f3c442,
+            #f18b4d,
+            #dc4848
+        );
+
+    border-radius:10px;
+
+    margin-top:10px;
+
+    position:relative;
+
+}
+
+
+.aqi-marker{
+
+    position:absolute;
+
+    width:13px;
+    height:13px;
+
+    background:#111;
+
+    border-radius:50%;
+
+    top:-3px;
+
+    left:0%;
+
+    transition:.5s;
+
+}
+
+
+/* =====================================================
+   TRAVEL TIPS
+===================================================== */
+
+.tips{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:9px;
+
+}
+
+
+.tip{
+
+    background:#f3f7fc;
+
+    border-radius:10px;
+
+    padding:11px;
+
+    font-size:10px;
+
+}
+
+
+.tip-icon{
+
+    font-size:23px;
+
+    margin-bottom:5px;
+
+}
+
+
+/* =====================================================
+   GPS
+===================================================== */
+
+.gps-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    background:#edf8ff;
+
+    border-radius:10px;
+
+    padding:10px;
+
+    margin-top:10px;
+
+    font-size:10px;
+
+}
+
+
+.gps-dot{
+
+    width:11px;
+    height:11px;
+
+    border-radius:50%;
+
+    background:#15ad63;
+
+    box-shadow:
+        0 0 0 5px
+        rgba(21,173,99,.12);
+
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loading{
+
+    text-align:center;
+
+    padding:40px;
+
+    color:#668;
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    text-align:center;
+
+    padding:18px;
+
+    color:#657289;
+
+    font-size:10px;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:1000px){
+
+    .sidebar{
+
+        width:180px;
+
+    }
+
+    .main{
+
+        margin-left:180px;
+
+        width:
+            calc(100% - 180px);
+
+    }
+
+    .weather-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+
+@media(max-width:700px){
+
+    .sidebar{
+
+        display:none;
+
+    }
+
+    .main{
+
+        margin-left:0;
+
+        width:100%;
+
+    }
+
+    .hero{
+
+        min-height:210px;
+
+        padding:
+            70px 20px 20px;
+
+    }
+
+    .hero h1{
+
+        font-size:24px;
+
+    }
+
+    .top-actions{
+
+        top:10px;
+
+        right:10px;
+
+    }
+
+    .current-main{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .metrics{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+    .days{
+
+        overflow-x:auto;
+
+        display:flex;
+
+    }
+
+    .day{
+
+        min-width:85px;
+
+    }
+
+    .tips{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+
+/* =====================================================
+   EXTRA SMALL
+===================================================== */
+
+@media(max-width:430px){
+
+    .temperature{
+
+        font-size:47px;
+
+    }
+
+    .weather-icon{
+
+        font-size:65px;
+
+    }
+
+    .search-box button{
+
+        width:105px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+
+    <div class="logo">
+
+        <img
+            src="logo.jpg"
+            onerror="
+                this.style.display='none'
+            "
+        >
+
+        <div class="logo-text">
+
+            <h3>
+                Athiti Suraksha
+            </h3>
+
+            <p>
+                Safe Travel, Secure India
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <nav class="menu">
+
+
+        <a href="dashboard.html">
+
+            <span class="menu-icon">
+                🏠
+            </span>
+
+            Home
+
+        </a>
+
+
+        <a
+            href="weather.html"
+            class="active"
+        >
+
+            <span class="menu-icon">
+                ☁️
+            </span>
+
+            Weather
+
+        </a>
+
+
+        <a href="map.html">
+
+            <span class="menu-icon">
+                📍
+            </span>
+
+            Locations
+
+        </a>
+
+
+        <a href="#">
+
+            <span class="menu-icon">
+                🗺️
+            </span>
+
+            Travel Guide
+
+        </a>
+
+
+        <a href="emergency.html">
+
+            <span class="menu-icon">
+                🔔
+            </span>
+
+            Emergency SOS
+
+        </a>
+
+
+        <a href="#">
+
+            <span class="menu-icon">
+                🛡️
+            </span>
+
+            Nearby Services
+
+        </a>
+
+
+    </nav>
+
+
+    <div class="india-art">
+
+        <div class="taj">
+            🕌
+        </div>
+
+        <h2>
+            Incredible
+            <strong>India</strong>
+        </h2>
+
+        <p>
+            Safe for Everyone
+        </p>
+
+        <div style="margin-top:10px;">
+            🇮🇳
+        </div>
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main">
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+
+    <div class="top-actions">
+
+
+        <div class="language">
+            🌐 EN ▾
+        </div>
+
+
+        <div class="admin">
+
+            <div class="admin-avatar">
+                👤
+            </div>
+
+            <div>
+
+                <strong>
+                    .
+                </strong>
+
+                <br>
+
+                <span
+                    style="
+                        font-size:9px;
+                        color:#677;
+                    "
+                >
+                    Athiti Suraksha
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="hero-content">
+
+        <h1>
+            ☁️ Athiti Suraksha Weather
+        </h1>
+
+        <p>
+            Stay Informed &nbsp; | &nbsp;
+            Travel Safer &nbsp; | &nbsp;
+            Explore Happier
+        </p>
+
+    </div>
+
+
+    <div class="hero-india">
+        🇮🇳
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTENT
+===================================================== -->
+
+<div class="content">
+
+
+<!-- =====================================================
+     SEARCH
+===================================================== -->
+
+<div class="search-area">
+
+
+    <div class="search-box">
+
+
+        <input
+            id="cityInput"
+            type="text"
+            placeholder="Search city, state or tourist place..."
+        >
+
+
+        <button
+            onclick="searchCity()"
+        >
+            Get Weather
+        </button>
+
+
+    </div>
+
+
+    <div
+        class="location-status"
+        id="locationStatus"
+    >
+        📍 Detecting your live GPS location...
+    </div>
+
+
+</div>
+
+
+
+<!-- QUICK CITY -->
+
+<div class="quick-cities">
+
+
+    <button
+        onclick="searchCityName('New Delhi')"
+    >
+        📍 New Delhi
+    </button>
+
+
+    <button
+        onclick="searchCityName('Mumbai')"
+    >
+        📍 Mumbai
+    </button>
+
+
+    <button
+        onclick="searchCityName('Bengaluru')"
+    >
+        📍 Bengaluru
+    </button>
+
+
+    <button
+        onclick="searchCityName('Jaipur')"
+    >
+        📍 Jaipur
+    </button>
+
+
+    <button
+        onclick="searchCityName('Goa')"
+    >
+        📍 Goa
+    </button>
+
+
+    <button
+        onclick="searchCityName('Mysuru')"
+    >
+        📍 Mysuru
+    </button>
+
+
+    <button
+        onclick="searchCityName('Varanasi')"
+    >
+        📍 Varanasi
+    </button>
+
+
+</div>
+
+
+
+<!-- GPS BOX -->
+
+<div
+    class="gps-box"
+    id="gpsBox"
+>
+
+    <span class="gps-dot"></span>
+
+    <span id="gpsText">
+        Waiting for GPS...
+    </span>
+
+</div>
+
+
+
+<!-- =====================================================
+     WEATHER GRID
+===================================================== -->
+
+<div class="weather-grid">
+
+
+<!-- =====================================================
+     CURRENT WEATHER
+===================================================== -->
+
+<div
+    class="card current-card"
+>
+
+
+    <div class="location-title">
+
+
+        <h2 id="locationName">
+            Detecting location...
+        </h2>
+
+
+        <span
+            class="update-time"
+            id="updateTime"
+        >
+            Updating...
+        </span>
+
+
+    </div>
+
+
+
+    <div class="current-main">
+
+
+        <div
+            class="weather-icon"
+            id="currentIcon"
+        >
+            🌤️
+        </div>
+
+
+        <div>
+
+
+            <div
+                class="temperature"
+                id="temperature"
+            >
+                --°C
+            </div>
+
+
+            <div
+                class="condition"
+                id="condition"
+            >
+                Loading weather...
+            </div>
+
+
+            <div
+                class="feels"
+                id="feels"
+            >
+                Feels like --°C
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div
+        class="description"
+        id="description"
+    >
+        Getting real-time weather conditions...
+    </div>
+
+
+
+    <!-- METRICS -->
+
+    <div class="metrics">
+
+
+        <div class="metric">
+
+            <div class="metric-icon">
+                💨
+            </div>
+
+            <div
+                class="metric-value"
+                id="wind"
+            >
+                -- km/h
+            </div>
+
+            <div class="metric-name">
+                Wind Speed
+            </div>
+
+        </div>
+
+
+        <div class="metric">
+
+            <div class="metric-icon">
+                💧
+            </div>
+
+            <div
+                class="metric-value"
+                id="humidity"
+            >
+                --%
+            </div>
+
+            <div class="metric-name">
+                Humidity
+            </div>
+
+        </div>
+
+
+        <div class="metric">
+
+            <div class="metric-icon">
+                ⏱️
+            </div>
+
+            <div
+                class="metric-value"
+                id="pressure"
+            >
+                -- hPa
+            </div>
+
+            <div class="metric-name">
+                Pressure
+            </div>
+
+        </div>
+
+
+        <div class="metric">
+
+            <div class="metric-icon">
+                👁️
+            </div>
+
+            <div
+                class="metric-value"
+                id="visibility"
+            >
+                -- km
+            </div>
+
+            <div class="metric-name">
+                Visibility
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     HIGHLIGHTS
+===================================================== -->
+
+<div class="card">
+
+
+    <div class="card-title">
+
+        <h3>
+            ☀️ Today's Highlights
+        </h3>
+
+    </div>
+
+
+    <div class="highlight-grid">
+
+
+        <div class="highlight red">
+
+            <div class="highlight-icon">
+                🌡️
+            </div>
+
+            <strong
+                id="maxTemp"
+            >
+                --°C
+            </strong>
+
+            <small>
+                Max Temperature
+            </small>
+
+        </div>
+
+
+        <div class="highlight blue">
+
+            <div class="highlight-icon">
+                ❄️
+            </div>
+
+            <strong
+                id="minTemp"
+            >
+                --°C
+            </strong>
+
+            <small>
+                Min Temperature
+            </small>
+
+        </div>
+
+
+        <div class="highlight green">
+
+            <div class="highlight-icon">
+                🌧️
+            </div>
+
+            <strong
+                id="rainChance"
+            >
+                --%
+            </strong>
+
+            <small>
+                Chance of Rain
+            </small>
+
+        </div>
+
+
+        <div class="highlight yellow">
+
+            <div class="highlight-icon">
+                🍃
+            </div>
+
+            <strong
+                id="aqiText"
+            >
+                Loading
+            </strong>
+
+            <small>
+                Air Quality
+            </small>
+
+        </div>
+
+
+        <div class="highlight purple">
+
+            <div class="highlight-icon">
+                ☀️
+            </div>
+
+            <strong
+                id="uvIndex"
+            >
+                --
+            </strong>
+
+            <small>
+                UV Index
+            </small>
+
+        </div>
+
+
+        <div class="highlight pink">
+
+            <div class="highlight-icon">
+                💨
+            </div>
+
+            <strong
+                id="windDirection"
+            >
+                --
+            </strong>
+
+            <small>
+                Wind Direction
+            </small>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     HOURLY
+===================================================== -->
+
+<div class="card full">
+
+
+    <div class="card-title">
+
+        <h3>
+            🕐 Hourly Forecast
+        </h3>
+
+        <span
+            style="
+                color:#e80838;
+                font-size:11px;
+                font-weight:600;
+            "
+        >
+            Next 24 Hours
+        </span>
+
+    </div>
+
+
+    <div
+        class="hourly"
+        id="hourlyForecast"
+    >
+
+        <div class="loading">
+            Loading hourly forecast...
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     SUNRISE / SUNSET
+===================================================== -->
+
+<div class="card sun-card">
+
+
+    <div class="card-title">
+
+        <h3>
+            🌅 Sunrise & Sunset
+        </h3>
+
+    </div>
+
+
+    <div class="sun-path">
+
+        <div class="sun-ball"></div>
+
+    </div>
+
+
+    <div class="sun-times">
+
+
+        <div>
+
+            <strong id="sunrise">
+                --:--
+            </strong>
+
+            <br>
+
+            Sunrise
+
+        </div>
+
+
+        <div
+            style="
+                text-align:center;
+            "
+        >
+
+            <strong
+                id="dayLength"
+            >
+                -- h
+            </strong>
+
+            <br>
+
+            Day Length
+
+        </div>
+
+
+        <div
+            style="
+                text-align:right;
+            "
+        >
+
+            <strong id="sunset">
+                --:--
+            </strong>
+
+            <br>
+
+            Sunset
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     7 DAY FORECAST
+===================================================== -->
+
+<div class="card full">
+
+
+    <div class="card-title">
+
+        <h3>
+            📅 7 Day Forecast
+        </h3>
+
+        <span
+            style="
+                color:#e80865;
+                font-size:11px;
+            "
+        >
+            Live Forecast
+        </span>
+
+    </div>
+
+
+    <div
+        class="days"
+        id="dailyForecast"
+    >
+
+        <div class="loading">
+            Loading 7-day forecast...
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     AQI
+===================================================== -->
+
+<div class="card">
+
+
+    <div class="card-title">
+
+        <h3>
+            🌿 Air Quality
+        </h3>
+
+    </div>
+
+
+    <div class="aqi-box">
+
+
+        <div
+            class="aqi-value"
+            id="aqiValue"
+        >
+            --
+        </div>
+
+
+        <div
+            class="aqi-label"
+            id="aqiLabel"
+        >
+            Loading AQI...
+        </div>
+
+
+        <div class="aqi-bar">
+
+            <div
+                class="aqi-marker"
+                id="aqiMarker"
+            ></div>
+
+        </div>
+
+
+        <div
+            style="
+                margin-top:8px;
+                font-size:9px;
+                color:#617;
+            "
+        >
+
+            PM2.5:
+            <strong id="pm25">
+                -- μg/m³
+            </strong>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     TRAVEL TIPS
+===================================================== -->
+
+<div class="card">
+
+
+    <div class="card-title">
+
+        <h3>
+            💡 Travel Tips
+        </h3>
+
+    </div>
+
+
+    <div class="tips">
+
+
+        <div class="tip">
+
+            <div class="tip-icon">
+                ☂️
+            </div>
+
+            Carry an umbrella if
+            rain is expected.
+
+        </div>
+
+
+        <div class="tip">
+
+            <div class="tip-icon">
+                💧
+            </div>
+
+            Stay hydrated during
+            hot weather.
+
+        </div>
+
+
+        <div class="tip">
+
+            <div class="tip-icon">
+                🗺️
+            </div>
+
+            Check weather before
+            outdoor activities.
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+</div>
+
+
+<!-- WEATHER GRID END -->
+
+
+<footer>
+
+    © 2026 Athiti Suraksha |
+    Tourist Safety Monitoring System
+
+    <br><br>
+
+    Weather data:
+    Open-Meteo |
+    Location data:
+    OpenStreetMap / Nominatim
+
+</footer>
+
+
+</div>
+
+
+</main>
+
+
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   ATHITI SURAKSHA
+   REAL-TIME WEATHER ENGINE
+===================================================== */
+
+
+/*
+   Open-Meteo does not require an API key
+   for this type of public weather use.
+
+   We obtain:
+
+   GPS
+      ↓
+   Latitude + Longitude
+      ↓
+   Reverse Geocoding
+      ↓
+   Open-Meteo Weather
+      ↓
+   Open-Meteo Air Quality
+*/
+
+
+let currentLatitude = null;
+let currentLongitude = null;
+
+let weatherTimer = null;
+
+
+
+/* =====================================================
+   WMO WEATHER CODES
+===================================================== */
+
+function getWeatherInfo(
+    code,
+    isDay = 1
+){
+
+    const map = {
+
+        0: {
+            text:"Clear Sky",
+            icon:isDay ? "☀️" : "🌙"
+        },
+
+        1: {
+            text:"Mainly Clear",
+            icon:isDay ? "🌤️" : "🌙"
+        },
+
+        2: {
+            text:"Partly Cloudy",
+            icon:"⛅"
+        },
+
+        3: {
+            text:"Overcast",
+            icon:"☁️"
+        },
+
+        45: {
+            text:"Fog",
+            icon:"🌫️"
+        },
+
+        48: {
+            text:"Depositing Rime Fog",
+            icon:"🌫️"
+        },
+
+        51: {
+            text:"Light Drizzle",
+            icon:"🌦️"
+        },
+
+        53: {
+            text:"Moderate Drizzle",
+            icon:"🌦️"
+        },
+
+        55: {
+            text:"Dense Drizzle",
+            icon:"🌧️"
+        },
+
+        61: {
+            text:"Light Rain",
+            icon:"🌦️"
+        },
+
+        63: {
+            text:"Moderate Rain",
+            icon:"🌧️"
+        },
+
+        65: {
+            text:"Heavy Rain",
+            icon:"🌧️"
+        },
+
+        71: {
+            text:"Light Snow",
+            icon:"🌨️"
+        },
+
+        73: {
+            text:"Moderate Snow",
+            icon:"❄️"
+        },
+
+        75: {
+            text:"Heavy Snow",
+            icon:"❄️"
+        },
+
+        80: {
+            text:"Rain Showers",
+            icon:"🌦️"
+        },
+
+        81: {
+            text:"Rain Showers",
+            icon:"🌧️"
+        },
+
+        82: {
+            text:"Heavy Rain Showers",
+            icon:"⛈️"
+        },
+
+        95: {
+            text:"Thunderstorm",
+            icon:"⛈️"
+        },
+
+        96: {
+            text:"Thunderstorm with Hail",
+            icon:"⛈️"
+        },
+
+        99: {
+            text:"Heavy Thunderstorm",
+            icon:"⛈️"
+        }
+
+    };
+
+
+    return (
+        map[code] ||
+        {
+            text:"Unknown",
+            icon:"🌤️"
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   WIND DIRECTION
+===================================================== */
+
+function getWindDirection(
+    degrees
+){
+
+    const directions = [
+
+        "N",
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW"
+
+    ];
+
+
+    const index =
+        Math.round(
+            degrees / 45
+        ) % 8;
+
+
+    return directions[index];
+
+}
+
+
+
+/* =====================================================
+   FORMAT TIME
+===================================================== */
+
+function formatTime(
+    dateString
+){
+
+    if(!dateString){
+
+        return "--:--";
+
+    }
+
+
+    const date =
+        new Date(dateString);
+
+
+    return date.toLocaleTimeString(
+        "en-IN",
+        {
+            hour:"numeric",
+            minute:"2-digit"
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   FORMAT DATE
+===================================================== */
+
+function formatDate(
+    dateString
+){
+
+    const date =
+        new Date(
+            dateString +
+            "T12:00:00"
+        );
+
+
+    return date.toLocaleDateString(
+        "en-IN",
+        {
+            day:"numeric",
+            month:"short"
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   DAY NAME
+===================================================== */
+
+function getDayName(
+    dateString,
+    index
+){
+
+    if(index === 0){
+
+        return "Today";
+
+    }
+
+
+    const date =
+        new Date(
+            dateString +
+            "T12:00:00"
+        );
+
+
+    return date.toLocaleDateString(
+        "en-IN",
+        {
+            weekday:"short"
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   GPS
+===================================================== */
+
+function startGPS(){
+
+    const status =
+        document.getElementById(
+            "locationStatus"
+        );
+
+
+    const gpsText =
+        document.getElementById(
+            "gpsText"
+        );
+
+
+    if(
+        !navigator.geolocation
+    ){
+
+        status.textContent =
+            "❌ Geolocation is not supported by this browser.";
+
+        gpsText.textContent =
+            "GPS not supported.";
+
+        return;
+
+    }
+
+
+    status.textContent =
+        "📍 Requesting your live GPS location...";
+
+
+    /*
+       watchPosition keeps receiving
+       updated GPS coordinates.
+    */
+
+    navigator.geolocation.watchPosition(
+
+        function(position){
+
+            currentLatitude =
+                position.coords.latitude;
+
+            currentLongitude =
+                position.coords.longitude;
+
+
+            const accuracy =
+                Math.round(
+                    position.coords.accuracy
+                );
+
+
+            status.textContent =
+                "📍 Live GPS location detected";
+
+
+            gpsText.textContent =
+                `GPS Active • Accuracy ±${accuracy} m • ` +
+                `${currentLatitude.toFixed(5)}, ` +
+                `${currentLongitude.toFixed(5)}`;
+
+
+            loadWeather(
+                currentLatitude,
+                currentLongitude
+            );
+
+        },
+
+        function(error){
+
+            console.error(
+                "GPS Error:",
+                error
+            );
+
+
+            status.textContent =
+                "⚠️ GPS permission unavailable. Search a city instead.";
+
+            gpsText.textContent =
+                "GPS unavailable";
+
+        },
+
+        {
+
+            enableHighAccuracy:true,
+
+            timeout:15000,
+
+            maximumAge:30000
+
+        }
+
+    );
+
+}
+
+
+
+/* =====================================================
+   REVERSE GEOCODING
+===================================================== */
+
+async function reverseGeocode(
+    latitude,
+    longitude
+){
+
+    try{
+
+
+        const url =
+            `https://nominatim.openstreetmap.org/reverse` +
+            `?format=jsonv2` +
+            `&lat=${latitude}` +
+            `&lon=${longitude}` +
+            `&zoom=10` +
+            `&addressdetails=1`;
+
+
+        const response =
+            await fetch(
+                url,
+                {
+                    headers:{
+                        "Accept":
+                            "application/json"
+                    }
+                }
+            );
+
+
+        if(
+            !response.ok
+        ){
+
+            throw new Error(
+                "Reverse geocoding failed"
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        const address =
+            data.address || {};
+
+
+        return {
+
+            city:
+                address.city ||
+                address.town ||
+                address.municipality ||
+                address.village ||
+                address.county ||
+                "Your Location",
+
+            state:
+                address.state ||
+                "",
+
+            country:
+                address.country ||
+                ""
+
+        };
+
+    }
+
+    catch(error){
+
+        console.error(
+            error
+        );
+
+
+        return {
+
+            city:"Your Location",
+
+            state:"",
+
+            country:""
+
+        };
+
+    }
+
+}
+
+
+
+/* =====================================================
+   LOAD WEATHER
+===================================================== */
+
+async function loadWeather(
+    latitude,
+    longitude,
+    customLocation = null
+){
+
+    try{
+
+
+        document.getElementById(
+            "condition"
+        ).textContent =
+            "Updating weather...";
+
+
+        /*
+          Main Open-Meteo request.
+
+          Current:
+          temperature
+          humidity
+          feels-like
+          wind
+          pressure
+          visibility
+
+          Hourly:
+          next 24 hours
+
+          Daily:
+          7 days
+          sunrise
+          sunset
+          UV
+        */
+
+        const weatherURL =
+
+            "https://api.open-meteo.com/v1/forecast" +
+
+            `?latitude=${latitude}` +
+
+            `&longitude=${longitude}` +
+
+            `&current=` +
+
+            "temperature_2m," +
+
+            "relative_humidity_2m," +
+
+            "apparent_temperature," +
+
+            "weather_code," +
+
+            "wind_speed_10m," +
+
+            "wind_direction_10m," +
+
+            "pressure_msl," +
+
+            "visibility," +
+
+            "is_day" +
+
+            `&hourly=` +
+
+            "temperature_2m," +
+
+            "weather_code," +
+
+            "precipitation_probability," +
+
+            "relative_humidity_2m," +
+
+            "wind_speed_10m" +
+
+            `&daily=` +
+
+            "weather_code," +
+
+            "temperature_2m_max," +
+
+            "temperature_2m_min," +
+
+            "precipitation_probability_max," +
+
+            "uv_index_max," +
+
+            "sunrise," +
+
+            "sunset" +
+
+            `&forecast_days=7` +
+
+            `&timezone=auto`;
+
+
+        const response =
+            await fetch(
+                weatherURL
+            );
+
+
+        if(
+            !response.ok
+        ){
+
+            throw new Error(
+                "Weather API error"
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+
+        /* =================================================
+           LOCATION
+        ================================================= */
+
+        let location =
+            customLocation;
+
+
+        if(!location){
+
+            location =
+                await reverseGeocode(
+                    latitude,
+                    longitude
+                );
+
+        }
+
+
+        document.getElementById(
+            "locationName"
+        ).textContent =
+
+            `📍 ${location.city}` +
+
+            (
+                location.state
+                    ? `, ${location.state}`
+                    : ""
+            );
+
+
+
+        /* =================================================
+           CURRENT
+        ================================================= */
+
+        const current =
+            data.current;
+
+
+        const weather =
+            getWeatherInfo(
+                current.weather_code,
+                current.is_day
+            );
+
+
+        document.getElementById(
+            "currentIcon"
+        ).textContent =
+            weather.icon;
+
+
+        document.getElementById(
+            "temperature"
+        ).textContent =
+            Math.round(
+                current.temperature_2m
+            ) + "°C";
+
+
+        document.getElementById(
+            "condition"
+        ).textContent =
+            weather.text;
+
+
+        document.getElementById(
+            "feels"
+        ).textContent =
+
+            `Feels like ${Math.round(
+                current.apparent_temperature
+            )}°C`;
+
+
+        document.getElementById(
+            "description"
+        ).textContent =
+
+            `Current conditions in ${
+                location.city
+            }. Weather data is continuously updated.`;
+
+
+
+        /* =================================================
+           METRICS
+        ================================================= */
+
+        document.getElementById(
+            "wind"
+        ).textContent =
+
+            Math.round(
+                current.wind_speed_10m
+            ) +
+
+            " km/h";
+
+
+        document.getElementById(
+            "humidity"
+        ).textContent =
+
+            Math.round(
+                current.relative_humidity_2m
+            ) +
+
+            "%";
+
+
+        document.getElementById(
+            "pressure"
+        ).textContent =
+
+            Math.round(
+                current.pressure_msl
+            ) +
+
+            " hPa";
+
+
+        document.getElementById(
+            "visibility"
+        ).textContent =
+
+            (
+                current.visibility /
+                1000
+            ).toFixed(1) +
+
+            " km";
+
+
+        document.getElementById(
+            "windDirection"
+        ).textContent =
+
+            getWindDirection(
+                current.wind_direction_10m
+            );
+
+
+
+        /* =================================================
+           UPDATE TIME
+        ================================================= */
+
+        document.getElementById(
+            "updateTime"
+        ).textContent =
+
+            "Updated " +
+
+            formatTime(
+                current.time
+            );
+
+
+
+        /* =================================================
+           DAILY
+        ================================================= */
+
+        const daily =
+            data.daily;
+
+
+        document.getElementById(
+            "maxTemp"
+        ).textContent =
+
+            Math.round(
+                daily.temperature_2m_max[0]
+            ) +
+
+            "°C";
+
+
+        document.getElementById(
+            "minTemp"
+        ).textContent =
+
+            Math.round(
+                daily.temperature_2m_min[0]
+            ) +
+
+            "°C";
+
+
+        document.getElementById(
+            "rainChance"
+        ).textContent =
+
+            daily
+                .precipitation_probability_max[0] +
+
+            "%";
+
+
+        document.getElementById(
+            "uvIndex"
+        ).textContent =
+
+            Number(
+                daily.uv_index_max[0]
+            ).toFixed(0);
+
+
+        document.getElementById(
+            "sunrise"
+        ).textContent =
+
+            formatTime(
+                daily.sunrise[0]
+            );
+
+
+        document.getElementById(
+            "sunset"
+        ).textContent =
+
+            formatTime(
+                daily.sunset[0]
+            );
+
+
+        const sunrise =
+            new Date(
+                daily.sunrise[0]
+            );
+
+
+        const sunset =
+            new Date(
+                daily.sunset[0]
+            );
+
+
+        const daylight =
+            (
+                sunset - sunrise
+            ) / 3600000;
+
+
+        document.getElementById(
+            "dayLength"
+        ).textContent =
+
+            daylight.toFixed(1) +
+
+            " h";
+
+
+
+        /* =================================================
+           HOURLY
+        ================================================= */
+
+        renderHourly(
+            data.hourly,
+            current.time
+        );
+
+
+
+        /* =================================================
+           DAILY
+        ================================================= */
+
+        renderDaily(
+            daily
+        );
+
+
+
+        /* =================================================
+           AQI
+        ================================================= */
+
+        await loadAirQuality(
+            latitude,
+            longitude
+        );
+
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Weather error:",
+            error
+        );
+
+
+        document.getElementById(
+            "condition"
+        ).textContent =
+            "Unable to load weather";
+
+
+        document.getElementById(
+            "description"
+        ).textContent =
+            "Please check your internet connection.";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   HOURLY FORECAST
+===================================================== */
+
+function renderHourly(
+    hourly,
+    currentTime
+){
+
+    const container =
+        document.getElementById(
+            "hourlyForecast"
+        );
+
+
+    const currentDate =
+        new Date(
+            currentTime
+        );
+
+
+    let startIndex =
+        hourly.time.findIndex(
+            time =>
+                new Date(time)
+                    >= currentDate
+        );
+
+
+    if(startIndex < 0){
+
+        startIndex = 0;
+
+    }
+
+
+    const endIndex =
+        Math.min(
+            startIndex + 24,
+            hourly.time.length
+        );
+
+
+    let html = "";
+
+
+    for(
+        let i = startIndex;
+        i < endIndex;
+        i++
+    ){
+
+
+        const date =
+            new Date(
+                hourly.time[i]
+            );
+
+
+        const isNow =
+            i === startIndex;
+
+
+        const info =
+            getWeatherInfo(
+                hourly.weather_code[i],
+                1
+            );
+
+
+        html += `
+
+            <div class="hour">
+
+                <div class="hour-time">
+
+                    ${
+                        isNow
+                            ? "Now"
+                            : date.toLocaleTimeString(
+                                "en-IN",
+                                {
+                                    hour:"numeric"
+                                }
+                            )
+                    }
+
+                </div>
+
+
+                <div class="hour-icon">
+
+                    ${info.icon}
+
+                </div>
+
+
+                <div class="hour-temp">
+
+                    ${Math.round(
+                        hourly.temperature_2m[i]
+                    )}°
+
+                </div>
+
+
+                <div
+                    style="
+                        color:#1681df;
+                        font-size:8px;
+                        margin-top:4px;
+                    "
+                >
+
+                    💧
+                    ${
+                        hourly
+                        .precipitation_probability[i]
+                    }%
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    container.innerHTML =
+        html;
+
+}
+
+
+
+/* =====================================================
+   DAILY FORECAST
+===================================================== */
+
+function renderDaily(
+    daily
+){
+
+    const container =
+        document.getElementById(
+            "dailyForecast"
+        );
+
+
+    let html = "";
+
+
+    for(
+        let i = 0;
+        i < 7;
+        i++
+    ){
+
+
+        const info =
+            getWeatherInfo(
+                daily.weather_code[i],
+                1
+            );
+
+
+        html += `
+
+            <div class="day">
+
+
+                <div class="day-name">
+
+                    ${
+                        getDayName(
+                            daily.time[i],
+                            i
+                        )
+                    }
+
+                </div>
+
+
+                <div class="day-date">
+
+                    ${
+                        formatDate(
+                            daily.time[i]
+                        )
+                    }
+
+                </div>
+
+
+                <div class="day-icon">
+
+                    ${info.icon}
+
+                </div>
+
+
+                <div class="day-temp">
+
+                    ${
+                        Math.round(
+                            daily.temperature_2m_max[i]
+                        )
+                    }°
+
+                    /
+
+                    ${
+                        Math.round(
+                            daily.temperature_2m_min[i]
+                        )
+                    }°
+
+                </div>
+
+
+                <div class="day-rain">
+
+                    💧
+
+                    ${
+                        daily
+                        .precipitation_probability_max[i]
+                    }%
+
+                </div>
+
+
+            </div>
+
+        `;
+
+    }
+
+
+    container.innerHTML =
+        html;
+
+}
+
+
+
+/* =====================================================
+   AIR QUALITY
+===================================================== */
+
+async function loadAirQuality(
+    latitude,
+    longitude
+){
+
+    try{
+
+
+        const url =
+
+            "https://air-quality-api.open-meteo.com/v1/air-quality" +
+
+            `?latitude=${latitude}` +
+
+            `&longitude=${longitude}` +
+
+            `&current=` +
+
+            "us_aqi," +
+
+            "pm2_5";
+
+
+        const response =
+            await fetch(
+                url
+            );
+
+
+        if(
+            !response.ok
+        ){
+
+            throw new Error(
+                "AQI API error"
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        const aqi =
+            Math.round(
+                data.current.us_aqi
+            );
+
+
+        const pm25 =
+            Number(
+                data.current.pm2_5
+            );
+
+
+        document.getElementById(
+            "aqiValue"
+        ).textContent =
+            aqi;
+
+
+        document.getElementById(
+            "pm25"
+        ).textContent =
+
+            pm25.toFixed(1) +
+
+            " μg/m³";
+
+
+        let label = "";
+
+
+        if(aqi <= 50){
+
+            label = "Good";
+
+        }
+
+        else if(aqi <= 100){
+
+            label = "Moderate";
+
+        }
+
+        else if(aqi <= 150){
+
+            label =
+                "Unhealthy for Sensitive Groups";
+
+        }
+
+        else if(aqi <= 200){
+
+            label = "Unhealthy";
+
+        }
+
+        else if(aqi <= 300){
+
+            label = "Very Unhealthy";
+
+        }
+
+        else{
+
+            label = "Hazardous";
+
+        }
+
+
+        document.getElementById(
+            "aqiLabel"
+        ).textContent =
+            label;
+
+
+        document.getElementById(
+            "aqiText"
+        ).textContent =
+            label;
+
+
+        const position =
+            Math.min(
+                100,
+                Math.max(
+                    0,
+                    aqi / 3
+                )
+            );
+
+
+        document.getElementById(
+            "aqiMarker"
+        ).style.left =
+            position + "%";
+
+
+    }
+
+    catch(error){
+
+        console.error(
+            "AQI error:",
+            error
+        );
+
+
+        document.getElementById(
+            "aqiValue"
+        ).textContent =
+            "--";
+
+
+        document.getElementById(
+            "aqiLabel"
+        ).textContent =
+            "AQI unavailable";
+
+
+        document.getElementById(
+            "aqiText"
+        ).textContent =
+            "Unavailable";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   CITY SEARCH
+===================================================== */
+
+async function searchCity(){
+
+    const input =
+        document.getElementById(
+            "cityInput"
+        );
+
+
+    const query =
+        input.value.trim();
+
+
+    if(!query){
+
+        alert(
+            "Please enter a city or place."
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+
+        document.getElementById(
+            "locationStatus"
+        ).textContent =
+            "🔎 Searching location...";
+
+
+        const url =
+
+            "https://nominatim.openstreetmap.org/search" +
+
+            `?format=jsonv2` +
+
+            `&q=${encodeURIComponent(
+                query
+            )}` +
+
+            `&limit=1`;
+
+
+        const response =
+            await fetch(
+                url
+            );
+
+
+        const results =
+            await response.json();
+
+
+        if(
+            !results.length
+        ){
+
+            alert(
+                "Location not found."
+            );
+
+            return;
+
+        }
+
+
+        const place =
+            results[0];
+
+
+        currentLatitude =
+            parseFloat(
+                place.lat
+            );
+
+
+        currentLongitude =
+            parseFloat(
+                place.lon
+            );
+
+
+        const address =
+            place.address || {};
+
+
+        const location = {
+
+            city:
+                address.city ||
+                address.town ||
+                address.village ||
+                place.name ||
+                query,
+
+            state:
+                address.state ||
+                "",
+
+            country:
+                address.country ||
+                ""
+
+        };
+
+
+        document.getElementById(
+            "gpsText"
+        ).textContent =
+
+            `Location selected • ` +
+
+            `${currentLatitude.toFixed(5)}, ` +
+
+            `${currentLongitude.toFixed(5)}`;
+
+
+        loadWeather(
+            currentLatitude,
+            currentLongitude,
+            location
+        );
+
+
+    }
+
+    catch(error){
+
+        console.error(
+            error
+        );
+
+        alert(
+            "Unable to search this location."
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   QUICK CITY
+===================================================== */
+
+function searchCityName(
+    city
+){
+
+    document.getElementById(
+        "cityInput"
+    ).value =
+        city;
+
+
+    searchCity();
+
+}
+
+
+
+/* =====================================================
+   ENTER KEY SEARCH
+===================================================== */
+
+document
+    .getElementById(
+        "cityInput"
+    )
+    .addEventListener(
+        "keydown",
+        function(event){
+
+            if(
+                event.key === "Enter"
+            ){
+
+                searchCity();
+
+            }
+
+        }
+    );
+
+
+
+/* =====================================================
+   START APPLICATION
+===================================================== */
+
+startGPS();
+
+
+
+/*
+   Refresh weather every 10 minutes.
+
+   GPS itself is watched continuously,
+   while weather data is refreshed periodically.
+*/
+
+weatherTimer =
+    setInterval(
+        function(){
+
+            if(
+                currentLatitude !== null &&
+                currentLongitude !== null
+            ){
+
+                loadWeather(
+                    currentLatitude,
+                    currentLongitude
+                );
+
+            }
+
+        },
+        10 * 60 * 1000
+    );
+
+</script>
+
+
+</body>
+
+</html>

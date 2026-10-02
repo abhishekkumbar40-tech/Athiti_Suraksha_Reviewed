@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Athiti Suraksha - Taxi</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#faf8fb;color:#171923}
+button,input{font:inherit}button{cursor:pointer;border:0}.wrap{max-width:1250px;margin:auto;padding:22px}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.brand{display:flex;gap:12px;align-items:center}.logo{width:48px;height:48px;border-radius:15px;background:#ffe3ed;display:grid;place-items:center;font-size:25px}.brand b{font-size:19px}.brand small{display:block;color:#777;font-size:11px}.back{background:white;border:1px solid #eee;border-radius:12px;padding:10px 15px}
+.hero{background:linear-gradient(135deg,#ffe6ef,#fff4f8);border-radius:28px;padding:28px;display:flex;justify-content:space-between;align-items:center;overflow:hidden}.hero h1{font-size:42px;margin:7px 0}.hero strong{color:#e91e63}.hero p{color:#666;max-width:580px}.car{font-size:115px}.primary{background:linear-gradient(135deg,#ed1d63,#c90e52);color:#fff;border-radius:13px;padding:13px 22px;font-weight:800}.grid{display:grid;grid-template-columns:430px 1fr;gap:16px;margin-top:18px}.card{background:#fff;border:1px solid #eceaf0;border-radius:20px;padding:20px;box-shadow:0 12px 35px #28152f0d}.label{font-size:12px;font-weight:800;margin:12px 0 6px}.field{display:flex;gap:8px;align-items:center;border:1px solid #e8e6eb;border-radius:13px;padding:11px}.field input{width:100%;border:0;outline:0}.dot{width:10px;height:10px;border-radius:50%;background:#16ad70}.red{background:#ed3044}.types{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:15px 0}.type{padding:13px;border:1px solid #e8e6eb;border-radius:14px;background:#fff}.type.active{border:2px solid #e91e63;background:#fff1f6}.type b,.type small{display:block}.type small{font-size:10px;color:#777;margin-top:4px}.map{height:440px;border-radius:20px;overflow:hidden}.list{margin-top:18px}.taxi{display:grid;grid-template-columns:55px 1fr auto;gap:13px;align-items:center;background:#fff;border:1px solid #eee;border-radius:17px;padding:14px;margin:9px 0}.driver{width:52px;height:52px;border-radius:50%;background:#f1f1f5;display:grid;place-items:center;font-size:25px}.taxi h3{margin:0 0 3px;font-size:15px}.taxi p{margin:3px 0;color:#777;font-size:11px}.rating{color:#e69a00}.book{background:#e91e63;color:#fff;border-radius:10px;padding:9px 14px;font-weight:800}.ride{display:none;margin-top:18px}.ride.show{display:grid}.ride .map{height:500px}.ridecard{background:#fff;border:1px solid #eee;border-radius:20px;padding:20px}.driverhead{display:flex;gap:12px;align-items:center}.driverhead h2{margin:0;font-size:18px}.eta{margin:20px 0}.eta b{display:block;font-size:27px}.actions{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.actions button{padding:12px;border-radius:11px;border:1px solid #eee;background:#fff}.sos{background:#fff0f2!important;color:#e51d36!important;font-weight:800}.status{display:inline-block;background:#e9f8f0;color:#138252;padding:5px 9px;border-radius:12px;font-size:10px}.profile{margin-top:18px}.profile p{color:#666;font-size:12px}.toast{position:fixed;right:20px;bottom:20px;background:#171923;color:#fff;padding:13px 18px;border-radius:12px;opacity:0;transform:translateY(20px);transition:.25s}.toast.show{opacity:1;transform:none}
+@media(max-width:850px){.grid,.ride.show{grid-template-columns:1fr}.hero h1{font-size:32px}.car{font-size:75px}.types{grid-template-columns:repeat(2,1fr)}.taxi{grid-template-columns:48px 1fr}.taxi .book{grid-column:2}.wrap{padding:12px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="brand"><div class="logo">🛡️</div><div><b>Athiti Suraksha</b><small>Safe Travel • Taxi Service</small></div></div>
+  <button class="back" onclick="goDashboard()">← Dashboard</button>
+</header>
+
+<section class="hero">
+  <div><small style="color:#e91e63;font-weight:800;letter-spacing:1.5px">ATHITI SURAKSHA TAXI</small>
+  <h1>Explore India<br><strong>Safely.</strong></h1>
+  <p>Book verified taxis with GPS, live driver tracking, fare estimate and emergency protection.</p></div>
+  <div class="car">🚕</div>
+</section>
+
+<section class="grid">
+  <div class="card">
+    <div class="label">Pickup Location</div>
+    <div class="field"><span class="dot"></span><input id="pickup" placeholder="Current GPS location"><button onclick="useGPS()" style="color:#e91e63;font-weight:800">GPS</button></div>
+    <div class="label">Drop Location</div>
+    <div class="field"><span class="dot red"></span><input id="drop" placeholder="Where are you going?"></div>
+
+    <div class="label">Taxi Type</div>
+    <div class="types">
+      <button class="type active" data-type="Standard">🚗<b>Standard</b><small>₹8/km</small></button>
+      <button class="type" data-type="SUV">🚙<b>SUV</b><small>₹12/km</small></button>
+      <button class="type" data-type="Premium">🚘<b>Premium</b><small>₹18/km</small></button>
+      <button class="type" data-type="Auto">🛺<b>Auto</b><small>₹6/km</small></button>
+      <button class="type" data-type="Share">🚕<b>Taxi Share</b><small>₹5/km</small></button>
+      <button class="type" data-type="Tourist Cab">🚐<b>Tourist Cab</b><small>₹10/km</small></button>
+    </div>
+    <button class="primary" style="width:100%" onclick="findTaxi()">Find Available Taxi</button>
+
+    <div class="profile card" style="box-shadow:none;margin-top:15px;padding:14px">
+      <b>Tourist</b><p id="tourist">Loading tourist.json...</p>
+    </div>
+  </div>
+  <div id="map" class="map"></div>
+</section>
+
+<div class="list">
+  <h2>Available Taxis <span class="status">LIVE</span></h2>
+  <div id="taxiList"></div>
+</div>
+
+<section id="ride" class="ride">
+  <div id="rideMap" class="map"></div>
+  <div class="ridecard">
+    <div class="driverhead"><div class="driver">👨</div><div><h2 id="driver">Driver</h2><p id="vehicle">Vehicle</p><span class="status">Verified driver</span></div></div>
+    <div class="eta"><b id="eta">5 min</b><span id="distance">1.2 km away</span></div>
+    <div class="actions"><button class="sos" onclick="sendSOS()">🚨 SOS</button><button onclick="shareRide()">↗ Share Ride</button><button onclick="callDriver()">☎ Call Driver</button></div>
+  </div>
+</section>
+</div>
+<div id="toast" class="toast"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+let coords=null,taxis=[],selectedType="Standard",activeRide=null,map,rideMap,userMarker,taxiMarkers=[];
+const $=id=>document.getElementById(id);
+function toast(x){let e=$("toast");e.textContent=x;e.classList.add("show");setTimeout(()=>e.classList.remove("show"),2500)}
+function goDashboard(){location.href="dashboard.html"}
+async function loadTourist(){
+ try{let r=await fetch("/api/tourist");let t=await r.json();$("tourist").textContent=(t.fullName||[t.firstName,t.lastName].filter(Boolean).join(" ")||"Tourist")+" • "+(t.touristType||"Tourist")+" • "+(t.mobile||"");}
+ catch(e){$("tourist").textContent="Tourist data unavailable"}
+}
+function useGPS(){
+ if(!navigator.geolocation)return toast("GPS is not supported");
+ navigator.geolocation.getCurrentPosition(p=>{
+   coords={lat:p.coords.latitude,lng:p.coords.longitude,accuracy:p.coords.accuracy};
+   $("pickup").value=`Current location (${coords.lat.toFixed(5)}, ${coords.lng.toFixed(5)})`;
+   if(map){map.setView([coords.lat,coords.lng],15);if(userMarker)userMarker.setLatLng([coords.lat,coords.lng]);else userMarker=L.marker([coords.lat,coords.lng]).addTo(map).bindPopup("Tourist location").openPopup()}
+   loadTaxis();toast("Live GPS location connected");
+ },()=>toast("Please allow location permission"),{enableHighAccuracy:true,timeout:10000});
+}
+async function loadTaxis(){
+ let q=coords?`?lat=${coords.lat}&lng=${coords.lng}`:"";
+ try{let r=await fetch("/api/taxis"+q);taxis=await r.json();renderTaxis()}catch(e){toast("Taxi API unavailable")}
+}
+function renderTaxis(){
+ let list=$("taxiList");let arr=selectedType==="Standard"?taxis:taxis.filter(x=>x.type===selectedType||selectedType==="Tourist Cab");
+ if(!arr.length)arr=taxis;
+ list.innerHTML=arr.map(t=>`<article class="taxi"><div class="driver">👨</div><div><h3>${esc(t.name)}</h3><p><span class="rating">★ ${t.rating}</span> (${t.trips} trips) • ${esc(t.vehicle)} • ${esc(t.plate)}</p><p>${Number(t.distanceKm||1.2).toFixed(1)} km away • ETA ${t.eta} min</p></div><div><b>₹${Math.round(50+t.pricePerKm*8)}</b><br><button class="book" onclick="book('${t.id}')">Book Now</button></div></article>`).join("");
+ drawTaxis();
+}
+function findTaxi(){loadTaxis();toast("Searching available taxis near you...")}
+async function book(id){
+ let t=taxis.find(x=>x.id===id);if(!t)return;
+ let r=await fetch("/api/book",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({taxiId:id,pickup:coords,destination:$("drop").value||"Selected destination"})});
+ activeRide=await r.json();showRide();toast("Taxi booked successfully");
+}
+function showRide(){
+ if(!activeRide)return;
+ $("ride").classList.add("show");$("driver").textContent=activeRide.taxi.name;$("vehicle").textContent=activeRide.taxi.vehicle+" • "+activeRide.taxi.plate;$("eta").textContent=activeRide.eta+" min";$("distance").textContent=(activeRide.taxi.distanceKm||1.2).toFixed(1)+" km away";
+ setTimeout(()=>rideMap.invalidateSize(),100);rideMap.setView([activeRide.taxi.lat,activeRide.taxi.lng],15);
+}
+async function sendSOS(){
+ let r=await fetch("/api/sos",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({location:coords,message:"Taxi emergency SOS activated"})});let x=await r.json();toast(x.success?"🚨 SOS sent to safety server":"SOS failed");
+}
+function shareRide(){
+ let txt=activeRide?`Athiti Suraksha Ride ${activeRide.id}. Driver ${activeRide.taxi.name}. Vehicle ${activeRide.taxi.plate}.`:"No active ride";
+ if(navigator.share)navigator.share({title:"My Taxi Ride",text:txt});else navigator.clipboard?.writeText(txt).then(()=>toast("Ride details copied"));
+}
+function callDriver(){if(activeRide?.taxi?.phone)location.href="tel:"+activeRide.taxi.phone;else toast("Driver phone unavailable")}
+function drawTaxis(){if(!map)return;taxiMarkers.forEach(x=>map.removeLayer(x));taxiMarkers=[];taxis.forEach(t=>taxiMarkers.push(L.marker([t.lat,t.lng]).addTo(map).bindPopup(`<b>${esc(t.name)}</b><br>${esc(t.vehicle)}<br>ETA ${t.eta} min`)))}
+function esc(x){return String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+document.querySelectorAll(".type").forEach(b=>b.onclick=()=>{document.querySelectorAll(".type").forEach(x=>x.classList.remove("active"));b.classList.add("active");selectedType=b.dataset.type;renderTaxis()});
+map=L.map("map").setView([12.9716,77.5946],13);L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}).addTo(map);
+rideMap=L.map("rideMap").setView([12.9716,77.5946],13);L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}).addTo(rideMap);
+loadTourist();useGPS();loadTaxis();
+if(window.io){io().on("ride:update",x=>{if(x?.active){activeRide=x;showRide()}}).on("taxi:location",x=>{let t=taxis.find(a=>a.id===x.taxiId);if(t){t.lat=x.lat;t.lng=x.lng;drawTaxis();if(activeRide?.taxi?.id===t.id){activeRide.taxi=t;showRide()}}})}
+</script>
+</body>
+</html>

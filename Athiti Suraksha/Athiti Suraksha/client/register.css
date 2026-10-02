@@ -1,0 +1,1497 @@
+/* =====================================================
+   ATHITI SURAKSHA
+   TOURIST REGISTRATION
+   ===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    min-height: 100vh;
+    color: #17365d;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(230, 247, 255, 0.95),
+            rgba(255, 248, 235, 0.95)
+        );
+
+    overflow-x: hidden;
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.top-header {
+
+    height: 76px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 8px 28px;
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    z-index: 1000;
+
+    background: rgba(255, 255, 255, 0.90);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 3px 20px rgba(0, 50, 100, 0.08);
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.brand img {
+
+    width: 55px;
+
+    height: 55px;
+
+    object-fit: contain;
+
+    border-radius: 50%;
+}
+
+
+.brand h2 {
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    color: #0b765b;
+
+    letter-spacing: -0.5px;
+}
+
+
+.brand h2::first-letter {
+
+    color: #f58220;
+}
+
+
+.brand p {
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #31506d;
+}
+
+
+.language {
+
+    border: none;
+
+    outline: none;
+
+    background: white;
+
+    padding: 12px 22px;
+
+    border-radius: 14px;
+
+    font-weight: 600;
+
+    color: #17365d;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.10);
+
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   MAIN
+   ===================================================== */
+
+.registration-page {
+
+    min-height: 100vh;
+
+    padding-top: 76px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        minmax(500px, 600px)
+        1fr;
+
+    position: relative;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.10),
+            rgba(255,255,255,0.10)
+        ),
+        url("welcome-background.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-attachment: fixed;
+}
+
+
+/* =====================================================
+   LEFT PANEL
+   ===================================================== */
+
+.left-panel {
+
+    min-height: calc(100vh - 76px);
+
+    padding: 70px 45px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(5, 111, 190, 0.50),
+            rgba(2, 39, 76, 0.72)
+        );
+
+    color: white;
+}
+
+
+.left-content {
+
+    max-width: 360px;
+
+    margin: auto;
+}
+
+
+.script-text {
+
+    font-family: cursive;
+
+    font-size: 27px;
+
+    font-style: italic;
+
+    margin-bottom: 25px;
+}
+
+
+.script-text span {
+
+    color: #ffb928;
+
+    font-size: 38px;
+}
+
+
+.left-content h1 {
+
+    font-size: clamp(42px, 4vw, 66px);
+
+    line-height: 0.98;
+
+    font-weight: 800;
+
+    letter-spacing: -2px;
+
+    text-shadow:
+        0 4px 15px rgba(0,0,0,0.25);
+}
+
+
+.left-content h1 span {
+
+    color: #ffae24;
+}
+
+
+.india-line {
+
+    display: flex;
+
+    width: 210px;
+
+    height: 7px;
+
+    margin: 25px 0;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+.india-line span {
+
+    width: 35%;
+
+    background: #ff781f;
+}
+
+
+.india-line i {
+
+    width: 30%;
+
+    background: white;
+}
+
+
+.india-line b {
+
+    width: 35%;
+
+    background: #0ba75a;
+}
+
+
+.left-content h3 {
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    margin-bottom: 12px;
+}
+
+
+.left-content p {
+
+    font-size: 17px;
+
+    opacity: 0.95;
+}
+
+
+.left-bottom {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    max-width: 350px;
+
+    margin: auto;
+}
+
+
+.left-bottom span {
+
+    width: 4px;
+
+    height: 90px;
+
+    background: #ffae24;
+
+    border-radius: 5px;
+}
+
+
+.left-bottom p {
+
+    font-size: 19px;
+
+    line-height: 1.5;
+}
+
+
+.left-bottom strong {
+
+    font-weight: 800;
+}
+
+
+/* =====================================================
+   FORM AREA
+   ===================================================== */
+
+.form-area {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    padding: 25px 15px 60px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+
+/* =====================================================
+   REGISTRATION CARD
+   ===================================================== */
+
+.registration-card {
+
+    width: 100%;
+
+    max-width: 570px;
+
+    background:
+        rgba(255,255,255,0.94);
+
+    border-radius: 24px;
+
+    padding: 26px 34px 30px;
+
+    box-shadow:
+        0 25px 80px rgba(0, 35, 70, 0.22);
+
+    border: 1px solid rgba(255,255,255,0.85);
+
+    backdrop-filter: blur(20px);
+}
+
+
+/* =====================================================
+   LOGO
+   ===================================================== */
+
+.form-logo {
+
+    width: 76px;
+
+    height: 76px;
+
+    margin: 0 auto 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.form-logo img {
+
+    width: 75px;
+
+    height: 75px;
+
+    object-fit: contain;
+
+    border-radius: 50%;
+}
+
+
+/* =====================================================
+   TITLE
+   ===================================================== */
+
+.registration-card > h1 {
+
+    text-align: center;
+
+    font-size: 34px;
+
+    color: #073d70;
+
+    font-weight: 800;
+
+    margin-bottom: 4px;
+}
+
+
+.registration-card > h1 span {
+
+    color: #ed344e;
+}
+
+
+.subtitle {
+
+    text-align: center;
+
+    font-weight: 600;
+
+    color: #3c5671;
+
+    font-size: 15px;
+}
+
+
+.tricolor {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin: 12px 0;
+}
+
+
+.tricolor span {
+
+    width: 65px;
+
+    height: 4px;
+
+    background: #f47b20;
+
+    border-radius: 5px;
+}
+
+
+.tricolor i {
+
+    font-style: normal;
+
+    color: #214b70;
+
+    font-size: 17px;
+}
+
+
+.tricolor b {
+
+    width: 65px;
+
+    height: 4px;
+
+    background: #168b52;
+
+    border-radius: 5px;
+}
+
+
+.description {
+
+    text-align: center;
+
+    color: #68788c;
+
+    font-size: 14px;
+
+    margin-bottom: 18px;
+}
+
+
+/* =====================================================
+   FORM
+   ===================================================== */
+
+.form-group {
+
+    margin-bottom: 14px;
+}
+
+
+.form-group label {
+
+    display: block;
+
+    font-size: 14px;
+
+    font-weight: 750;
+
+    color: #173c64;
+
+    margin-bottom: 6px;
+}
+
+
+.form-group em {
+
+    color: #ef334e;
+
+    font-style: normal;
+}
+
+
+.form-group input,
+.form-group select {
+
+    width: 100%;
+
+    height: 42px;
+
+    border: 1.5px solid #d3dde7;
+
+    border-radius: 10px;
+
+    padding: 0 14px;
+
+    outline: none;
+
+    font-size: 13.5px;
+
+    color: #263f5d;
+
+    background: rgba(255,255,255,0.92);
+
+    transition: 0.25s;
+}
+
+
+.form-group input:focus,
+.form-group select:focus {
+
+    border-color: #2188dc;
+
+    box-shadow:
+        0 0 0 4px rgba(33,136,220,0.10);
+}
+
+
+.form-group input::placeholder {
+
+    color: #8c9bab;
+}
+
+
+.form-group small {
+
+    display: block;
+
+    font-size: 11px;
+
+    color: #75869a;
+
+    margin-top: 4px;
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+.mobile-box {
+
+    display: flex;
+
+    border: 1.5px solid #d3dde7;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    background: white;
+}
+
+
+.country-code {
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 13px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    border-right: 1px solid #d3dde7;
+
+    white-space: nowrap;
+}
+
+
+.mobile-box input {
+
+    border: none;
+
+    border-radius: 0;
+
+    box-shadow: none !important;
+}
+
+
+/* =====================================================
+   PASSWORD
+   ===================================================== */
+
+.password-box {
+
+    position: relative;
+}
+
+
+.password-box input {
+
+    padding-right: 45px;
+}
+
+
+.password-box button {
+
+    position: absolute;
+
+    right: 10px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 17px;
+}
+
+
+/* =====================================================
+   FACE VERIFICATION
+   ===================================================== */
+
+.face-box {
+
+    margin-top: 18px;
+
+    padding: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff0f3,
+            #ffe5eb
+        );
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    border: 1px solid #ffd2db;
+}
+
+
+.face-title {
+
+    font-size: 19px;
+
+    font-weight: 800;
+
+    color: #e52f4d;
+
+    margin-bottom: 4px;
+}
+
+
+.face-box p {
+
+    font-size: 12px;
+
+    color: #718092;
+
+    margin-bottom: 12px;
+}
+
+
+.face-button {
+
+    width: 100%;
+
+    height: 45px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f64a59,
+            #ef3154
+        );
+
+    font-size: 14px;
+
+    font-weight: 750;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+
+.face-button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(239,49,84,0.25);
+}
+
+
+#camera {
+
+    width: 100%;
+
+    max-height: 230px;
+
+    object-fit: cover;
+
+    margin-top: 12px;
+
+    border-radius: 12px;
+}
+
+
+#capturedPhoto {
+
+    width: 120px;
+
+    height: 120px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    margin: 12px auto;
+
+    border: 4px solid #21a765;
+}
+
+
+/* =====================================================
+   TERMS
+   ===================================================== */
+
+.terms {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 8px;
+
+    margin: 18px 0;
+
+    font-size: 12.5px;
+
+    color: #53657b;
+
+    line-height: 1.5;
+}
+
+
+.terms input {
+
+    margin-top: 3px;
+
+    width: 16px;
+
+    height: 16px;
+
+    accent-color: #0873c5;
+}
+
+
+.terms a {
+
+    color: #146bc0;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+/* =====================================================
+   MESSAGE
+   ===================================================== */
+
+#message {
+
+    display: none;
+
+    text-align: center;
+
+    padding: 10px;
+
+    border-radius: 9px;
+
+    margin-bottom: 12px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+#message.success {
+
+    display: block;
+
+    background: #e4f8ec;
+
+    color: #168049;
+}
+
+
+#message.error {
+
+    display: block;
+
+    background: #ffe7e9;
+
+    color: #d72c42;
+}
+
+
+/* =====================================================
+   REGISTER BUTTON
+   ===================================================== */
+
+.register-button {
+
+    width: 100%;
+
+    height: 52px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff851b,
+            #ef1550
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 22px rgba(239,70,55,0.22);
+
+    transition: 0.25s;
+}
+
+
+.register-button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(239,70,55,0.30);
+}
+
+
+.register-button span {
+
+    font-size: 21px;
+
+    margin-left: 8px;
+}
+
+
+/* =====================================================
+   LOGIN
+   ===================================================== */
+
+.login-text {
+
+    text-align: center;
+
+    margin-top: 17px;
+
+    color: #657589;
+
+    font-size: 13px;
+}
+
+
+.login-text a {
+
+    color: #116bc2;
+
+    font-weight: 800;
+
+    text-decoration: none;
+}
+
+
+/* =====================================================
+   RIGHT PANEL
+   ===================================================== */
+
+.right-panel {
+
+    padding: 55px 35px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(240,250,255,0.80),
+            rgba(255,255,255,0.50)
+        );
+
+    min-height: calc(100vh - 76px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+}
+
+
+.right-heading {
+
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+
+.right-heading h1 {
+
+    font-family: cursive;
+
+    font-size: clamp(32px, 3vw, 48px);
+
+    line-height: 1.15;
+
+    color: #123f69;
+
+    font-style: italic;
+}
+
+
+.right-heading span {
+
+    color: #1b527f;
+}
+
+
+/* =====================================================
+   FEATURES
+   ===================================================== */
+
+.feature-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+
+.feature {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 17px;
+
+    border-radius: 17px;
+
+    background: rgba(255,255,255,0.82);
+
+    box-shadow:
+        0 8px 22px rgba(20,60,90,0.08);
+
+    transition: 0.25s;
+}
+
+
+.feature:hover {
+
+    transform: translateX(-5px);
+
+    box-shadow:
+        0 12px 28px rgba(20,60,90,0.14);
+}
+
+
+.feature-icon {
+
+    width: 50px;
+
+    height: 50px;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 26px;
+
+    flex-shrink: 0;
+}
+
+
+.sos {
+
+    background: rgba(255,224,231,0.88);
+}
+
+
+.sos .feature-icon {
+
+    background: #ffe1e8;
+}
+
+
+.police {
+
+    background: rgba(222,242,255,0.90);
+}
+
+
+.police .feature-icon {
+
+    background: #d6efff;
+}
+
+
+.hospital {
+
+    background: rgba(224,249,239,0.90);
+}
+
+
+.hospital .feature-icon {
+
+    background: #d6f4e4;
+}
+
+
+.weather {
+
+    background: rgba(255,244,215,0.92);
+}
+
+
+.weather .feature-icon {
+
+    background: #fff0c8;
+}
+
+
+.translator {
+
+    background: rgba(239,228,255,0.90);
+}
+
+
+.translator .feature-icon {
+
+    background: #e8d9ff;
+}
+
+
+.feature h3 {
+
+    font-size: 15px;
+
+    color: #173e64;
+
+    margin-bottom: 4px;
+}
+
+
+.feature p {
+
+    font-size: 12px;
+
+    color: #62758a;
+
+    line-height: 1.4;
+}
+
+
+/* =====================================================
+   RIGHT BOTTOM
+   ===================================================== */
+
+.right-bottom {
+
+    text-align: center;
+
+    margin-top: 25px;
+}
+
+
+.right-bottom h2 {
+
+    font-family: cursive;
+
+    font-size: 29px;
+
+    font-style: italic;
+
+    color: #174b76;
+}
+
+
+.mini-line {
+
+    display: flex;
+
+    width: 105px;
+
+    height: 4px;
+
+    margin: 8px auto;
+
+}
+
+
+.mini-line span {
+
+    width: 35%;
+
+    background: #f47b20;
+}
+
+
+.mini-line i {
+
+    width: 30%;
+
+    background: white;
+}
+
+
+.mini-line b {
+
+    width: 35%;
+
+    background: #119653;
+}
+
+
+.right-bottom h3 {
+
+    font-size: 18px;
+
+    color: #202f3e;
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+footer {
+
+    min-height: 80px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #082846,
+            #031d35
+        );
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 70px;
+
+    padding: 15px 30px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.powered {
+
+    margin-left: auto;
+
+    font-size: 11px;
+
+    opacity: 0.85;
+}
+
+
+.powered strong {
+
+    font-size: 14px;
+
+    color: #ffffff;
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (max-width: 1100px) {
+
+    .registration-page {
+
+        grid-template-columns:
+            0.8fr
+            minmax(470px, 570px);
+    }
+
+    .right-panel {
+
+        display: none;
+    }
+
+    .left-panel {
+
+        min-height: calc(100vh - 76px);
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+    .top-header {
+
+        height: 65px;
+
+        padding: 6px 12px;
+    }
+
+
+    .brand img {
+
+        width: 45px;
+
+        height: 45px;
+    }
+
+
+    .brand h2 {
+
+        font-size: 19px;
+    }
+
+
+    .brand p {
+
+        font-size: 10px;
+    }
+
+
+    .language {
+
+        padding: 9px 12px;
+
+        font-size: 11px;
+    }
+
+
+    .registration-page {
+
+        display: block;
+
+        padding-top: 65px;
+
+        background-attachment: scroll;
+    }
+
+
+    .left-panel {
+
+        min-height: 250px;
+
+        padding: 35px 20px;
+
+        text-align: center;
+    }
+
+
+    .left-content {
+
+        margin: auto;
+    }
+
+
+    .script-text {
+
+        font-size: 21px;
+
+        margin-bottom: 12px;
+    }
+
+
+    .script-text span {
+
+        font-size: 28px;
+    }
+
+
+    .left-content h1 {
+
+        font-size: 40px;
+
+        letter-spacing: -1px;
+    }
+
+
+    .india-line {
+
+        margin: 15px auto;
+    }
+
+
+    .left-content h3 {
+
+        font-size: 12px;
+    }
+
+
+    .left-content p {
+
+        font-size: 13px;
+    }
+
+
+    .left-bottom {
+
+        display: none;
+    }
+
+
+    .form-area {
+
+        padding: 15px 10px 40px;
+    }
+
+
+    .registration-card {
+
+        padding: 22px 18px 25px;
+
+        border-radius: 18px;
+    }
+
+
+    .registration-card > h1 {
+
+        font-size: 27px;
+    }
+
+
+    footer {
+
+        flex-wrap: wrap;
+
+        gap: 15px;
+
+        justify-content: center;
+
+        text-align: center;
+    }
+
+
+    .powered {
+
+        width: 100%;
+
+        margin: 0;
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL MOBILE
+   ===================================================== */
+
+@media (max-width: 400px) {
+
+    .brand p {
+
+        display: none;
+    }
+
+
+    .language {
+
+        padding: 8px;
+    }
+
+
+    .registration-card {
+
+        padding: 20px 14px;
+    }
+
+
+    .registration-card > h1 {
+
+        font-size: 24px;
+    }
+
+}

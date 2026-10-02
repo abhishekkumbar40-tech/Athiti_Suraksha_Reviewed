@@ -1,0 +1,2078 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Athiti Suraksha - Smart Tourist Safety Monitoring System">
+
+    <title>Athiti Suraksha | Safe Travel • Secure India</title>
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f5f8fc;
+            color: #17233c;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 76px;
+
+            padding: 0 5%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: rgba(255, 255, 255, 0.96);
+
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+            z-index: 1000;
+
+            transition: 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
+        }
+
+
+        /* =====================================================
+           LOGO
+        ===================================================== */
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            width: 48px;
+            height: 48px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 2px solid #e2ebf4;
+
+            background: white;
+        }
+
+        .logo-text h2 {
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: 21px;
+
+            color: #173b64;
+
+            letter-spacing: 0.3px;
+        }
+
+        .logo-text p {
+            color: #718096;
+
+            font-size: 9px;
+
+            letter-spacing: 1.2px;
+
+            margin-top: 2px;
+        }
+
+
+        /* =====================================================
+           DESKTOP NAVIGATION
+        ===================================================== */
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: #465568;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #0877d1;
+        }
+
+
+        .nav-login {
+            background: #3d5875;
+
+            color: white !important;
+
+            padding: 11px 21px;
+
+            border-radius: 25px;
+        }
+
+        .nav-register {
+            background: #f39a3c;
+
+            color: white !important;
+
+            padding: 11px 19px;
+
+            border-radius: 25px;
+        }
+
+
+        /* =====================================================
+           MOBILE MENU
+        ===================================================== */
+
+        .menu-button {
+            display: none;
+
+            width: 42px;
+            height: 42px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #edf5fc;
+
+            color: #173b64;
+
+            font-size: 22px;
+
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+
+            position: fixed;
+
+            top: 76px;
+            left: 0;
+
+            width: 100%;
+
+            background: white;
+
+            padding: 18px;
+
+            flex-direction: column;
+
+            gap: 7px;
+
+            z-index: 999;
+
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .mobile-nav a {
+            color: #173b64;
+
+            padding: 13px;
+
+            border-radius: 10px;
+
+            background: #f5f9fd;
+
+            font-size: 13px;
+
+            font-weight: 600;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            min-height: 100vh;
+
+            padding: 135px 6% 75px;
+
+            display: flex;
+
+            align-items: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(2, 25, 52, 0.94) 0%,
+                    rgba(3, 57, 101, 0.82) 42%,
+                    rgba(4, 67, 116, 0.47) 75%,
+                    rgba(2, 20, 40, 0.25) 100%
+                ),
+
+                url("https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=2200&q=90")
+                center / cover no-repeat;
+        }
+
+
+        .hero-content {
+            width: 100%;
+            max-width: 1300px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: 1.1fr 0.9fr;
+
+            gap: 60px;
+
+            align-items: center;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        /* =====================================================
+           HERO LEFT
+        ===================================================== */
+
+        .hero-left {
+            color: white;
+        }
+
+        .welcome-pill {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 10px 16px;
+
+            border-radius: 30px;
+
+            background: rgba(255, 255, 255, 0.13);
+
+            border: 1px solid rgba(255, 255, 255, 0.24);
+
+            backdrop-filter: blur(8px);
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            margin-bottom: 23px;
+        }
+
+        .india-dot {
+            width: 9px;
+            height: 9px;
+
+            background: #ff9933;
+
+            border-radius: 50%;
+
+            box-shadow: 0 0 10px rgba(255, 153, 51, 0.6);
+        }
+
+
+        /* =====================================================
+           HERO TITLE
+        ===================================================== */
+
+        .hero-title {
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: clamp(48px, 6vw, 76px);
+
+            line-height: 0.98;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 24px;
+        }
+
+        .hero-title .white {
+            color: white;
+        }
+
+        .hero-title .orange {
+            color: #ffad3d;
+        }
+
+        .hero-title .green {
+            color: #68df57;
+        }
+
+
+        /* =====================================================
+           HERO DESCRIPTION
+        ===================================================== */
+
+        .hero-description {
+            max-width: 680px;
+
+            color: rgba(255, 255, 255, 0.84);
+
+            font-size: 15px;
+
+            line-height: 1.8;
+
+            margin-bottom: 29px;
+        }
+
+
+        /* =====================================================
+           HERO BUTTONS
+        ===================================================== */
+
+        .hero-buttons {
+            display: flex;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 30px;
+        }
+
+        .hero-btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 14px 22px;
+
+            border-radius: 9px;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            transition: 0.3s ease;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .register-main {
+            color: white;
+
+            background: linear-gradient(
+                135deg,
+                #ff8a27,
+                #f36d20
+            );
+
+            box-shadow:
+                0 10px 25px rgba(243, 109, 32, 0.25);
+        }
+
+        .login-main {
+            color: #28445e;
+
+            background: white;
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.10);
+        }
+
+
+        /* =====================================================
+           HERO SMALL FEATURES
+        ===================================================== */
+
+        .hero-features {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 20px;
+        }
+
+        .hero-feature {
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: rgba(255, 255, 255, 0.85);
+
+            font-size: 11px;
+
+            font-weight: 600;
+        }
+
+        .hero-feature span {
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           SAFETY CARD
+        ===================================================== */
+
+        .security-card {
+            max-width: 410px;
+
+            margin-left: auto;
+
+            padding: 28px;
+
+            border-radius: 28px;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            border: 1px solid rgba(255, 255, 255, 0.23);
+
+            backdrop-filter: blur(18px);
+
+            -webkit-backdrop-filter: blur(18px);
+
+            box-shadow:
+                0 30px 70px rgba(0, 0, 0, 0.20);
+        }
+
+        .security-top {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+            margin-bottom: 24px;
+        }
+
+        .security-top strong {
+            color: white;
+
+            font-size: 14px;
+        }
+
+        .active-badge {
+            color: #6af19d;
+
+            background: rgba(57, 229, 126, 0.12);
+
+            border: 1px solid rgba(57, 229, 126, 0.3);
+
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            font-size: 9px;
+        }
+
+
+        .shield {
+            width: 105px;
+            height: 105px;
+
+            margin: 20px auto;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(255, 255, 255, 0.10);
+
+            border: 1px solid rgba(255, 255, 255, 0.22);
+
+            font-size: 50px;
+
+            box-shadow:
+                0 0 35px rgba(87, 205, 255, 0.15);
+        }
+
+
+        .security-text {
+            text-align: center;
+
+            color: white;
+        }
+
+        .security-text h3 {
+            font-size: 20px;
+
+            margin-bottom: 7px;
+        }
+
+        .security-text p {
+            color: rgba(255, 255, 255, 0.68);
+
+            font-size: 11px;
+        }
+
+
+        .security-stats {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 8px;
+
+            margin-top: 25px;
+        }
+
+        .security-stat {
+            text-align: center;
+
+            padding: 13px 6px;
+
+            border-radius: 13px;
+
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .security-stat strong {
+            display: block;
+
+            color: white;
+
+            font-size: 17px;
+
+            margin-bottom: 3px;
+        }
+
+        .security-stat span {
+            color: rgba(255, 255, 255, 0.62);
+
+            font-size: 8px;
+        }
+
+
+        /* =====================================================
+           COMMON SECTION
+        ===================================================== */
+
+        .section-title {
+            text-align: center;
+
+            max-width: 720px;
+
+            margin: 0 auto 45px;
+        }
+
+        .section-label {
+            color: #0a75cf;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+        }
+
+        .section-title h2 {
+            color: #153b61;
+
+            font-size: 36px;
+
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #718096;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           FEATURES
+        ===================================================== */
+
+        .features-section {
+            padding: 90px 6%;
+
+            background: white;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+        .feature-card {
+            padding: 25px 20px;
+
+            background: #f8fbfe;
+
+            border: 1px solid #e6eef6;
+
+            border-radius: 19px;
+
+            transition: 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 18px 35px rgba(15, 70, 110, 0.09);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background: #eaf5ff;
+
+            font-size: 24px;
+
+            margin-bottom: 17px;
+        }
+
+        .feature-card h3 {
+            color: #193d61;
+
+            font-size: 15px;
+
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            color: #7a8797;
+
+            font-size: 11px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           SERVICES
+        ===================================================== */
+
+        .services-section {
+            padding: 90px 6%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f3f8fd,
+                    #ffffff
+                );
+        }
+
+        .services-grid {
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+
+        /* SERVICE CARD */
+
+        .service-card {
+            position: relative;
+
+            padding: 25px;
+
+            background: white;
+
+            border: 1px solid #e1eaf3;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            transition: 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 18px 35px rgba(15, 60, 100, 0.10);
+        }
+
+
+        /* SERVICE ICON */
+
+        .service-icon {
+            width: 55px;
+            height: 55px;
+
+            border-radius: 16px;
+
+            background: #edf7ff;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 27px;
+
+            margin-bottom: 17px;
+        }
+
+        .service-card h3 {
+            color: #183b5d;
+
+            font-size: 15px;
+
+            margin-bottom: 9px;
+        }
+
+        .service-card p {
+            color: #778496;
+
+            font-size: 11px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           LOGIN BADGE
+        ===================================================== */
+
+        .login-required {
+            position: absolute;
+
+            top: 15px;
+            right: 15px;
+
+            padding: 5px 8px;
+
+            border-radius: 20px;
+
+            color: #647589;
+
+            background: #f1f5f8;
+
+            font-size: 8px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           SERVICE INFORMATION
+        ===================================================== */
+
+        .service-note {
+            max-width: 850px;
+
+            margin: 35px auto 0;
+
+            padding: 17px 20px;
+
+            border-radius: 13px;
+
+            background: #eaf6ff;
+
+            border: 1px solid #d5ebfc;
+
+            text-align: center;
+
+            color: #42617c;
+
+            font-size: 11px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           CTA
+        ===================================================== */
+
+        .cta-section {
+            padding: 60px 6%;
+
+            background: white;
+        }
+
+        .cta {
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 55px;
+
+            border-radius: 28px;
+
+            background:
+                linear-gradient(
+                    110deg,
+                    #052e5b,
+                    #0873c9
+                );
+
+            color: white;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .cta h2 {
+            font-size: 31px;
+
+            margin-bottom: 10px;
+        }
+
+        .cta p {
+            max-width: 680px;
+
+            color: rgba(255, 255, 255, 0.76);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            margin-bottom: 23px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            background: #071d35;
+
+            color: white;
+
+            padding: 50px 6% 25px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                1.4fr 1fr 1fr;
+
+            gap: 50px;
+        }
+
+        .footer-brand p {
+            color: #8ea2b8;
+
+            max-width: 350px;
+
+            font-size: 11px;
+
+            line-height: 1.7;
+
+            margin-top: 15px;
+        }
+
+        .footer-column h3 {
+            font-size: 13px;
+
+            margin-bottom: 17px;
+        }
+
+        .footer-column a {
+            display: block;
+
+            color: #8ea2b8;
+
+            font-size: 11px;
+
+            margin-bottom: 10px;
+
+            transition: 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+
+            margin: 35px auto 0;
+
+            padding-top: 18px;
+
+            border-top:
+                1px solid rgba(255, 255, 255, 0.08);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            color: #6f839a;
+
+            font-size: 9px;
+        }
+
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media(max-width:1000px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .menu-button {
+                display: block;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .security-card {
+                margin: auto;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media(max-width:600px) {
+
+            .navbar {
+                padding: 0 4%;
+            }
+
+            .logo {
+                width: 43px;
+                height: 43px;
+            }
+
+            .logo-text h2 {
+                font-size: 17px;
+            }
+
+            .logo-text p {
+                font-size: 7px;
+            }
+
+
+            .hero {
+                padding: 120px 5% 60px;
+            }
+
+            .hero-title {
+                font-size: 47px;
+            }
+
+            .hero-description {
+                font-size: 13px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-btn {
+                width: 100%;
+            }
+
+            .hero-features {
+                gap: 10px;
+            }
+
+
+            .features-section,
+            .services-section {
+                padding: 65px 5%;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            .features-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .cta-section {
+                padding: 45px 5%;
+            }
+
+            .cta {
+                padding: 35px 25px;
+            }
+
+            .cta h2 {
+                font-size: 25px;
+            }
+
+
+            .footer-content {
+                grid-template-columns: 1fr;
+
+                gap: 30px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="navbar" id="navbar">
+
+    <a href="index.html" class="logo-area">
+
+        <img
+            src="logo.jpg"
+            class="logo"
+            alt="Athiti Suraksha Logo"
+            onerror="this.style.display='none';"
+        >
+
+        <div class="logo-text">
+
+            <h2>
+                Athiti Suraksha
+            </h2>
+
+            <p>
+                SAFE TRAVEL • SECURE INDIA
+            </p>
+
+        </div>
+
+    </a>
+
+
+    <nav class="nav-links">
+
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#features">
+            Features
+        </a>
+
+        <a href="#services">
+            Services
+        </a>
+
+        <a href="login.html" class="nav-login">
+            Login
+        </a>
+
+        <a href="register.html" class="nav-register">
+            Register
+        </a>
+
+    </nav>
+
+
+    <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Open Menu">
+
+        ☰
+
+    </button>
+
+</header>
+
+
+
+<!-- =========================================================
+     MOBILE NAV
+========================================================= -->
+
+<div class="mobile-nav" id="mobileNav">
+
+    <a href="#home">
+        🏠 Home
+    </a>
+
+    <a href="#features">
+        ⭐ Features
+    </a>
+
+    <a href="#services">
+        🧭 Services
+    </a>
+
+    <a href="login.html">
+        🔐 Login
+    </a>
+
+    <a href="register.html">
+        📝 Register
+    </a>
+
+</div>
+
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+
+        <!-- HERO LEFT -->
+
+        <div class="hero-left">
+
+
+            <div class="welcome-pill">
+
+                <span class="india-dot"></span>
+
+                Welcome to Athiti Suraksha
+
+            </div>
+
+
+            <h1 class="hero-title">
+
+                <span class="white">
+                    Explore India.
+                </span>
+
+                <br>
+
+                <span class="orange">
+                    Travel Freely.
+                </span>
+
+                <br>
+
+                <span class="green">
+                    Stay Safe.
+                </span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                Athiti Suraksha is a smart tourist safety
+                monitoring system designed to help Indian
+                and foreign tourists travel with confidence
+                through emergency assistance, location
+                services, weather information and nearby
+                safety services.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="register.html"
+                    class="hero-btn register-main">
+
+                    👤 Register as Tourist
+
+                </a>
+
+
+                <a
+                    href="login.html"
+                    class="hero-btn login-main">
+
+                    🔐 Tourist Login
+
+                </a>
+
+            </div>
+
+
+            <div class="hero-features">
+
+                <div class="hero-feature">
+
+                    <span>🛡️</span>
+
+                    Tourist Safety
+
+                </div>
+
+                <div class="hero-feature">
+
+                    <span>📍</span>
+
+                    Location Assistance
+
+                </div>
+
+                <div class="hero-feature">
+
+                    <span>🚨</span>
+
+                    Emergency Support
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- HERO RIGHT -->
+
+        <div class="security-card">
+
+
+            <div class="security-top">
+
+                <strong>
+                    Tourist Safety System
+                </strong>
+
+                <span class="active-badge">
+                    ● SYSTEM ACTIVE
+                </span>
+
+            </div>
+
+
+            <div class="shield">
+                🛡️
+            </div>
+
+
+            <div class="security-text">
+
+                <h3>
+                    Your Journey, Our Priority
+                </h3>
+
+                <p>
+                    Smart safety assistance for tourists
+                </p>
+
+            </div>
+
+
+            <div class="security-stats">
+
+
+                <div class="security-stat">
+
+                    <strong>
+                        24/7
+                    </strong>
+
+                    <span>
+                        Safety Support
+                    </span>
+
+                </div>
+
+
+                <div class="security-stat">
+
+                    <strong>
+                        GPS
+                    </strong>
+
+                    <span>
+                        Location
+                    </span>
+
+                </div>
+
+
+                <div class="security-stat">
+
+                    <strong>
+                        SOS
+                    </strong>
+
+                    <span>
+                        Emergency
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FEATURES
+========================================================= -->
+
+<section class="features-section" id="features">
+
+
+    <div class="section-title">
+
+        <div class="section-label">
+            SMART PROTECTION
+        </div>
+
+        <h2>
+            Powerful Safety Features
+        </h2>
+
+        <p>
+
+            Important tourist safety capabilities
+            brought together in one platform.
+
+        </p>
+
+    </div>
+
+
+    <div class="features-grid">
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🚨
+            </div>
+
+            <h3>
+                Emergency SOS
+            </h3>
+
+            <p>
+
+                Quick access to emergency assistance
+                for registered tourists.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📍
+            </div>
+
+            <h3>
+                GPS Location
+            </h3>
+
+            <p>
+
+                Use location information to provide
+                relevant nearby assistance.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🌍
+            </div>
+
+            <h3>
+                Tourist Support
+            </h3>
+
+            <p>
+
+                Designed for both Indian and
+                international tourists.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🔐
+            </div>
+
+            <h3>
+                Secure Access
+            </h3>
+
+            <p>
+
+                Services are available through the
+                authenticated tourist dashboard.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SERVICES
+========================================================= -->
+
+<section class="services-section" id="services">
+
+
+    <div class="section-title">
+
+        <div class="section-label">
+            TOURIST SERVICES
+        </div>
+
+        <h2>
+            Services Available After Login
+        </h2>
+
+        <p>
+
+            Register or login to access the complete
+            services from your User Dashboard.
+
+        </p>
+
+    </div>
+
+
+    <div class="services-grid">
+
+
+        <!-- =================================================
+             WEATHER
+        ================================================== -->
+
+        <div class="service-card">
+
+            <span class="login-required">
+                🔒 LOGIN
+            </span>
+
+            <div class="service-icon">
+                🌤️
+            </div>
+
+            <h3>
+                Weather
+            </h3>
+
+            <p>
+
+                Get current weather information
+                according to your location.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             HISTORICAL PLACES
+        ================================================== -->
+
+        <div class="service-card">
+
+            <span class="login-required">
+                🔒 LOGIN
+            </span>
+
+            <div class="service-icon">
+                🏛️
+            </div>
+
+            <h3>
+                Historical Places
+            </h3>
+
+            <p>
+
+                Discover historical places and
+                attractions near your location.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             HOTELS & LODGES
+        ================================================== -->
+
+        <div class="service-card">
+
+            <span class="login-required">
+                🔒 LOGIN
+            </span>
+
+            <div class="service-icon">
+                🏨
+            </div>
+
+            <h3>
+                Hotels & Lodges
+            </h3>
+
+            <p>
+
+                Find nearby hotels, lodges and
+                accommodation options.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             POLICE STATIONS
+        ================================================== -->
+
+        <div class="service-card">
+
+            <span class="login-required">
+                🔒 LOGIN
+            </span>
+
+            <div class="service-icon">
+                🚔
+            </div>
+
+            <h3>
+                Nearby Police Stations
+            </h3>
+
+            <p>
+
+                Find nearby police stations using
+                location-based services.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             HOSPITALS
+        ================================================== -->
+
+        <div class="service-card">
+
+            <span class="login-required">
+                🔒 LOGIN
+            </span>
+
+            <div class="service-icon">
+                🏥
+            </div>
+
+            <h3>
+                Nearby Hospitals
+            </h3>
+
+            <p>
+
+                Locate hospitals and nearby
+                medical facilities.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             LIVE LOCATION MAP
+        ================================================== -->
+
+        <div class="service-card">
+
+            <span class="login-required">
+                🔒 LOGIN
+            </span>
+
+            <div class="service-icon">
+                🗺️
+            </div>
+
+            <h3>
+                Live Location Map
+            </h3>
+
+            <p>
+
+                View your current location and
+                nearby useful places.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             VOICE TRANSLATOR
+        ================================================== -->
+
+        <div class="service-card">
+
+            <span class="login-required">
+                🔒 LOGIN
+            </span>
+
+            <div class="service-icon">
+                🗣️
+            </div>
+
+            <h3>
+                Voice Translator
+            </h3>
+
+            <p>
+
+                Get language assistance while
+                travelling in different regions.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             EMERGENCY ASSISTANCE
+        ================================================== -->
+
+        <div class="service-card">
+
+            <span class="login-required">
+                🔒 LOGIN
+            </span>
+
+            <div class="service-icon">
+                🚨
+            </div>
+
+            <h3>
+                Emergency Assistance
+            </h3>
+
+            <p>
+
+                Access emergency assistance and
+                safety functions from your dashboard.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- LOGIN MESSAGE -->
+
+    <div class="service-note">
+
+        🔒 <strong>Login Required:</strong>
+
+        These services are displayed for information
+        on the public page. To actually use them,
+        tourists must first register/login and then
+        access them through the User Dashboard.
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="cta-section">
+
+
+    <div class="cta">
+
+
+        <h2>
+            Travel Safer with Athiti Suraksha
+        </h2>
+
+
+        <p>
+
+            Register as a tourist and access your
+            personalized User Dashboard. Your
+            location-based services will be available
+            after successful authentication.
+
+        </p>
+
+
+        <a
+            href="register.html"
+            class="hero-btn register-main">
+
+            📝 Register as Tourist
+
+        </a>
+
+
+        <a
+            href="login.html"
+            class="hero-btn login-main"
+            style="margin-left:8px;">
+
+            🔐 Tourist Login
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+
+    <div class="footer-content">
+
+
+        <!-- BRAND -->
+
+        <div class="footer-brand">
+
+
+            <div class="logo-area">
+
+                <img
+                    src="logo.jpg"
+                    class="logo"
+                    alt="Athiti Suraksha Logo"
+                    onerror="this.style.display='none';"
+                >
+
+                <div class="logo-text">
+
+                    <h2 style="color:white;">
+                        Athiti Suraksha
+                    </h2>
+
+                    <p style="color:#8ea2b8;">
+                        SAFE TRAVEL • SECURE INDIA
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <p>
+
+                A smart tourist safety monitoring
+                system designed to support safer
+                travel for Indian and foreign tourists.
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- PUBLIC -->
+
+        <div class="footer-column">
+
+            <h3>
+                Explore
+            </h3>
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#features">
+                Features
+            </a>
+
+            <a href="#services">
+                Services
+            </a>
+
+        </div>
+
+
+
+        <!-- ACCOUNT -->
+
+        <div class="footer-column">
+
+            <h3>
+                Account
+            </h3>
+
+            <a href="register.html">
+                Tourist Registration
+            </a>
+
+            <a href="login.html">
+                Tourist Login
+            </a>
+
+            <a href="dashboard.html">
+                User Dashboard
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 Athiti Suraksha. All Rights Reserved.
+        </span>
+
+        <span>
+            Smart Tourist Safety Monitoring System
+        </span>
+
+    </div>
+
+
+</footer>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+    /* =====================================================
+       NAVBAR SCROLL EFFECT
+    ===================================================== */
+
+    const navbar =
+        document.getElementById("navbar");
+
+
+    window.addEventListener("scroll", function () {
+
+        if (window.scrollY > 30) {
+
+            navbar.classList.add("scrolled");
+
+        } else {
+
+            navbar.classList.remove("scrolled");
+
+        }
+
+    });
+
+
+
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+
+        if (
+            mobileNav.classList.contains("active")
+        ) {
+
+            menuButton.innerHTML = "✕";
+
+        } else {
+
+            menuButton.innerHTML = "☰";
+
+        }
+
+    });
+
+
+
+    /* =====================================================
+       CLOSE MOBILE MENU
+    ===================================================== */
+
+    const mobileLinks =
+        mobileNav.querySelectorAll("a");
+
+
+    mobileLinks.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            mobileNav.classList.remove("active");
+
+            menuButton.innerHTML = "☰";
+
+        });
+
+    });
+
+
+</script>
+
+
+</body>
+</html>
