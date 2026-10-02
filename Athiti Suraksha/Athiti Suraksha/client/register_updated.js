@@ -4,7 +4,26 @@
    COMPLETE UPDATED VERSION
    ===================================================== */
 
-const API_URL = "https://athiti-suraksha-reviewed.onrender.com";
+const API_URL = "https://athiti-suraksha-reviewed.onrender.com".replace(/\/$/, "");
+
+/* Convert browser's vague "Failed to fetch" into a useful deployment hint.
+   A real fix for CORS/server outages must be made on the backend/Render. */
+async function apiFetch(url, options = {}) {
+    try {
+        return await fetch(url, options);
+    } catch (error) {
+        if (
+            error instanceof TypeError ||
+            /failed to fetch|networkerror/i.test(error?.message || "")
+        ) {
+            throw new Error(
+                `Cannot reach the Athiti Suraksha API (${API_URL}). Check that the Render service is live, its URL is correct, and CORS allows this frontend origin.`
+            );
+        }
+        throw error;
+    }
+}
+
 
 
 /* =====================================================
