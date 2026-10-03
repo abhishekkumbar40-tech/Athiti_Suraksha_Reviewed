@@ -1,1 +1,31 @@
-[]
+[
+  {
+    "id": "SOS-1790669333423-9270",
+    "touristId": "",
+    "name": "Abhishek",
+    "email": "abhishekkumbar@gmail.com",
+    "phone": "9606550477",
+    "mobile": "9606550477",
+    "touristType": "Indian",
+    "country": "India",
+    "gender": "",
+    "photo": "",
+    "facePhoto": "",
+    "message": "Emergency SOS activated. Please provide immediate assistance.",
+    "latitude": 15.8756035,
+    "longitude": 74.5181635,
+    "accuracy": 500,
+    "status": "RESOLVED",
+    "createdAt": "2026-09-29T08:08:53.423Z",
+    "updatedAt": "2026-09-29T08:09:40.729Z",
+    "respondingAt": "2026-09-29T08:09:21.390Z",
+    "resolvedAt": "2026-09-29T08:09:40.729Z",
+    "adminId": "ADMIN",
+    "adminName": "Administrator",
+    "adminMessage": "Emergency resolved by admin.",
+    "smsStatus": "NOT_CONFIGURED",
+    "smsRecipients": [],
+    "smsMessages": [],
+    "smsError": "TWILIO_PHONE_NUMBER is not configured."
+  }
+]
